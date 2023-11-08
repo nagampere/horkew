@@ -1,0 +1,13 @@
+horkew:
+  outputs:
+    dev:
+      type: duckdb
+      path: ../catalog.duckdb
+      threads: 1
+
+    prod:
+      type: duckdb
+      path: prod.duckdb
+      threads: 4
+
+  target: dev

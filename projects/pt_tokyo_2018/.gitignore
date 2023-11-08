@@ -1,4 +1,6 @@
 catalog.duckdb
 
 logs
-sources
+/sources/**
+!/sources/**/
+!/sources/**/.gitkeep

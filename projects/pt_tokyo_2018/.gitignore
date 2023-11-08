@@ -1,4 +1,4 @@
-catalog.duckdb
+/catalog.duckdb
 
-logs/
-source/*
+/logs
+/sources/*

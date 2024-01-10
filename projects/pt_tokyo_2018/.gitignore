@@ -1,6 +1,9 @@
-catalog.duckdb
+/dbt/catalog.duckdb
+
+.DS_Store
 
 logs
+
 /sources/**
 !/sources/**/
 !/sources/**/.gitkeep

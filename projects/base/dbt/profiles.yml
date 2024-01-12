@@ -2,7 +2,7 @@ horkew:
   outputs:
     dev:
       type: duckdb
-      path: ../catalog.duckdb
+      path: catalog.duckdb
       threads: 1
 
     prod:

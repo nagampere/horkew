@@ -22,5 +22,5 @@ $ poetry run dbt run  --select ${MODEL_NAME}
 ```bash
 # check tables in Duckdb
 $ poetry run duckdb catalog.duckdb
-D select * from information_schema.tables
+D select * from information_schema.tables;
 ```

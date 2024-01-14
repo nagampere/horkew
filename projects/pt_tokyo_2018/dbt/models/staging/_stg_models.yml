@@ -2,20 +2,360 @@
 version: 2
 
 models:
-  - name: stg_my_first_dbt_model
-    description: "A starter dbt model"
+  - name: stg_ods__ms2611
+    description: "トリップマスター"
     columns:
       - name: id
+        data_type: bigint
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+      - name: is_first
+        description: "レコード区分"
+      - name: is_answer
+        description: "回収分類"
+      - name: id_batch
+        description: "バッチ番号"
+      - name: id_area
+        description: "整理番号：市区町村"
+      - name: id_lot
+        description: "整理番号：ロット番号"
+      - name: id_household
+        description: "整理番号：世帯ＳＱ"
+      - name: household_size
+        description: "世帯人数／5歳未満含む"
+      - name: household_size_over_5th
+        description: "世帯人数／5歳未満除く"
+      - name: individual
+        description: "回収個人票数"
+      - name: address_accuracy
+        description: "現住所：完全桁数"
+      - name: address_zcode
+        description: "現住所：ゾーンコード"
+      - name: address_jcode
+        description: "現住所：JISコード（5桁）"
+      - name: owned_car
+        description: "所有車両：自動車"
+      - name: owned_bike
+        description: "所有車両：自転車"
+      - name: owned_motorcycle
+        description: "所有車両：原付・バイク"
+      - name: income
+        description: "世帯年収"
+      - name: personal_number
+        description: "個人番号"
+      - name: sex
+        description: "性別"
+      - name: age
+        description: "年齢"
+      - name: relationship
+        description: "世帯主との続柄"
+      - name: employment
+        description: "就業（形態・状況）"
+      - name: job
+        description: "職業"
+      - name: licence
+        description: "自動車運転免許保有の状況"
+      - name: ownership_car
+        description: "自由に使える自動車の有無"
+      - name: disability
+        description: "外出に関する身体的な困難さ"
+      - name: office_accuracy
+        description: "勤務先・通学先・通園先：完全桁数"
+      - name: office_zcode
+        description: "勤務先・通学先・通園先：ゾーンコード"
+      - name: office_jcode
+        description: "勤務先・通学先・通園先：JISコード（5桁）"
+      - name: is_officehour
+        description: "勤務時間固定の有無"
+      - name: opening_ampm
+        description: "勤務先の始業時刻：午前・午後"
+      - name: opening_hour
+        description: "勤務先の始業時刻：時"
+      - name: opening_munute
+        description: "勤務先の始業時刻：分"
+      - name: is_remotework
+        description: "調査対象日の在宅勤務の有無"
+      - name: is_trip
+        description: "トリップの有無"
+      - name: trip_total
+        description: "トリップ数"
+      - name: trip_number
+        description: "トリップ番号"
+      - name: origin_type
+        description: "出発地：区分"
+      - name: origin_accuracy
+        description: "出発地：完全桁数"
+      - name: origin_zcode
+        description: "出発地：ゾーンコード"
+      - name: origin_jcode
+        description: "出発地：JISコード（5桁）"
+      - name: origin_facility
+        description: "施設の種類（出発地）"
+      - name: origin_ampm
+        description: "出発時刻：午前・午後"
+      - name: origin_hour
+        description: "出発時刻：時"
+      - name: origin_minute
+        description: "出発時刻：分"
+      - name: desination_type
+        description: "到着地：区分"
+      - name: destination_accuracy
+        description: "到着地：完全桁数"
+      - name: destination_zcode
+        description: "到着地：ゾーンコード"
+      - name: destination_jcode
+        description: "到着地：JISコード（5桁）"
+      - name: destination_facility
+        description: "施設の種類（到着地）"
+      - name: destination_ampm
+        description: "到着時刻：午前・午後"
+      - name: destination_hour
+        description: "到着時刻：時"
+      - name: destination_minute
+        description: "到着時刻：分"
+      - name: consumption
+        description: "目的地での消費額"
+      - name: purpose
+        description: "移動の目的"
+      - name: accompany
+        description: "同行人数：人数"
+      - name: is_accompany_child
+        description: "同行人数：小学生以下の有無"
+      - name: is_accompany_elder
+        description: "同行人数：高齢者の有無"
+      - name: means_1
+        description: "交通手段①"
+      - name: means_2
+        description: "交通手段②"
+      - name: means_3
+        description: "交通手段③"
+      - name: means_4
+        description: "交通手段④"
+      - name: means_5
+        description: "交通手段⑤"
+      - name: means_6
+        description: "交通手段⑥"
+      - name: means_7
+        description: "交通手段⑦"
+      - name: means_8
+        description: "交通手段⑧"
+      - name: embarked_station
+        description: "鉄道利用駅：乗車駅"
+      - name: disembarked_station
+        description: "鉄道利用駅：降車駅"
+      - name: parking_bike_1
+        description: "駐輪場所：①"
+      - name: parking_bike_2
+        description: "駐輪場所：②"
+      - name: is_driving
+        description: "自動車利用：運転有無"
+      - name: is_highway
+        description: "自動車利用：高速道路利用有無"
+      - name: parking_car
+        description: "自動車利用：駐車場"
+      - name: weights
+        description: "拡大係数"
+      - name: household_type
+        description: "世帯類型"
+      - name: purpose_origin
+        description: "発目的"
+      - name: purpose_destination
+        description: "着目的"
+      - name: purpose_1
+        description: "目的種類：分類１"
+      - name: purpose_2
+        description: "目的種類：分類２"
+      - name: purpose_3
+        description: "目的種類：分類３"
+      - name: means_representative_1
+        description: "代表交通手段：分類０"
+      - name: means_representative_2
+        description: "代表交通手段：分類１"
+      - name: means_representative_3
+        description: "代表交通手段：分類２"
+      - name: means_representative_4
+        description: "代表交通手段：分類３"
+      - name: travel_minutes
+        description: "トリップ時間（分）"
+      - name: stay_mitutes
+        description: "滞在時間（分）"
+      - name: embarked_type
+        description: "マストラ乗車：代表交通手段"
+      - name: embarked_code
+        description: "マストラ乗車：駅コード（施設）"
+      - name: embarked_zcode
+        description: "マストラ乗車：駅地点（ゾーン）"
+      - name: embarked_access
+        description: "マストラ乗車：端末手段"
+      - name: disembarked_type
+        description: "マストラ降車：代表交通手段"
+      - name: disembarked_code
+        description: "マストラ降車：駅コード（施設）"
+      - name: disembarked_zcode
+        description: "マストラ降車：駅地点（ゾーン）"
+      - name: diembarked_egres
+        description: "マストラ降車：端末手段"
 
-  - name: stg_my_second_dbt_model
-    description: "A starter dbt model"
+  - name: stg_ods__ms2711
+    description: トリップマスター(ジオコーディングデータ)"
     columns:
       - name: id
+        data_type: bigint
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+      - name: is_first
+        description: "レコード区分"
+      - name: is_answer
+        description: "回収分類"
+      - name: id_batch
+        description: "バッチ番号"
+      - name: id_area
+        description: "整理番号：市区町村"
+      - name: id_lot
+        description: "整理番号：ロット番号"
+      - name: id_household
+        description: "整理番号：世帯ＳＱ"
+      - name: household_size
+        description: "世帯人数／5歳未満含む"
+      - name: household_size_over_5th
+        description: "世帯人数／5歳未満除く"
+      - name: individual
+        description: "回収個人票数"
+      - name: address_accuracy
+        description: "現住所：完全桁数"
+      - name: address_zcode
+        description: "現住所：ゾーンコード"
+      - name: address_block
+        description: "現住所：番・番地"
+      - name: address_number
+        description: "現住所：号"
+      - name: address_lat
+        description: "現住所：緯度"
+      - name: address_lon
+        description: "現住所：経度"
+      - name: address_level
+        description: "現住所：マッチングレベル"
+      - name: address_jcode
+        description: "現住所：JISコード（5桁）"
+      - name: personal_number
+        description: "個人番号"
+      - name: office_accuracy
+        description: "勤務先・通学先・通園先：完全桁数"
+      - name: office_zcode
+        description: "勤務先・通学先・通園先：ゾーンコード"
+      - name: office_block
+        description: "勤務先・通学先・通園先：番・番地"
+      - name: office_number
+        description: "勤務先・通学先・通園先：号"
+      - name: office_lat
+        description: "勤務先・通学先・通園先：緯度"
+      - name: office_lon
+        description: "勤務先・通学先・通園先：経度"
+      - name: office_level
+        description: "勤務先・通学先・通園先：マッチングレベル"
+      - name: office_jcode
+        description: "勤務先・通学先・通園先：JISコード（5桁）"
+      - name: is_trip
+        description: "トリップの有無"
+      - name: trip_total
+        description: "トリップ数"
+      - name: trip_number
+        description: "トリップ番号"
+      - name: origin_type
+        description: "出発地：区分"
+      - name: origin_accuracy
+        description: "出発地：完全桁数"
+      - name: origin_zcode
+        description: "出発地：ゾーンコード"
+      - name: origin_block
+        description: "出発地：番・番地"
+      - name: origin_number
+        description: "出発地：号"
+      - name: origin_lat
+        description: "出発地：緯度"
+      - name: origin_lon
+        description: "出発地：経度"
+      - name: origin_level
+        description: "出発地：マッチングレベル"
+      - name: origin_jcode
+        description: "出発地：JISコード（5桁）"
+      - name: destination_type
+        description: "到着地：区分"
+      - name: destination_accuracy
+        description: "到着地：完全桁数"
+      - name: destination_zcode
+        description: "到着地：ゾーンコード"
+      - name: destination_block
+        description: "到着地：番・番地"
+      - name: destination_number
+        description: "到着地：号"
+      - name: destination_lat
+        description: "到着地：緯度"
+      - name: destination_lon
+        description: "到着地：経度"
+      - name: destination_level
+        description: "到着地：マッチングレベル"
+      - name: destination_jcode
+        description: "到着地：JISコード（5桁）"
+
+  - name: stg_ods__ms4011
+    description: "世帯票マスター"
+    columns:
+      - name: id
+        data_type: bigint
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: is_answer
+        description: "回収分類"
+      - name: id_batch
+        description: "バッチ番号"
+      - name: id_area
+        description: "整理番号：市区町村"
+      - name: id_lot
+        description: "整理番号：ロット番号"
+      - name: id_household
+        description: "整理番号：世帯ＳＱ"
+      - name: household_size
+        description: "世帯人数／5歳未満含む"
+      - name: household_size_over_5th
+        description: "世帯人数／5歳未満除く"
+      - name: individual
+        description: "回収個人票数"
+      - name: address_accuracy
+        description: "現住所：完全桁数"
+      - name: address_zcode
+        description: "現住所：ゾーンコード"
+      - name: address_jcode
+        description: "現住所：JISコード（5桁）"
+      - name: owned_car
+        description: "所有車両：自動車"
+      - name: owned_bike
+        description: "所有車両：自転車"
+      - name: owned_motorcycle
+        description: "所有車両：原付・バイク"
+      - name: income
+        description: "世帯年収"
+      - name: personal_number
+        description: "個人番号"
+      - name: sex
+        description: "性別"
+      - name: age
+        description: "年齢"
+      - name: relationship
+        description: "世帯主との続柄"
+      - name: employment
+        description: "就業（形態・状況）"
+      - name: job
+        description: "職業"
+      - name: licence
+        description: "自動車運転免許保有の状況"
+      - name: ownership_car
+        description: "自由に使える自動車の有無"
+      - name: disability
+        description: "外出に関する身体的な困難さ"

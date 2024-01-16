@@ -1,7 +1,7 @@
 SELECT
     ROW_NUMBER() OVER () as id,
     レコード区分 as is_first,
-    回収分類 as is_answer,
+    回収分類 as answer_type,
     バッチ番号 as id_batch,
     整理番号：市区町村 as id_area,
     整理番号：ロット番号 as id_lot,
@@ -31,7 +31,7 @@ SELECT
     勤務時間固定の有無 as is_officehour,
     勤務先の始業時刻：午前・午後 as opening_ampm,
     勤務先の始業時刻：時 as opening_hour,
-    勤務先の始業時刻：分 as opening_munute,
+    勤務先の始業時刻：分 as opening_minute,
     調査対象日の在宅勤務の有無 as is_remotework,
     トリップの有無 as is_trip,
     トリップ数 as trip_total,
@@ -79,10 +79,10 @@ SELECT
     目的種類：分類１ as purpose_1,
     目的種類：分類２ as purpose_2,
     目的種類：分類３ as purpose_3,
-    代表交通手段：分類０ as means_representative_1,
-    代表交通手段：分類１ as means_representative_2,
-    代表交通手段：分類２ as means_representative_3,
-    代表交通手段：分類３ as means_representative_4,
+    代表交通手段：分類０ as means_representative_0,
+    代表交通手段：分類１ as means_representative_1,
+    代表交通手段：分類２ as means_representative_2,
+    代表交通手段：分類３ as means_representative_3,
     トリップ時間（分） as travel_minutes,
     滞在時間（分） as stay_mitutes,
     マストラ乗車：代表交通手段 as embarked_type,
@@ -92,5 +92,5 @@ SELECT
     マストラ降車：代表交通手段 as disembarked_type,
     マストラ降車：駅コード（施設） as disembarked_code,
     マストラ降車：駅地点（ゾーン） as disembarked_zcode,
-    マストラ降車：端末手段 as diembarked_egress
-FROM read_csv_auto('../sources/data/MS2611_UTF.csv')
+    マストラ降車：端末手段 as disembarked_egress
+FROM read_csv_auto('../sources/MS2611_UTF.csv')

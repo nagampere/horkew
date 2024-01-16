@@ -1,6 +1,6 @@
 SELECT
     ROW_NUMBER() OVER () as id,
-    回収分類 as is_answer,
+    回収分類 as answer_type,
     バッチ番号 as id_batch,
     整理番号：市区町村 as id_area,
     整理番号：ロット番号 as id_lot,
@@ -24,4 +24,4 @@ SELECT
     自動車運転免許保有の状況 as licence,
     自由に使える自動車の有無 as ownership_car,
     外出に関する身体的な困難さ as disability,
-FROM read_csv_auto('../sources/data/MS4011_UTF.csv')
+FROM read_csv_auto('../sources/MS4011_UTF.csv')

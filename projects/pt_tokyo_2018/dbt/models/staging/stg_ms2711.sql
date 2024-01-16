@@ -1,7 +1,7 @@
 SELECT
     ROW_NUMBER() OVER () as id,
     レコード区分 as is_first,
-    回収分類 as is_answer,
+    回収分類 as answer_type,
     バッチ番号 as id_batch,
     整理番号：市区町村 as id_area,
     整理番号：ロット番号 as id_lot,
@@ -20,6 +20,7 @@ SELECT
     個人番号 as personal_number,
     勤務先・通学先・通園先：完全桁数 as office_accuracy,
     勤務先・通学先・通園先：ゾーンコード as office_zcode,
+    勤務先・通学先・通園先：番・番地 as office_block,
     勤務先・通学先・通園先：号 as office_number,
     勤務先・通学先・通園先：緯度 as office_lat,
     勤務先・通学先・通園先：経度 as office_lon,
@@ -46,4 +47,4 @@ SELECT
     到着地：経度 as destination_lon,
     到着地：マッチングレベル as destination_level,
     到着地：JISコード（5桁） as destination_jcode,
-FROM read_csv_auto('../sources/data/MS2711_UTF.csv')
+FROM read_csv_auto('../sources/MS2711_UTF.csv')

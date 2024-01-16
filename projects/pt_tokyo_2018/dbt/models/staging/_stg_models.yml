@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: stg_ods__ms2611
+  - name: stg_ms2611
     description: "トリップマスター"
     columns:
       - name: id
@@ -13,7 +13,7 @@ models:
           - not_null
       - name: is_first
         description: "レコード区分"
-      - name: is_answer
+      - name: answer_type
         description: "回収分類"
       - name: id_batch
         description: "バッチ番号"
@@ -73,7 +73,7 @@ models:
         description: "勤務先の始業時刻：午前・午後"
       - name: opening_hour
         description: "勤務先の始業時刻：時"
-      - name: opening_munute
+      - name: opening_minute
         description: "勤務先の始業時刻：分"
       - name: is_remotework
         description: "調査対象日の在宅勤務の有無"
@@ -169,13 +169,13 @@ models:
         description: "目的種類：分類２"
       - name: purpose_3
         description: "目的種類：分類３"
-      - name: means_representative_1
+      - name: means_representative_0
         description: "代表交通手段：分類０"
-      - name: means_representative_2
+      - name: means_representative_1
         description: "代表交通手段：分類１"
-      - name: means_representative_3
+      - name: means_representative_2
         description: "代表交通手段：分類２"
-      - name: means_representative_4
+      - name: means_representative_3
         description: "代表交通手段：分類３"
       - name: travel_minutes
         description: "トリップ時間（分）"
@@ -195,10 +195,10 @@ models:
         description: "マストラ降車：駅コード（施設）"
       - name: disembarked_zcode
         description: "マストラ降車：駅地点（ゾーン）"
-      - name: diembarked_egres
+      - name: disembarked_egress
         description: "マストラ降車：端末手段"
 
-  - name: stg_ods__ms2711
+  - name: stg_ms2711
     description: トリップマスター(ジオコーディングデータ)"
     columns:
       - name: id
@@ -209,7 +209,7 @@ models:
           - not_null
       - name: is_first
         description: "レコード区分"
-      - name: is_answer
+      - name: answer_type
         description: "回収分類"
       - name: id_batch
         description: "バッチ番号"
@@ -302,7 +302,7 @@ models:
       - name: destination_jcode
         description: "到着地：JISコード（5桁）"
 
-  - name: stg_ods__ms4011
+  - name: stg_ms4011
     description: "世帯票マスター"
     columns:
       - name: id
@@ -311,7 +311,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: is_answer
+      - name: answer_type
         description: "回収分類"
       - name: id_batch
         description: "バッチ番号"
@@ -359,3 +359,40 @@ models:
         description: "自由に使える自動車の有無"
       - name: disability
         description: "外出に関する身体的な困難さ"
+
+  - name: stg_station
+    description: "05駅コード表"
+    columns:
+      - name: id
+        data_type: bigint
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: station_name
+        description: 駅名
+      - name: station_name_kana
+        description: ふりがな
+      - name: station_code
+        description: 駅コード
+      - name: zcode
+        description: ゾーンコード
+      - name: location_name
+        description: 所在地
+      - name: annotation
+        description: 備考
+      - name: line_name_1
+        description: 路線名
+      - name: line_name_2
+      - name: line_name_3
+      - name: line_name_4
+      - name: line_name_5
+      - name: line_name_6
+      - name: line_name_7
+      - name: line_name_8
+      - name: line_name_9
+      - name: line_name_10
+      - name: line_name_11
+      - name: line_name_12
+      - name: line_name_13
+      - name: line_name_14

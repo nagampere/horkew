@@ -1,3 +1,6 @@
+
+{{ config(materialized='table') }}
+
 SELECT
     ROW_NUMBER() OVER () as id,
     回収分類 as answer_type,

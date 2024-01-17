@@ -1,3 +1,6 @@
+
+{{ config(materialized='table') }}
+
 SELECT
     ROW_NUMBER() OVER () as id,
     レコード区分 as is_first,

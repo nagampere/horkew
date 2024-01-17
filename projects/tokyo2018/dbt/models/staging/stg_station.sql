@@ -1,3 +1,6 @@
+
+{{ config(materialized='table') }}
+
 SELECT
     cast(seq as bigint) as id,
     駅名 as station_name,

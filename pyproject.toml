@@ -12,6 +12,7 @@ dbt-duckdb = "^1.7.0"
 notebook = "^7.0.6"
 pandas = "^2.1.4"
 geopandas = "^0.14.2"
+keplergl = "^0.3.2"
 
 
 [build-system]

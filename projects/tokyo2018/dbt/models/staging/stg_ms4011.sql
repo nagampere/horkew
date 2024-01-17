@@ -24,4 +24,4 @@ SELECT
     自動車運転免許保有の状況 as licence,
     自由に使える自動車の有無 as ownership_car,
     外出に関する身体的な困難さ as disability,
-FROM read_csv_auto('../sources/MS4011_UTF.csv')
+FROM read_csv_auto('/Users/nagampere/File/horkew/projects/tokyo2018/sources/MS4011_UTF.csv')

@@ -20,4 +20,4 @@ SELECT
     12 as line_name_12,
     13 as line_name_13,
     14 as line_name_14,
-FROM read_csv_auto('../sources/05駅コード表.csv')
+FROM read_csv_auto('/Users/nagampere/File/horkew/projects/tokyo2018/sources/05駅コード表.csv')

@@ -93,4 +93,4 @@ SELECT
     マストラ降車：駅コード（施設） as disembarked_code,
     マストラ降車：駅地点（ゾーン） as disembarked_zcode,
     マストラ降車：端末手段 as disembarked_egress
-FROM read_csv_auto('../sources/MS2611_UTF.csv')
+FROM read_csv_auto('/Users/nagampere/File/horkew/projects/tokyo2018/sources/MS2611_UTF.csv')

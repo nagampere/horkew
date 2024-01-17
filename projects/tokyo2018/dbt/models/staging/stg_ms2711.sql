@@ -47,4 +47,4 @@ SELECT
     到着地：経度 as destination_lon,
     到着地：マッチングレベル as destination_level,
     到着地：JISコード（5桁） as destination_jcode,
-FROM read_csv_auto('../sources/MS2711_UTF.csv')
+FROM read_csv_auto('/Users/nagampere/File/horkew/projects/tokyo2018/sources/MS2711_UTF.csv')

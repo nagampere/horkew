@@ -30,10 +30,12 @@ D select * from information_schema.tables;
 import duckdb
 
 # create a connection to a file called 'file.db'
-con = duckdb.connect("../projects/${TENANT_NAME}/dbt/catalog.duckdb")
+con = duckdb.connect("${CURRENT_PATH}/projects/${TENANT_NAME}/dbt/catalog.duckdb")
 # create a table and load data into it
 con.sql("CREATE TABLE test (i INTEGER)")
 con.sql("INSERT INTO test VALUES (42)")
+pandas_df = con.sql("SELECT 42").df()         # Pandas DataFrame
+polars_df = con.sql("SELECT 42").pl()         # Polars DataFrame
 # query the table
 con.table("test").show()
 # explicitly close the connection

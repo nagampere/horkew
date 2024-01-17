@@ -45,3 +45,4 @@ GROUP BY
     id_area, 
     id_lot,
     id_household
+ORDER BY id

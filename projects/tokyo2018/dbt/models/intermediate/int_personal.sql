@@ -81,3 +81,4 @@ SELECT
         ELSE NULL
     END as disability,
 FROM {{ ref("stg_ms4011") }}
+ORDER BY id

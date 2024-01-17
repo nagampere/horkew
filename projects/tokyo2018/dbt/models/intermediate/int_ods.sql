@@ -429,49 +429,49 @@ SELECT
     END as parking_car,
     ms2611.weights as weights,
     CASE
-        WHEN format('{:s}',ms2611.household_type)[1]=='1' THEN '単身世帯'
-        WHEN format('{:s}',ms2611.household_type)[1]=='2' THEN '夫婦のみ世帯'
-        WHEN format('{:s}',ms2611.household_type)[1]=='3' THEN '2世代世帯'
-        WHEN format('{:s}',ms2611.household_type)[1]=='4' THEN '3世代以上世帯'
-        WHEN format('{:s}',ms2611.household_type)[1]=='5' THEN 'その他の世帯'
+        WHEN printf('%d',ms2611.household_type)[1]=='1' THEN '単身世帯'
+        WHEN printf('%d',ms2611.household_type)[1]=='2' THEN '夫婦のみ世帯'
+        WHEN printf('%d',ms2611.household_type)[1]=='3' THEN '2世代世帯'
+        WHEN printf('%d',ms2611.household_type)[1]=='4' THEN '3世代以上世帯'
+        WHEN printf('%d',ms2611.household_type)[1]=='5' THEN 'その他の世帯'
         ELSE NULL
     END as household_type,
     CASE
-        WHEN format('{:s}',ms2611.household_type)[2]=='1' THEN '0~6歳'
-        WHEN format('{:s}',ms2611.household_type)[2]=='2' THEN '7~9歳'
-        WHEN format('{:s}',ms2611.household_type)[2]=='3' THEN '10~12歳'
-        WHEN format('{:s}',ms2611.household_type)[2]=='4' THEN '13~15歳'
-        WHEN format('{:s}',ms2611.household_type)[2]=='5' THEN '16~18歳'
-        WHEN format('{:s}',ms2611.household_type)[2]=='6' THEN '19~22歳'
-        WHEN format('{:s}',ms2611.household_type)[2]=='7' THEN '23~30歳'
-        WHEN format('{:s}',ms2611.household_type)[2]=='8' THEN '31~64歳'
-        WHEN format('{:s}',ms2611.household_type)[2]=='9' THEN '65歳~'
+        WHEN printf('%d',ms2611.household_type)[2]=='1' THEN '0~6歳'
+        WHEN printf('%d',ms2611.household_type)[2]=='2' THEN '7~9歳'
+        WHEN printf('%d',ms2611.household_type)[2]=='3' THEN '10~12歳'
+        WHEN printf('%d',ms2611.household_type)[2]=='4' THEN '13~15歳'
+        WHEN printf('%d',ms2611.household_type)[2]=='5' THEN '16~18歳'
+        WHEN printf('%d',ms2611.household_type)[2]=='6' THEN '19~22歳'
+        WHEN printf('%d',ms2611.household_type)[2]=='7' THEN '23~30歳'
+        WHEN printf('%d',ms2611.household_type)[2]=='8' THEN '31~64歳'
+        WHEN printf('%d',ms2611.household_type)[2]=='9' THEN '65歳~'
         ELSE NULL
     END as household_youngest,
     CASE
-        WHEN format('{:s}',ms2611.household_type)[3]=='0' THEN 0
-        WHEN format('{:s}',ms2611.household_type)[3]=='1' THEN 1
-        WHEN format('{:s}',ms2611.household_type)[3]=='2' THEN 2
-        WHEN format('{:s}',ms2611.household_type)[3]=='3' THEN 3
-        WHEN format('{:s}',ms2611.household_type)[3]=='4' THEN 4
-        WHEN format('{:s}',ms2611.household_type)[3]=='5' THEN 5
-        WHEN format('{:s}',ms2611.household_type)[3]=='6' THEN 6
-        WHEN format('{:s}',ms2611.household_type)[3]=='7' THEN 7
-        WHEN format('{:s}',ms2611.household_type)[3]=='8' THEN 8
-        WHEN format('{:s}',ms2611.household_type)[3]=='9' THEN 9
+        WHEN printf('%d',ms2611.household_type)[3]=='0' THEN 0
+        WHEN printf('%d',ms2611.household_type)[3]=='1' THEN 1
+        WHEN printf('%d',ms2611.household_type)[3]=='2' THEN 2
+        WHEN printf('%d',ms2611.household_type)[3]=='3' THEN 3
+        WHEN printf('%d',ms2611.household_type)[3]=='4' THEN 4
+        WHEN printf('%d',ms2611.household_type)[3]=='5' THEN 5
+        WHEN printf('%d',ms2611.household_type)[3]=='6' THEN 6
+        WHEN printf('%d',ms2611.household_type)[3]=='7' THEN 7
+        WHEN printf('%d',ms2611.household_type)[3]=='8' THEN 8
+        WHEN printf('%d',ms2611.household_type)[3]=='9' THEN 9
         ELSE NULL
     END as household_need_support,
     CASE
-        WHEN format('{:s}',ms2611.household_type)[4]=='0' THEN 0
-        WHEN format('{:s}',ms2611.household_type)[4]=='1' THEN 1
-        WHEN format('{:s}',ms2611.household_type)[4]=='2' THEN 2
-        WHEN format('{:s}',ms2611.household_type)[4]=='3' THEN 3
-        WHEN format('{:s}',ms2611.household_type)[4]=='4' THEN 4
-        WHEN format('{:s}',ms2611.household_type)[4]=='5' THEN 5
-        WHEN format('{:s}',ms2611.household_type)[4]=='6' THEN 6
-        WHEN format('{:s}',ms2611.household_type)[4]=='7' THEN 7
-        WHEN format('{:s}',ms2611.household_type)[4]=='8' THEN 8
-        WHEN format('{:s}',ms2611.household_type)[4]=='9' THEN 9
+        WHEN printf('%d',ms2611.household_type)[4]=='0' THEN 0
+        WHEN printf('%d',ms2611.household_type)[4]=='1' THEN 1
+        WHEN printf('%d',ms2611.household_type)[4]=='2' THEN 2
+        WHEN printf('%d',ms2611.household_type)[4]=='3' THEN 3
+        WHEN printf('%d',ms2611.household_type)[4]=='4' THEN 4
+        WHEN printf('%d',ms2611.household_type)[4]=='5' THEN 5
+        WHEN printf('%d',ms2611.household_type)[4]=='6' THEN 6
+        WHEN printf('%d',ms2611.household_type)[4]=='7' THEN 7
+        WHEN printf('%d',ms2611.household_type)[4]=='8' THEN 8
+        WHEN printf('%d',ms2611.household_type)[4]=='9' THEN 9
         ELSE NULL
     END as household_elder,
     household.member_male as member_male,
@@ -684,3 +684,4 @@ LEFT JOIN {{ ref("stg_station") }} as station3
 ON ms2611.embarked_code == station3.station_code
 LEFT JOIN {{ ref("stg_station") }} as station4
 ON ms2611.disembarked_code == station4.station_code
+ORDER BY id

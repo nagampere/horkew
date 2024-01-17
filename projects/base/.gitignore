@@ -1,4 +1,5 @@
 /dbt/catalog.duckdb
+/dbt/catalog.duckdb.wal
 
 .DS_Store
 

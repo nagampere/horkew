@@ -25,6 +25,12 @@ $ poetry run duckdb catalog.duckdb
 D select * from information_schema.tables;
 ```
 
+# Create documents of model
+```bash
+$ dbt docs generate
+$ dbt docs serve
+```
+
 ## Analysis
 ```python
 import duckdb

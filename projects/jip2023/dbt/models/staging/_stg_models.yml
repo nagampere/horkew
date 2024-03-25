@@ -2,20 +2,549 @@
 version: 2
 
 models:
-  - name: stg_my_first_dbt_model
-    description: "A starter dbt model"
+  - name: stg_growth__real_gross_inputs
+    description: "3) 実質産出（100万円、2015年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
 
-  - name: stg_my_second_dbt_model
-    description: "A starter dbt model"
+  - name: stg_growth__nominal_gross_inputs
+    description: "4) 名目産出（100万円）"
     columns:
       - name: id
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__nominal_gross_inputs_shere
+    description: "4) 名目産出シェア"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__real_intermediate_inputs
+    description: "5) 実質中間投入（100万円、2015年連鎖価格）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__nominal_intermediate_inputs
+    description: "6) 名目中間投入（100万円）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__nominal_intermediate_inputs_shere
+    description: "6) 名目中間投入シェア"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__real_value_added
+    description: "7) 実質付加価値（100万円、2015年連鎖価格）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__nominal_value_added
+    description: "8) 名目付加価値（100万円）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__nominal_value_added_shere
+    description: "8) 名目付加価値シェア"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__labor_input_index
+    description: "9) 労働投入指数（ディビジア指数、2015年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__hours_worked_index
+    description: "10) マンアワー指数（2015年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__hours_worked
+    description: "10) マンアワー（1000人×総実労働時間）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__labor_quality_index
+    description: "11) 労働の質指数（ディビジア指数、2015年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+
+  - name: stg_growth__nominal_labor_costs
+    description: "12) 名目労働コスト（100万円）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: 1994
+      - name: 1995
+      - name: 1996
+      - name: 1997
+      - name: 1998
+      - name: 1999
+      - name: 2000
+      - name: 2001
+      - name: 2002
+      - name: 2003
+      - name: 2004
+      - name: 2005
+      - name: 2006
+      - name: 2007
+      - name: 2008
+      - name: 2009
+      - name: 2010
+      - name: 2011
+      - name: 2012
+      - name: 2013
+      - name: 2014
+      - name: 2015
+      - name: 2016
+      - name: 2017
+      - name: 2018
+      - name: 2019
+      - name: 2020
+      - name: 2021
+

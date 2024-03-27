@@ -6,7 +6,7 @@ with source as (
         * 
     FROM st_read(
         '../sources/growth.xlsx',
-        layer='LP_ConKT',
+        layer='LPConK_T',
         open_options = ['HEADERS=DISABLE', 'FIELD_TYPES=STRING']
     )
 )

@@ -899,7 +899,7 @@ models:
       - name: '2020'
       - name: '2021'
 
-  - name: stg_growth__cost_share_of_capital_excluding_intermediate_excluding_intermediate_inputs
+  - name: stg_growth__cost_share_of_capital_excluding_intermediate_inputs
     description: "18) 資本コストシェア（中間投入除く）"
     columns:
       - name: id

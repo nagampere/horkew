@@ -4,7 +4,7 @@ horkew:
       type: duckdb
       path: catalog.duckdb
       threads: 1
-      extentions: 
+      extensions: 
         - spatial
       plugins:
         - module: excel
@@ -13,7 +13,7 @@ horkew:
       type: duckdb
       path: prod.duckdb
       threads: 4
-      extentions: 
+      extensions: 
         - spatial
 
   target: dev

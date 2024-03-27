@@ -3,7 +3,7 @@ version: 2
 
 models:
   - name: stg_growth__real_gross_inputs
-    description: "3) 実質産出（100万円、2015年連鎖価格）"
+    description: "3) 実質産出（100万円、'2015'年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -12,34 +12,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__nominal_gross_inputs
     description: "4) 名目産出（100万円）"
@@ -51,34 +51,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__nominal_gross_inputs_shere
     description: "4) 名目産出シェア"
@@ -90,37 +90,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__real_intermediate_inputs
-    description: "5) 実質中間投入（100万円、2015年連鎖価格）"
+    description: "5) 実質中間投入（100万円、'2015'年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -129,34 +129,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__nominal_intermediate_inputs
     description: "6) 名目中間投入（100万円）"
@@ -168,34 +168,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__nominal_intermediate_inputs_shere
     description: "6) 名目中間投入シェア"
@@ -207,37 +207,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__real_value_added
-    description: "7) 実質付加価値（100万円、2015年連鎖価格）"
+    description: "7) 実質付加価値（100万円、'2015'年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -246,34 +246,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__nominal_value_added
     description: "8) 名目付加価値（100万円）"
@@ -285,34 +285,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__nominal_value_added_shere
     description: "8) 名目付加価値シェア"
@@ -324,37 +324,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__labor_input_index
-    description: "9) 労働投入指数（ディビジア指数、2015年=1.000）"
+    description: "9) 労働投入指数（ディビジア指数、'2015'年=1.000）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -363,37 +363,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__hours_worked_index
-    description: "10) マンアワー指数（2015年=1.000）"
+    description: "10) マンアワー指数（'2015'年=1.000）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -402,34 +402,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__hours_worked
     description: "10) マンアワー（1000人×総実労働時間）"
@@ -441,37 +441,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__labor_quality_index
-    description: "11) 労働の質指数（ディビジア指数、2015年=1.000）"
+    description: "11) 労働の質指数（ディビジア指数、'2015'年=1.000）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -480,34 +480,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__nominal_labor_costs
     description: "12) 名目労働コスト（100万円）"
@@ -519,37 +519,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__capital_service_input
-    description: "13) 資本サービス投入指数（ディビジア指数、2015年=1.000）"
+    description: "13) 資本サービス投入指数（ディビジア指数、'2015'年=1.000）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -558,37 +558,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__real_net_capital_stock_index
-    description: "14) 実質資本ストック指数（2015年=1.000）"
+    description: "14) 実質資本ストック指数（'2015'年=1.000）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -597,37 +597,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__real_net_capital_stock
-    description: "14) 実質資本ストック（100万円、2015年連鎖価格）"
+    description: "14) 実質資本ストック（100万円、'2015'年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -636,37 +636,37 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__capital_quality_index
-    description: "15) 資本の質指数（ディビジア指数、2015年=1.000）"
+    description: "15) 資本の質指数（ディビジア指数、'2015'年=1.000）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -675,34 +675,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__nominal_capital_service_input
     description: "16) 名目資本サービス(名目資本サービス価格＊実質資本ストック、100万円）"
@@ -714,36 +714,36 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
-  - name: stg_growth__cost_share_of_intermediate
+  - name: stg_growth__cost_share_of_intermediate_including_intermediate_inputs
     description: "17) 中間投入コストシェア（中間投入含む）"
     columns:
       - name: id
@@ -753,36 +753,36 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
-  - name: stg_growth__cost_share_of_labor
+  - name: stg_growth__cost_share_of_labor_including_intermediate_inputs
     description: "17) 労働投入コストシェア（中間投入含む）"
     columns:
       - name: id
@@ -792,36 +792,36 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
-  - name: stg_growth__cost_share_of_capital
+  - name: stg_growth__cost_share_of_capital_including_intermediate_inputs
     description: "17) 資本コストシェア（中間投入含む）"
     columns:
       - name: id
@@ -831,36 +831,36 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
-  - name: stg_growth__cost_share_of_labor_excluding_intermediate
+  - name: stg_growth__cost_share_of_labor_excluding_intermediate_inputs
     description: "18) 労働コストシェア（中間投入除く）"
     columns:
       - name: id
@@ -870,36 +870,36 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
-  - name: stg_growth__capital_service_input
+  - name: stg_growth__cost_share_of_capital_excluding_intermediate_excluding_intermediate_inputs
     description: "18) 資本コストシェア（中間投入除く）"
     columns:
       - name: id
@@ -909,34 +909,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__growth_rate_of_real_gross_output
     description: "19) 実質産出成長率"
@@ -948,34 +948,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_intermediate_inputs_gross_output_basis
     description: "20) 産出ベース中間投入寄与"
@@ -987,34 +987,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_hours_worked_gross_output_basis
     description: "21) 産出ベースマンアワー寄与"
@@ -1026,34 +1026,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_labor_quality_gross_output_basis
     description: "22) 産出ベース労働の質寄与"
@@ -1065,34 +1065,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_real_net_capital_stock_gross_output_basis
     description: "23) 産出ベース資本ストック寄与"
@@ -1104,34 +1104,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_capital_quality_gross_output_basis
     description: "24) 産出ベース資本の質寄与"
@@ -1143,34 +1143,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__TFP_growth_rate_gross_output_basis
     description: "25) 産出ベース産業別TFP成長率"
@@ -1182,34 +1182,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__growth_rate_of_real_value_added
     description: "27) 実質付加価値成長率"
@@ -1221,34 +1221,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_hours_worked_value_added_basis
     description: "28) 付加価値ベースマンアワー寄与"
@@ -1260,34 +1260,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_labor_quality_value_added_basis
     description: "29) 付加価値ベース労働の質寄与"
@@ -1299,34 +1299,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_real_net_capital_stock_value_added_basis
     description: "30) 付加価値ベース資本ストック寄与"
@@ -1338,34 +1338,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_capital_quality_value_added_basis
     description: "31) 付加価値ベース資本の質寄与"
@@ -1377,34 +1377,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__TFP_growth_rate_value_added_basis
     description: "32) 付加価値ベース産業別TFP成長率"
@@ -1416,34 +1416,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__labor_producitvity_growth_rate
     description: "34) 労働生産性上昇率（付加価値/総労働時間）"
@@ -1455,34 +1455,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__growth_rate_of_total_hours_worked
     description: "34) 総労働時間成長率"
@@ -1494,34 +1494,34 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'
 
   - name: stg_growth__contribution_of_capital_stock_per_total_hours_worked_value_added_basis
     description: "38) 付加価値ベース総労働時間あたり資本ストック寄与"
@@ -1533,31 +1533,31 @@ models:
           - not_null
       - name: section_id
       - name: section_name
-      - name: 1994
-      - name: 1995
-      - name: 1996
-      - name: 1997
-      - name: 1998
-      - name: 1999
-      - name: 2000
-      - name: 2001
-      - name: 2002
-      - name: 2003
-      - name: 2004
-      - name: 2005
-      - name: 2006
-      - name: 2007
-      - name: 2008
-      - name: 2009
-      - name: 2010
-      - name: 2011
-      - name: 2012
-      - name: 2013
-      - name: 2014
-      - name: 2015
-      - name: 2016
-      - name: 2017
-      - name: 2018
-      - name: 2019
-      - name: 2020
-      - name: 2021
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+      - name: '2021'

@@ -2,6 +2,78 @@
 version: 2
 
 models:
+  - name: mrt_capital__asset
+    description: "資産別投資及び資本ストック"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: asset_id
+      - name: asset_name
+      - name: year
+      - name: nominal_investment
+        description: "viii) 資産別名目投資フロー (100万円)"
+      - name: real_investment
+        description: "ix) 資産別実質投資フロー (100万円、2015年価格)"
+      - name: nominal_net_stock
+        description: "x) 資産別名目純資本ストック (100万円)"
+      - name: real_net_stock
+        description: "xi) 資産別実質純資本ストック (100万円、2015年価格)"
+      - name: nominal_cost
+        description: "xii) 資産別名目資本コスト (名目資本サービス価格*実質資本ストック、100万円)"
+
+  - name: mrt_capital__investment_matrix_and_stock_matrix
+    description: "2) 投資・資本ストックマトリックス（100万円、実質値は2015年価格）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: asset_id
+      - name: asset_name
+      - name: year
+      - name: nominal_investment
+        description: "i) 名目投資マトリックス"
+      - name: real_investment
+        description: "ii) 実質投資マトリックス"
+      - name: nominal_capital_stock
+        description: "iii) 名目ストック・マトリックス"
+      - name: real_capital_stock
+        description: "iv) 実質ストック・マトリックス"
+      - name: nominal_capital_cost
+        description: "v) 名目資本コスト・マトリックス"
+
+  - name: mrt_capital__sector
+    description: "部門別投資及び資本ストック"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: nominal_investment
+        description: "i) 部門別名目投資フロー(100万円)"
+      - name: real_investment
+        description: "ii) 部門別実質投資フロー(100万円、2015年価格)"
+      - name: input_index
+        description: "iii) 部門別資本投入指数 (2015年=1.000)"
+      - name: quality_index
+        description: "iv) 部門別資本の質指数 (2015年=1.000)"
+      - name: nominal_net_stock
+        description: "v) 部門別名目純資本ストック (100万円)"
+      - name: real_net_stock
+        description: "vi) 部門別実質純資本ストック (100万円、2015年価格)"
+      - name: nominal_cost
+        description: "vii) 部門別名目資本コスト (名目資本サービス価格*実質資本ストック、100万円)"
+
   - name: mrt_growth
     description: "成長会計"
     columns:

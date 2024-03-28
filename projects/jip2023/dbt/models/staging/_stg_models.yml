@@ -458,7 +458,7 @@ models:
       - name: '2019'
       - name: '2020'
 
-  - name: stg_capital__invest_matrix_and_stock_matrix
+  - name: stg_capital__investment_matrix_and_stock_matrix
     description: "2) 投資・資本ストックマトリックス（100万円、実質値は2015年価格）"
     columns:
       - name: id

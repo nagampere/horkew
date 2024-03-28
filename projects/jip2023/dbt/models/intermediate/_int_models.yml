@@ -676,3 +676,354 @@ models:
       - name: section_name
       - name: year
       - name: LPConK_T
+
+  - name: int_intangible_assets__nominal_research_and_development
+    description: "科学的研究開発 (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_RD
+
+  - name: int_intangible_assets__nominal_mineral_exploration_and_evaluation
+    description: "鉱物探査・評価 (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_ME
+
+  - name: int_intangible_assets__nominal_computer_software_and_databases
+    description: "ソフトウエア (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_SD
+
+  - name: int_intangible_assets__nominal_original_entertainment_works
+    description: "娯楽作品原本 (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_AO
+
+  - name: int_intangible_assets__nominal_design
+    description: "デザイン (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_DS
+
+  - name: int_intangible_assets__nominal_new_product_development_costs_in_the_financial_industry
+    description: "金融業における新商品開発 (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_FD
+
+  - name: int_intangible_assets__nominal_advertising_market_research_and_branding
+    description: "ブランド (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_BR
+
+  - name: int_intangible_assets__nominal_firm_specific_human_capital
+    description: "企業特殊的人的資本 (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_TR
+
+  - name: int_intangible_assets__nominal_organizational_reform_cost
+    description: "組織改編費用 (固定資本形成、名目，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_OC
+      
+  - name: int_intangible_assets__real_research_and_development
+    description: "科学的研究開発 (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_RD
+
+  - name: int_intangible_assets__real_mineral_exploration_and_evaluation
+    description: "鉱物探査・評価 (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_ME
+
+  - name: int_intangible_assets__real_computer_software_and_databases
+    description: "ソフトウエア (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_SD
+
+  - name: int_intangible_assets__real_original_entertainment_works
+    description: "娯楽作品原本 (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_AO
+
+  - name: int_intangible_assets__real_design
+    description: "デザイン (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_DS
+
+  - name: int_intangible_assets__real_new_product_development_costs_in_the_financial_industry
+    description: "金融業における新商品開発 (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_FD
+
+  - name: int_intangible_assets__real_advertising_market_research_and_branding
+    description: "ブランド (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_BR
+
+  - name: int_intangible_assets__real_firm_specific_human_capital
+    description: "企業特殊的人的資本 (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_TR
+
+  - name: int_intangible_assets__real_organizational_reform_cost
+    description: "組織改編費用 (固定資本形成、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Iq_OC
+
+  - name: int_intangible_assets__real_net_stock_research_and_development
+    description: "科学的研究開発 (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_RD
+
+  - name: int_intangible_assets__real_net_stock_mineral_exploration_and_evaluation
+    description: "鉱物探査・評価 (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_ME
+
+  - name: int_intangible_assets__real_net_stock_computer_software_and_databases
+    description: "ソフトウエア (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_SD
+
+  - name: int_intangible_assets__real_net_stock_original_entertainment_works
+    description: "娯楽作品原本 (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_AO
+
+  - name: int_intangible_assets__real_net_stock_design
+    description: "デザイン (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_DS
+
+  - name: int_intangible_assets__real_net_stock_new_product_development_costs_in_the_financial_industry
+    description: "金融業における新商品開発 (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_FD
+
+  - name: int_intangible_assets__real_net_stock_advertising_market_research_and_branding
+    description: "ブランド (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_BR
+
+  - name: int_intangible_assets__real_net_stock_firm_specific_human_capital
+    description: "企業特殊的人的資本 (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_TR
+
+  - name: int_intangible_assets__real_net_stock_organizational_reform_cost
+    description: "組織改編費用 (固定資本ストック、2015年基準価格，百万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_OC

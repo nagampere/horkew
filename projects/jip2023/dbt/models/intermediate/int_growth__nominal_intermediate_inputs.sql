@@ -31,6 +31,6 @@ WITH unpivot_alias AS (
         2021
     INTO
         NAME year
-        VALUE V_G
+        VALUE PM
 )
 SELECT * FROM unpivot_alias

@@ -1,5 +1,5 @@
 WITH unpivot_alias AS (
-    UNPIVOT {{ref('stg_growth__contribution_of_capital_quality_value_added_basis')}}
+    UNPIVOT {{ref('stg_growth__contribution_of_capital_quality_gross_output_basis')}}
     ON 
         1994,
         1995,

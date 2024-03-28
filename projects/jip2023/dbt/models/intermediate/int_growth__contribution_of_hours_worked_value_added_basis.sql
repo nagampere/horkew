@@ -29,7 +29,7 @@ WITH unpivot_alias AS (
         2019,
         2020,
         2021
-    stgO
+    INTO
         NAME year
         VALUE VConH
 )

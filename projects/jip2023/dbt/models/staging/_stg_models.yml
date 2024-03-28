@@ -1485,7 +1485,7 @@ models:
       - name: '2021'
 
   - name: stg_growth__growth_rate_of_total_hours_worked
-    description: "34) 総労働時間成長率"
+    description: "35) 総労働時間成長率"
     columns:
       - name: id
         description: "The primary key for this table"

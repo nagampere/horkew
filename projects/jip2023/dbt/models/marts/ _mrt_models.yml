@@ -166,3 +166,68 @@ models:
       - name: LPConK_T
         description: "38) 付加価値ベース総労働時間あたり資本ストック寄与"
 
+  - name: mrt_intangible_assets
+    description: "6.無形資産投資・ストックデータ"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: I_RD
+        description: "科学的研究開発 (固定資本形成、名目，百万円)"
+      - name: I_ME
+        description: "鉱物探査・評価 (固定資本形成、名目，百万円)"
+      - name: I_SD
+        description: "ソフトウエア (固定資本形成、名目，百万円)"
+      - name: I_AO
+        description: "娯楽作品原本 (固定資本形成、名目，百万円)"
+      - name: I_DS
+        description: "デザイン (固定資本形成、名目，百万円)"
+      - name: I_FD
+        description: "金融業における新商品開発 (固定資本形成、名目，百万円)"
+      - name: I_BR
+        description: "ブランド (固定資本形成、名目，百万円)"
+      - name: I_TR
+        description: "企業特殊的人的資本 (固定資本形成、名目，百万円)"
+      - name: I_OC
+        description: "組織改編費用 (固定資本形成、名目，百万円)"
+      - name: Iq_RD
+        description: "科学的研究開発 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_ME
+        description: "鉱物探査・評価 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_SD
+        description: "ソフトウエア (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_AO
+        description: "娯楽作品原本 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_DS
+        description: "デザイン (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_FD
+        description: "金融業における新商品開発 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_BR
+        description: "ブランド (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_TR
+        description: "企業特殊的人的資本 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_OC
+        description: "組織改編費用 (固定資本形成、2015年基準価格，百万円)"
+      - name: K_RD
+        description: "科学的研究開発 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_ME
+        description: "鉱物探査・評価 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_SD
+        description: "ソフトウエア (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_AO
+        description: "娯楽作品原本 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_DS
+        description: "デザイン (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_FD
+        description: "金融業における新商品開発 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_BR
+        description: "ブランド (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_TR
+        description: "企業特殊的人的資本 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_OC
+        description: "組織改編費用 (固定資本ストック、2015年基準価格，百万円)"

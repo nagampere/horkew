@@ -1,0 +1,139 @@
+SELECT
+    int_intangible_assets__nominal_research_and_development.id as id,
+    int_intangible_assets__nominal_research_and_development.section_id as section_id,
+    int_intangible_assets__nominal_research_and_development.section_name as section_name,
+    int_intangible_assets__nominal_research_and_development.year as year,
+    int_intangible_assets__nominal_research_and_development.I_RD as I_RD,
+    int_intangible_assets__nominal_mineral_exploration_and_evaluation.I_ME as I_ME,
+    int_intangible_assets__nominal_computer_software_and_databases.I_SD as I_SD,
+    int_intangible_assets__nominal_original_entertainment_works.I_AO as I_AO,
+    int_intangible_assets__nominal_design.I_DS as I_DS,
+    int_intangible_assets__nominal_new_product_development_costs_in_the_financial_industry.I_FD as I_FD,
+    int_intangible_assets__nominal_advertising_market_research_and_branding.I_BR as I_BR,
+    int_intangible_assets__nominal_firm_specific_human_capital.I_TR as I_TR,
+    int_intangible_assets__nominal_organizational_reform_cost.I_OC as I_OC,
+    int_intangible_assets__real_research_and_development.Iq_RD as Iq_RD,
+    int_intangible_assets__real_mineral_exploration_and_evaluation.Iq_ME as Iq_ME,
+    int_intangible_assets__real_computer_software_and_databases.Iq_SD as Iq_SD,
+    int_intangible_assets__real_original_entertainment_works.Iq_AO as Iq_AO,
+    int_intangible_assets__real_design.Iq_DS as Iq_DS,
+    int_intangible_assets__real_new_product_development_costs_in_the_financial_industry.Iq_FD as Iq_FD,
+    int_intangible_assets__real_advertising_market_research_and_branding.Iq_BR as Iq_BR,
+    int_intangible_assets__real_firm_specific_human_capital.Iq_TR as Iq_TR,
+    int_intangible_assets__real_organizational_reform_cost.Iq_OC as Iq_OC,
+    int_intangible_assets__real_net_stock_research_and_development.K_RD as K_RD,
+    int_intangible_assets__real_net_stock_mineral_exploration_and_evaluation.K_ME as K_ME,
+    int_intangible_assets__real_net_stock_computer_software_and_databases.K_SD as K_SD,
+    int_intangible_assets__real_net_stock_original_entertainment_works.K_AO as K_AO,
+    int_intangible_assets__real_net_stock_design.K_DS as K_DS,
+    int_intangible_assets__real_net_stock_new_product_development_costs_in_the_financial_industry.K_FD as K_FD,
+    int_intangible_assets__real_net_stock_advertising_market_research_and_branding.K_BR as K_BR,
+    int_intangible_assets__real_net_stock_firm_specific_human_capital.K_TR as K_TR,
+    int_intangible_assets__real_net_stock_organizational_reform_cost.K_OC as K_OC
+FROM
+    {{ref('int_intangible_assets__nominal_research_and_development')}} as int_intangible_assets__nominal_research_and_development
+LEFT JOIN
+    {{ref('int_intangible_assets__nominal_mineral_exploration_and_evaluation')}} as int_intangible_assets__nominal_mineral_exploration_and_evaluation
+    ON (int_intangible_assets__nominal_mineral_exploration_and_evaluation.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__nominal_mineral_exploration_and_evaluation.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__nominal_computer_software_and_databases')}} as int_intangible_assets__nominal_computer_software_and_databases
+    ON (int_intangible_assets__nominal_computer_software_and_databases.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__nominal_computer_software_and_databases.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__nominal_original_entertainment_works')}} as int_intangible_assets__nominal_original_entertainment_works
+    ON (int_intangible_assets__nominal_original_entertainment_works.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__nominal_original_entertainment_works.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__nominal_design')}} as int_intangible_assets__nominal_design
+    ON (int_intangible_assets__nominal_design.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__nominal_design.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__nominal_new_product_development_costs_in_the_financial_industry')}} as int_intangible_assets__nominal_new_product_development_costs_in_the_financial_industry
+    ON (int_intangible_assets__nominal_new_product_development_costs_in_the_financial_industry.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__nominal_new_product_development_costs_in_the_financial_industry.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__nominal_advertising_market_research_and_branding')}} as int_intangible_assets__nominal_advertising_market_research_and_branding
+    ON (int_intangible_assets__nominal_advertising_market_research_and_branding.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__nominal_advertising_market_research_and_branding.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__nominal_firm_specific_human_capital')}} as int_intangible_assets__nominal_firm_specific_human_capital
+    ON (int_intangible_assets__nominal_firm_specific_human_capital.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__nominal_firm_specific_human_capital.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__nominal_organizational_reform_cost')}} as int_intangible_assets__nominal_organizational_reform_cost
+    ON (int_intangible_assets__nominal_organizational_reform_cost.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__nominal_organizational_reform_cost.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_research_and_development')}} as int_intangible_assets__real_research_and_development
+    ON (int_intangible_assets__real_research_and_development.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_research_and_development.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_mineral_exploration_and_evaluation')}} as int_intangible_assets__real_mineral_exploration_and_evaluation
+    ON (int_intangible_assets__real_mineral_exploration_and_evaluation.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_mineral_exploration_and_evaluation.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_computer_software_and_databases')}} as int_intangible_assets__real_computer_software_and_databases
+    ON (int_intangible_assets__real_computer_software_and_databases.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_computer_software_and_databases.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_original_entertainment_works')}} as int_intangible_assets__real_original_entertainment_works
+    ON (int_intangible_assets__real_original_entertainment_works.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_original_entertainment_works.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_design')}} as int_intangible_assets__real_design
+    ON (int_intangible_assets__real_design.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_design.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_new_product_development_costs_in_the_financial_industry')}} as int_intangible_assets__real_new_product_development_costs_in_the_financial_industry
+    ON (int_intangible_assets__real_new_product_development_costs_in_the_financial_industry.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_new_product_development_costs_in_the_financial_industry.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_advertising_market_research_and_branding')}} as int_intangible_assets__real_advertising_market_research_and_branding
+    ON (int_intangible_assets__real_advertising_market_research_and_branding.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_advertising_market_research_and_branding.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_firm_specific_human_capital')}} as int_intangible_assets__real_firm_specific_human_capital
+    ON (int_intangible_assets__real_firm_specific_human_capital.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_firm_specific_human_capital.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_organizational_reform_cost')}} as int_intangible_assets__real_organizational_reform_cost
+    ON (int_intangible_assets__real_organizational_reform_cost.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_organizational_reform_cost.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_research_and_development')}} as int_intangible_assets__real_net_stock_research_and_development
+    ON (int_intangible_assets__real_net_stock_research_and_development.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_research_and_development.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_mineral_exploration_and_evaluation')}} as int_intangible_assets__real_net_stock_mineral_exploration_and_evaluation
+    ON (int_intangible_assets__real_net_stock_mineral_exploration_and_evaluation.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_mineral_exploration_and_evaluation.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_computer_software_and_databases')}} as int_intangible_assets__real_net_stock_computer_software_and_databases
+    ON (int_intangible_assets__real_net_stock_computer_software_and_databases.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_computer_software_and_databases.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_original_entertainment_works')}} as int_intangible_assets__real_net_stock_original_entertainment_works
+    ON (int_intangible_assets__real_net_stock_original_entertainment_works.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_original_entertainment_works.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_design')}} as int_intangible_assets__real_net_stock_design
+    ON (int_intangible_assets__real_net_stock_design.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_design.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_new_product_development_costs_in_the_financial_industry')}} as int_intangible_assets__real_net_stock_new_product_development_costs_in_the_financial_industry
+    ON (int_intangible_assets__real_net_stock_new_product_development_costs_in_the_financial_industry.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_new_product_development_costs_in_the_financial_industry.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_advertising_market_research_and_branding')}} as int_intangible_assets__real_net_stock_advertising_market_research_and_branding
+    ON (int_intangible_assets__real_net_stock_advertising_market_research_and_branding.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_advertising_market_research_and_branding.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_firm_specific_human_capital')}} as int_intangible_assets__real_net_stock_firm_specific_human_capital
+    ON (int_intangible_assets__real_net_stock_firm_specific_human_capital.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_firm_specific_human_capital.year = int_intangible_assets__nominal_research_and_development.year)
+LEFT JOIN
+    {{ref('int_intangible_assets__real_net_stock_organizational_reform_cost')}} as int_intangible_assets__real_net_stock_organizational_reform_cost
+    ON (int_intangible_assets__real_net_stock_organizational_reform_cost.section_id = int_intangible_assets__nominal_research_and_development.section_id)
+    AND (int_intangible_assets__real_net_stock_organizational_reform_cost.year = int_intangible_assets__nominal_research_and_development.year)
+ORDER BY id

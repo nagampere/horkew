@@ -4,7 +4,7 @@ with source as (
         * 
     FROM st_read(
         '../sources/growth.xlsx',
-        layer='Cy',
+        layer='Cv',
         open_options = ['HEADERS=DISABLE', 'FIELD_TYPES=STRING']
     )
 )

@@ -33,4 +33,10 @@ WITH unpivot_alias AS (
         NAME year
         VALUE K
 )
-SELECT * FROM unpivot_alias
+SELECT 
+    ROW_NUMBER() OVER () as id,
+    section_id,
+    section_name,
+    year,
+    K
+FROM unpivot_alias

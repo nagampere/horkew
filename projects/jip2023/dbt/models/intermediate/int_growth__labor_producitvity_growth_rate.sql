@@ -33,4 +33,10 @@ WITH unpivot_alias AS (
         NAME year
         VALUE LP_G
 )
-SELECT * FROM unpivot_alias
+SELECT 
+    ROW_NUMBER() OVER () as id,
+    section_id,
+    section_name,
+    year,
+    LP_G
+FROM unpivot_alias

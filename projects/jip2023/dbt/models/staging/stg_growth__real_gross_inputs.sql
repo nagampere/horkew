@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 with source as (
     SELECT 
         ROW_NUMBER() OVER () as index,

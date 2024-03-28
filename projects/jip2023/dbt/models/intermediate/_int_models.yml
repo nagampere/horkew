@@ -1,21 +1,522 @@
-
 version: 2
 
 models:
-  - name: int_my_first_dbt_model
-    description: "A starter dbt model"
+  - name: int_growth__real_gross_inputs
+    description: "3) 実質産出（100万円、'2015'年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Y
 
-  - name: int_my_second_dbt_model
-    description: "A starter dbt model"
+  - name: int_growth__nominal_gross_inputs
+    description: "4) 名目産出（100万円）"
     columns:
       - name: id
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: YC
+
+  - name: int_growth__nominal_gross_inputs_shere
+    description: "4) 名目産出シェア"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: YC_share
+
+  - name: int_growth__real_intermediate_inputs
+    description: "5) 実質中間投入（100万円、'2015'年連鎖価格）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: M
+
+  - name: int_growth__nominal_intermediate_inputs
+    description: "6) 名目中間投入（100万円）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: PM
+
+  - name: int_growth__nominal_intermediate_inputs_shere
+    description: "6) 名目中間投入シェア"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: PM_share
+
+  - name: int_growth__real_value_added
+    description: "7) 実質付加価値（100万円、'2015'年連鎖価格）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: V
+
+  - name: int_growth__nominal_value_added
+    description: "8) 名目付加価値（100万円）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: NV
+
+  - name: int_growth__nominal_value_added_shere
+    description: "8) 名目付加価値シェア"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: NV_share
+
+  - name: int_growth__labor_input_index
+    description: "9) 労働投入指数（ディビジア指数、'2015'年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: L
+
+  - name: int_growth__hours_worked_index
+    description: "10) マンアワー指数（'2015'年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: H_index
+
+  - name: int_growth__hours_worked
+    description: "10) マンアワー（1000人×総実労働時間）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: H
+
+  - name: int_growth__labor_quality_index
+    description: "11) 労働の質指数（ディビジア指数、'2015'年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: LC
+
+  - name: int_growth__nominal_labor_costs
+    description: "12) 名目労働コスト（100万円）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: WL
+
+  - name: int_growth__capital_service_input
+    description: "13) 資本サービス投入指数（ディビジア指数、'2015'年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K
+
+  - name: int_growth__real_net_capital_stock_index
+    description: "14) 実質資本ストック指数（'2015'年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_T_index
+
+  - name: int_growth__real_net_capital_stock
+    description: "14) 実質資本ストック（100万円、'2015'年連鎖価格）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: K_T
+
+  - name: int_growth__capital_quality_index
+    description: "15) 資本の質指数（ディビジア指数、'2015'年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: KC
+
+  - name: int_growth__nominal_capital_service_input
+    description: "16) 名目資本サービス(名目資本サービス価格＊実質資本ストック、100万円）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: RK
+
+  - name: int_growth__cost_share_of_intermediate_including_intermediate_inputs
+    description: "17) 中間投入コストシェア（中間投入含む）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Cy_PM
+
+  - name: int_growth__cost_share_of_labor_including_intermediate_inputs
+    description: "17) 労働投入コストシェア（中間投入含む）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Cy_WL
+
+  - name: int_growth__cost_share_of_capital_including_intermediate_inputs
+    description: "17) 資本コストシェア（中間投入含む）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Cy_RK
+
+  - name: int_growth__cost_share_of_labor_excluding_intermediate_inputs
+    description: "18) 労働コストシェア（中間投入除く）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Cv_WL
+
+  - name: int_growth__cost_share_of_capital_excluding_intermediate_inputs
+    description: "18) 資本コストシェア（中間投入除く）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Cv_RK
+
+  - name: int_growth__growth_rate_of_real_gross_output
+    description: "19) 実質産出成長率"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Y_G
+
+  - name: int_growth__contribution_of_intermediate_inputs_gross_output_basis
+    description: "20) 産出ベース中間投入寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: YConM
+
+  - name: int_growth__contribution_of_hours_worked_gross_output_basis
+    description: "21) 産出ベースマンアワー寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: YConH
+
+  - name: int_growth__contribution_of_labor_quality_gross_output_basis
+    description: "22) 産出ベース労働の質寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: YConLC
+
+  - name: int_growth__contribution_of_real_net_capital_stock_gross_output_basis
+    description: "23) 産出ベース資本ストック寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: YConK_T
+
+  - name: int_growth__contribution_of_capital_quality_gross_output_basis
+    description: "24) 産出ベース資本の質寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: YConKC
+
+  - name: int_growth__TFP_growth_rate_gross_output_basis
+    description: "25) 産出ベース産業別TFP成長率"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: TFPy
+
+  - name: int_growth__growth_rate_of_real_value_added
+    description: "27) 実質付加価値成長率"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: V_G
+
+  - name: int_growth__contribution_of_hours_worked_value_added_basis
+    description: "28) 付加価値ベースマンアワー寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: VConH
+
+  - name: int_growth__contribution_of_labor_quality_value_added_basis
+    description: "29) 付加価値ベース労働の質寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: VConLC
+
+  - name: int_growth__contribution_of_real_net_capital_stock_value_added_basis
+    description: "30) 付加価値ベース資本ストック寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: VConK_T
+
+  - name: int_growth__contribution_of_capital_quality_value_added_basis
+    description: "31) 付加価値ベース資本の質寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: VConKC
+
+  - name: int_growth__TFP_growth_rate_value_added_basis
+    description: "32) 付加価値ベース産業別TFP成長率"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: TFPva
+
+  - name: int_growth__labor_producitvity_growth_rate
+    description: "34) 労働生産性上昇率（付加価値/総労働時間）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: LP_G
+
+  - name: int_growth__growth_rate_of_total_hours_worked
+    description: "35) 総労働時間成長率"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: H_G
+
+  - name: int_growth__contribution_of_capital_stock_per_total_hours_worked_value_added_basis
+    description: "38) 付加価値ベース総労働時間あたり資本ストック寄与"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: LPConK_T

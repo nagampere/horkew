@@ -2,20 +2,95 @@
 version: 2
 
 models:
-  - name: mrt_my_first_dbt_model
-    description: "A starter dbt model"
+  - name: mrt_growth
+    description: "成長会計"
     columns:
       - name: id
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: Y
+        description: "3) 実質産出（100万円、'2015'年連鎖価格）"
+      - name: YC
+        description: "4) 名目産出（100万円）"
+      - name: YC_share
+        description: "4) 名目産出シェア"
+      - name: M
+        description: "5) 実質中間投入（100万円、'2015'年連鎖価格）"
+      - name: PM
+        description: "6) 名目中間投入（100万円）"
+      - name: PM_share
+        description: "6) 名目中間投入シェア"
+      - name: V
+        description: "7) 実質付加価値（100万円、'2015'年連鎖価格）"
+      - name: NV
+        description: "8) 名目付加価値（100万円）"
+      - name: NV_share
+        description: "8) 名目付加価値シェア"
+      - name: L
+        description: "9) 労働投入指数（ディビジア指数、'2015'年=1.000）"
+      - name: H_index
+        description: "10) マンアワー指数（'2015'年=1.000）"
+      - name: H
+        description: "10) マンアワー（1000人×総実労働時間）"
+      - name: LC
+        description: "11) 労働の質指数（ディビジア指数、'2015'年=1.000）"
+      - name: WL
+        description: "12) 名目労働コスト（100万円）"
+      - name: K
+        description: "13) 資本サービス投入指数（ディビジア指数、'2015'年=1.000）"
+      - name: K_T_index
+        description: "14) 実質資本ストック指数（'2015'年=1.000）"
+      - name: K_T
+        description: "14) 実質資本ストック（100万円、'2015'年連鎖価格）"
+      - name: KC
+        description: "15) 資本の質指数（ディビジア指数、'2015'年=1.000）"
+      - name: RK
+        description: "16) 名目資本サービス(名目資本サービス価格＊実質資本ストック、100万円）"
+      - name: Cy_PM
+        description: "17) 中間投入コストシェア（中間投入含む）"
+      - name: Cy_WL
+        description: "17) 労働投入コストシェア（中間投入含む）"
+      - name: Cy_RK
+        description: "17) 資本コストシェア（中間投入含む）"
+      - name: Cv_WL
+        description: "18) 労働コストシェア（中間投入除く）"
+      - name: Cv_RK
+        description: "18) 資本コストシェア（中間投入除く）"
+      - name: Y_G
+        description: "19) 実質産出成長率"
+      - name: YConM
+        description: "20) 産出ベース中間投入寄与"
+      - name: YConH
+        description: "21) 産出ベースマンアワー寄与"
+      - name: YConLC
+        description: "22) 産出ベース労働の質寄与"
+      - name: YConK_T
+        description: "23) 産出ベース資本ストック寄与"
+      - name: YConKC
+        description: "24) 産出ベース資本の質寄与"
+      - name: TFPy
+        description: "25) 産出ベース産業別TFP成長率"
+      - name: V_G
+        description: "27) 実質付加価値成長率"
+      - name: VConH
+        description: "28) 付加価値ベースマンアワー寄与"
+      - name: VConLC
+        description: "29) 付加価値ベース労働の質寄与"
+      - name: VConK_T
+        description: "30) 付加価値ベース資本ストック寄与"
+      - name: VConKC
+        description: "31) 付加価値ベース資本の質寄与"
+      - name: TFPva
+        description: "32) 付加価値ベース産業別TFP成長率"
+      - name: LP_G
+        description: "34) 労働生産性上昇率（付加価値/総労働時間）"
+      - name: H_G
+        description: "35) 総労働時間成長率"
+      - name: LPConK_T
+        description: "38) 付加価値ベース総労働時間あたり資本ストック寄与"
 
-  - name: mrt_my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null

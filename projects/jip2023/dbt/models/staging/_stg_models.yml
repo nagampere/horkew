@@ -2,8 +2,488 @@
 version: 2
 
 models:
+  - name: stg_capital__nominal_investment_by_sector
+    description: "i) 部門別名目投資フロー(100万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__real_investment_by_sector
+    description: "ii) 部門別実質投資フロー(100万円、2015年価格)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__indices_of_capital_input_by_sector
+    description: "iii) 部門別資本投入指数 (2015年=1.000)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__indices_of_capital_quality_by_sector
+    description: "iv) 部門別資本の質指数 (2015年=1.000)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__nominal_net_capital_stock_by_sector
+    description: "v) 部門別名目純資本ストック (100万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__real_net_capital_stock_by_sector
+    description: "vi) 部門別実質純資本ストック (100万円、2015年価格)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__nominal_capital_cost_by_sector
+    description: "vii) 部門別名目資本コスト (名目資本サービス価格*実質資本ストック、100万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__nominal_investment_by_asset
+    description: "viii) 資産別名目投資フロー (100万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: asset_id
+      - name: asset_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__real_investment_by_asset
+    description: "ix) 資産別実質投資フロー (100万円、2015年価格)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: asset_id
+      - name: asset_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__nominal_net_capital_stock_by_asset
+    description: "x) 資産別名目純資本ストック (100万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: asset_id
+      - name: asset_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__real_net_capital_stock_by_asset
+    description: "xi) 資産別実質純資本ストック (100万円、2015年価格)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: asset_id
+      - name: asset_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__nominal_capital_cost_by_asset
+    description: "xii) 資産別名目資本コスト (名目資本サービス価格*実質資本ストック、100万円)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: asset_id
+      - name: asset_name
+      - name: '1994'
+      - name: '1995'
+      - name: '1996'
+      - name: '1997'
+      - name: '1998'
+      - name: '1999'
+      - name: '2000'
+      - name: '2001'
+      - name: '2002'
+      - name: '2003'
+      - name: '2004'
+      - name: '2005'
+      - name: '2006'
+      - name: '2007'
+      - name: '2008'
+      - name: '2009'
+      - name: '2010'
+      - name: '2011'
+      - name: '2012'
+      - name: '2013'
+      - name: '2014'
+      - name: '2015'
+      - name: '2016'
+      - name: '2017'
+      - name: '2018'
+      - name: '2019'
+      - name: '2020'
+
+  - name: stg_capital__invest_matrix_and_stock_matrix
+    description: "2) 投資・資本ストックマトリックス（100万円、実質値は2015年価格）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: asset_id
+      - name: asset_name
+      - name: year
+      - name: nominal_investment
+        description: "i) 名目投資マトリックス"
+      - name: real_investment
+        description: "ii) 実質投資マトリックス"
+      - name: nominal_capital_stock
+        description: "iii) 名目ストック・マトリックス"
+      - name: real_capital_stock
+        description: "iv) 実質ストック・マトリックス"
+      - name: nominal_capital_cost
+        description: "v) 名目資本コスト・マトリックス"
+
   - name: stg_growth__real_gross_inputs
-    description: "3) 実質産出（100万円、'2015'年連鎖価格）"
+    description: "3) 実質産出（100万円、2015年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -120,7 +600,7 @@ models:
       - name: '2021'
 
   - name: stg_growth__real_intermediate_inputs
-    description: "5) 実質中間投入（100万円、'2015'年連鎖価格）"
+    description: "5) 実質中間投入（100万円、2015年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -237,7 +717,7 @@ models:
       - name: '2021'
 
   - name: stg_growth__real_value_added
-    description: "7) 実質付加価値（100万円、'2015'年連鎖価格）"
+    description: "7) 実質付加価値（100万円、2015年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -627,7 +1107,7 @@ models:
       - name: '2021'
 
   - name: stg_growth__real_net_capital_stock
-    description: "14) 実質資本ストック（100万円、'2015'年連鎖価格）"
+    description: "14) 実質資本ストック（100万円、2015年連鎖価格）"
     columns:
       - name: id
         description: "The primary key for this table"

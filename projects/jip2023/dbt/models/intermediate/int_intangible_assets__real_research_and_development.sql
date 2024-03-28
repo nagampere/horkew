@@ -1,6 +1,5 @@
 WITH unpivot_alias AS (
-    UNPIVOT {{ref('stg_intangible_assets__real_research_and_development
-    ')}}
+    UNPIVOT {{ref('stg_intangible_assets__real_research_and_development')}}
     ON 
         1994,
         1995,

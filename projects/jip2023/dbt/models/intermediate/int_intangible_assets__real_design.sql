@@ -39,5 +39,5 @@ SELECT
     section_id,
     section_name,
     year,
-    TFPva
+    Iq_DS
 FROM unpivot_alias

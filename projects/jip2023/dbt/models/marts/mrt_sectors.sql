@@ -1,8 +1,8 @@
 SELECT
-    mrt_capital__sector.id as id,
-    mrt_capital__sector.section_id as section_id,
-    mrt_capital__sector.section_name as section_name,
-    mrt_capital__sector.year as year,
+    mrt_growth.id as id,
+    mrt_growth.section_id as section_id,
+    mrt_growth.section_name as section_name,
+    mrt_growth.year as year,
     mrt_capital__sector.nominal_investment as capital__nominal_investment,
     mrt_capital__sector.real_investment as capital__real_investment,
     mrt_capital__sector.input_index as capital__input_index,
@@ -157,17 +157,17 @@ SELECT
     mrt_intangible_assets.K_TR as K_TR,
     mrt_intangible_assets.K_OC as K_OC
 FROM
-    {{ref('mrt_capital__sector')}} as mrt_capital__sector
+    {{ref('mrt_growth')}} as mrt_growth
 LEFT JOIN
     {{ref('mrt_labor')}} as mrt_labor
-    ON (mrt_labor.section_id = mrt_capital__sector.section_id)
-    AND (mrt_labor.year = mrt_capital__sector.year)
+    ON (mrt_labor.section_id = mrt_growth.section_id)
+    AND (mrt_labor.year = mrt_growth.year)
 LEFT JOIN
-    {{ref('mrt_growth')}} as mrt_growth
-    ON (mrt_growth.section_id = mrt_capital__sector.section_id)
-    AND (mrt_growth.year = mrt_capital__sector.year)
+    {{ref('mrt_capital__sector')}} as mrt_capital__sector
+    ON (mrt_capital__sector.section_id = mrt_growth.section_id)
+    AND (mrt_capital__sector.year = mrt_growth.year)
 LEFT JOIN
     {{ref('mrt_intangible_assets')}} as mrt_intangible_assets
-    ON (mrt_intangible_assets.section_id = mrt_capital__sector.section_id)
-    AND (mrt_intangible_assets.year = mrt_capital__sector.year)
+    ON (mrt_intangible_assets.section_id = mrt_growth.section_id)
+    AND (mrt_intangible_assets.year = mrt_growth.year)
 ORDER BY id

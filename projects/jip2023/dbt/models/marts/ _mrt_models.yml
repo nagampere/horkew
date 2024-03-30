@@ -231,3 +231,51 @@ models:
         description: "企業特殊的人的資本 (固定資本ストック、2015年基準価格，百万円)"
       - name: K_OC
         description: "組織改編費用 (固定資本ストック、2015年基準価格，百万円)"
+
+  - name: mrt_labor
+    description: "3. 労働"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: input_index
+        description: "1) 部門別労働投入指数（2015年=1.000）"
+      - name: hours_worked_index
+        description: "3) 部門別マンアワー指数（2015年=1.000）"
+      - name: quality_index
+        description: "5) 部門別労働の質指数（2015年=1.000）"
+      - name: number_of_workers
+        description: "7) 部門別従業者数（人）"
+      - name: hours_worked
+        description: "8) 部門別マンアワー（従業者数×従業者一人あたり年間総実労働時間÷1000）"
+      - name: nominal_labor_costs
+        description: "9) 部門別名目労働コスト（100万円）"
+      - name: share_of_female
+        description: "10) 部門別女性比率（女性従業者/従業者計、%）"
+      - name: share_of_part_time
+        description: "11) 部門別パートタイム労働者比率（パートタイム労働者/従業者計、%）"
+      - name: share_of_55_over
+        description: "12) 部門別55歳以上従業者比率（55歳以上従業者/従業者計、%）"
+
+  - name: mrt_labor__annual_change
+    description: "3. 労働投入指数伸び率"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: period
+      - name: input_index_change
+        description: "2) 部門別労働投入指数伸び率（年率、%）"
+      - name: hours_worked_change
+        description: "4) 部門別マンアワー指数伸び率（年率、%）"
+      - name: quality_index_change
+        description: "6) 部門別労働の質指数伸び率（年率、%）"

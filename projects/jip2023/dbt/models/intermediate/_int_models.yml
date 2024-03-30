@@ -1027,3 +1027,160 @@ models:
       - name: section_name
       - name: year
       - name: K_OC
+
+
+  - name: int_labor__indices_of_labor_input_by_sector
+    description: "1) 部門別労働投入指数（2015年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: input_index
+
+  - name: int_labor__average_annual_change_in_indices_of_labor_input_by_sector
+    description: "2) 部門別労働投入指数伸び率（年率、%）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: period
+      - name: input_index_change
+
+  - name: int_labor__indices_of_hours_worked_by_sector
+    description: "3) 部門別マンアワー指数（2015年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: hours_worked_index
+
+  - name: int_labor__average_annual_change_in_hours_worked
+    description: "4) 部門別マンアワー指数伸び率（年率、%）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: period
+      - name: hours_worked_change
+
+  - name: int_labor__indices_of_labor_quality_by_sector
+    description: "5) 部門別労働の質指数（2015年=1.000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: quality_index
+
+  - name: int_labor__average_annual_change_in_indices_of_labor_quality_by_sector
+    description: "6) 部門別労働の質指数伸び率（年率、%）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: period
+      - name: quality_index_change
+
+  - name: int_labor__number_of_workers_by_sector
+    description: "7) 部門別従業者数（人）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: number_of_workers
+
+  - name: int_labor__hours_worked_by_sector
+    description: "8) 部門別マンアワー（従業者数×従業者一人あたり年間総実労働時間÷1000）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: hours_worked
+
+  - name: int_labor__nominal_labor_costs_by_sector
+    description: "9) 部門別名目労働コスト（100万円）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: nominal_labor_costs
+
+  - name: int_labor__share_of_female_workers
+    description: "10) 部門別女性比率（女性従業者/従業者計、%）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: share_of_female
+
+  - name: int_labor__share_of_part_time_workers
+    description: "11) 部門別パートタイム労働者比率（パートタイム労働者/従業者計、%）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: share_of_part_time
+
+  - name: int_labor__share_of_workers_aged_55_and_over
+    description: "12) 部門別55歳以上従業者比率（55歳以上従業者/従業者計、%）"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: share_of_55_over

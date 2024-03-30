@@ -37,6 +37,6 @@ SELECT
     ROW_NUMBER() OVER () as id,
     section_id,
     section_name,
-    year,
+    cast(year as int) as year,
     Iq_AO
 FROM unpivot_alias

@@ -36,6 +36,6 @@ SELECT
     ROW_NUMBER() OVER () as id,
     section_id,
     section_name,
-    cast(year as int),
+    cast(year as int) as year,
     quality_index
 FROM unpivot_alias

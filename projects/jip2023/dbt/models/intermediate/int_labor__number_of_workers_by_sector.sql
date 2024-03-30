@@ -37,6 +37,6 @@ SELECT
     ROW_NUMBER() OVER () as id,
     section_id,
     section_name,
-    year,
+    cast(year as int) as year,
     number_of_workers
 FROM unpivot_alias

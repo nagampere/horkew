@@ -36,6 +36,6 @@ SELECT
     ROW_NUMBER() OVER () as id,
     asset_id,
     asset_name,
-    year,
+    cast(year as int) as year,
     real_investment
 FROM unpivot_alias

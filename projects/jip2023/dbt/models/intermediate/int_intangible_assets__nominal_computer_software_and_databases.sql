@@ -38,6 +38,6 @@ SELECT
     ROW_NUMBER() OVER () as id,
     section_id,
     section_name,
-    year,
+    cast(year as int) as year,
     I_SD
 FROM unpivot_alias

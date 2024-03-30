@@ -73,6 +73,146 @@ models:
         description: "vi) 部門別実質純資本ストック (100万円、2015年価格)"
       - name: nominal_cost
         description: "vii) 部門別名目資本コスト (名目資本サービス価格*実質資本ストック、100万円)"
+      - name: RS_nominal_investment
+        description: "100.住宅 名目投資フロー（100万円）"
+      - name: RS_real_investment
+        description: "100.住宅 実質投資フロー (100万円、2015年価格)"
+      - name: RS_nominal_capital_stock
+        description: "100.住宅 名目純資本ストック（100万円）"
+      - name: RS_real_capital_stock
+        description: "100.住宅 実質純資本ストック（100万円、2015年価格）"
+      - name: RS_nominal_capital_cost
+        description: "100.住宅 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: NRS_nominal_investment
+        description: "210.住宅以外の建物 名目投資フロー（100万円）"
+      - name: NRS_real_investment
+        description: "210.住宅以外の建物 実質投資フロー (100万円、2015年価格)"
+      - name: NRS_nominal_capital_stock
+        description: "210.住宅以外の建物 名目純資本ストック（100万円）"
+      - name: NRS_real_capital_stock
+        description: "210.住宅以外の建物 実質純資本ストック（100万円、2015年価格）"
+      - name: NRS_nominal_capital_cost
+        description: "210.住宅以外の建物 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: ST_nominal_investment
+        description: "220.構築物 名目投資フロー（100万円）"
+      - name: ST_real_investment
+        description: "220.構築物 実質投資フロー (100万円、2015年価格)"
+      - name: ST_nominal_capital_stock
+        description: "220.構築物 名目純資本ストック（100万円）"
+      - name: ST_real_capital_stock
+        description: "220.構築物 実質純資本ストック（100万円、2015年価格）"
+      - name: ST_nominal_capital_cost
+        description: "220.構築物 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: LA_nominal_investment
+        description: "230.土地改良 名目投資フロー（100万円）"
+      - name: LA_real_investment
+        description: "230.土地改良 実質投資フロー (100万円、2015年価格)"
+      - name: LA_nominal_capital_stock
+        description: "230.土地改良 名目純資本ストック（100万円）"
+      - name: LA_real_capital_stock
+        description: "230.土地改良 実質純資本ストック（100万円、2015年価格）"
+      - name: LA_nominal_capital_cost
+        description: "230.土地改良 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: TE_nominal_investment
+        description: "310.輸送用機械 名目投資フロー（100万円）"
+      - name: TE_real_investment
+        description: "310.輸送用機械 実質投資フロー (100万円、2015年価格)"
+      - name: TE_nominal_capital_stock
+        description: "310.輸送用機械 名目純資本ストック（100万円）"
+      - name: TE_real_capital_stock
+        description: "310.輸送用機械 実質純資本ストック（100万円、2015年価格）"
+      - name: TE_nominal_capital_cost
+        description: "310.輸送用機械 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: CPE_nominal_investment
+        description: "321.情報機器 名目投資フロー（100万円）"
+      - name: CPE_real_investment
+        description: "321.情報機器 実質投資フロー (100万円、2015年価格)"
+      - name: CPE_nominal_capital_stock
+        description: "321.情報機器 名目純資本ストック（100万円）"
+      - name: CPE_real_capital_stock
+        description: "321.情報機器 実質純資本ストック（100万円、2015年価格）"
+      - name: CPE_nominal_capital_cost
+        description: "321.情報機器 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: CME_nominal_investment
+        description: "322.通信機器 名目投資フロー（100万円）"
+      - name: CME_real_investment
+        description: "322.通信機器 実質投資フロー (100万円、2015年価格)"
+      - name: CME_nominal_capital_stock
+        description: "322.通信機器 名目純資本ストック（100万円）"
+      - name: CME_real_capital_stock
+        description: "322.通信機器 実質純資本ストック（100万円、2015年価格）"
+      - name: CME_nominal_capital_cost
+        description: "322.通信機器 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: OE_nominal_investment
+        description: "330.その他の機械・設備 名目投資フロー（100万円）"
+      - name: OE_real_investment
+        description: "330.その他の機械・設備 実質投資フロー (100万円、2015年価格)"
+      - name: OE_nominal_capital_stock
+        description: "330.その他の機械・設備 名目純資本ストック（100万円）"
+      - name: OE_real_capital_stock
+        description: "330.その他の機械・設備 実質純資本ストック（100万円、2015年価格）"
+      - name: OE_nominal_capital_cost
+        description: "330.その他の機械・設備 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: DE_nominal_investment
+        description: "400.防衛装備品 名目投資フロー（100万円）"
+      - name: DE_real_investment
+        description: "400.防衛装備品 実質投資フロー (100万円、2015年価格)"
+      - name: DE_nominal_capital_stock
+        description: "400.防衛装備品 名目純資本ストック（100万円）"
+      - name: DE_real_capital_stock
+        description: "400.防衛装備品 実質純資本ストック（100万円、2015年価格）"
+      - name: DE_nominal_capital_cost
+        description: "400.防衛装備品 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: CA_nominal_investment
+        description: "500.育成生物資源.名目投資フロー（100万円）"
+      - name: CA_real_investment
+        description: "500.育成生物資源.実質投資フロー (100万円、2015年価格)"
+      - name: CA_nominal_capital_stock
+        description: "500.育成生物資源.名目純資本ストック（100万円）"
+      - name: CA_real_capital_stock
+        description: "500.育成生物資源.実質純資本ストック（100万円、2015年価格）"
+      - name: CA_nominal_capital_cost
+        description: "500.育成生物資源.名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: RD_nominal_investment
+        description: "610.研究・開発 名目投資フロー（100万円）"
+      - name: RD_real_investment
+        description: "610.研究・開発 実質投資フロー (100万円、2015年価格)"
+      - name: RD_nominal_capital_stock
+        description: "610.研究・開発 名目純資本ストック（100万円）"
+      - name: RD_real_capital_stock
+        description: "610.研究・開発 実質純資本ストック（100万円、2015年価格）"
+      - name: RD_nominal_capital_cost
+        description: "610.研究・開発 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: ME_nominal_investment
+        description: "620.鉱物探査・評価 名目投資フロー（100万円）"
+      - name: ME_real_investment
+        description: "620.鉱物探査・評価 実質投資フロー (100万円、2015年価格)"
+      - name: ME_nominal_capital_stock
+        description: "620.鉱物探査・評価 名目純資本ストック（100万円）"
+      - name: ME_real_capital_stock
+        description: "620.鉱物探査・評価 実質純資本ストック（100万円、2015年価格）"
+      - name: ME_nominal_capital_cost
+        description: "620.鉱物探査・評価 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: CS_nominal_investment
+        description: "630.コンピュータソフトウェア 名目投資フロー（100万円）"
+      - name: CS_real_investment
+        description: "630.コンピュータソフトウェア 実質投資フロー (100万円、2015年価格)"
+      - name: CS_nominal_capital_stock
+        description: "630.コンピュータソフトウェア 名目純資本ストック（100万円）"
+      - name: CS_real_capital_stock
+        description: "630.コンピュータソフトウェア 実質純資本ストック（100万円、2015年価格）"
+      - name: CS_nominal_capital_cost
+        description: "630.コンピュータソフトウェア 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: AO_nominal_investment
+        description: "640.娯楽作品原本 名目投資フロー（100万円）"
+      - name: AO_real_investment
+        description: "640.娯楽作品原本 実質投資フロー (100万円、2015年価格)"
+      - name: AO_nominal_capital_stock
+        description: "640.娯楽作品原本 名目純資本ストック（100万円）"
+      - name: AO_real_capital_stock
+        description: "640.娯楽作品原本 実質純資本ストック（100万円、2015年価格）"
+      - name: AO_nominal_capital_cost
+        description: "640.娯楽作品原本 名目資本コスト（名目資本サービス価格*実質資本ストック）"
 
   - name: mrt_growth
     description: "成長会計"
@@ -279,3 +419,321 @@ models:
         description: "4) 部門別マンアワー指数伸び率（年率、%）"
       - name: quality_index_change
         description: "6) 部門別労働の質指数伸び率（年率、%）"
+
+  - name: mrt_sectors
+    description: "部門別生産性統計"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: capital__nominal_investment
+        description: "2.1.i) 部門別名目投資フロー(100万円)"
+      - name: capital__real_investment
+        description: "2.1.ii) 部門別実質投資フロー(100万円、2015年価格)"
+      - name: capital__input_index
+        description: "2.1.iii) 部門別資本投入指数 (2015年=1.000)"
+      - name: capital__quality_index
+        description: "2.1.iv) 部門別資本の質指数 (2015年=1.000)"
+      - name: capital__nominal_net_stock
+        description: "2.1.v) 部門別名目純資本ストック (100万円)"
+      - name: capital__real_net_stock
+        description: "2.1.vi) 部門別実質純資本ストック (100万円、2015年価格)"
+      - name: capital__nominal_cost
+        description: "2.1.vii) 部門別名目資本コスト (名目資本サービス価格*実質資本ストック、100万円)"
+      - name: RS_nominal_investment
+        description: "2.2.100) 住宅 名目投資フロー（100万円）"
+      - name: RS_real_investment
+        description: "2.2.100) 住宅 実質投資フロー (100万円、2015年価格)"
+      - name: RS_nominal_capital_stock
+        description: "2.2.100) 住宅 名目純資本ストック（100万円）"
+      - name: RS_real_capital_stock
+        description: "2.2.100) 住宅 実質純資本ストック（100万円、2015年価格）"
+      - name: RS_nominal_capital_cost
+        description: "2.2.100) 住宅 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: NRS_nominal_investment
+        description: "2.2.210) 住宅以外の建物 名目投資フロー（100万円）"
+      - name: NRS_real_investment
+        description: "2.2.210) 住宅以外の建物 実質投資フロー (100万円、2015年価格)"
+      - name: NRS_nominal_capital_stock
+        description: "2.2.210) 住宅以外の建物 名目純資本ストック（100万円）"
+      - name: NRS_real_capital_stock
+        description: "2.2.210) 住宅以外の建物 実質純資本ストック（100万円、2015年価格）"
+      - name: NRS_nominal_capital_cost
+        description: "2.2.210) 住宅以外の建物 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: ST_nominal_investment
+        description: "2.2.220) 構築物 名目投資フロー（100万円）"
+      - name: ST_real_investment
+        description: "2.2.220) 構築物 実質投資フロー (100万円、2015年価格)"
+      - name: ST_nominal_capital_stock
+        description: "2.2.220) 構築物 名目純資本ストック（100万円）"
+      - name: ST_real_capital_stock
+        description: "2.2.220) 構築物 実質純資本ストック（100万円、2015年価格）"
+      - name: ST_nominal_capital_cost
+        description: "2.2.220) 構築物 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: LA_nominal_investment
+        description: "2.2.230) 土地改良 名目投資フロー（100万円）"
+      - name: LA_real_investment
+        description: "2.2.230) 土地改良 実質投資フロー (100万円、2015年価格)"
+      - name: LA_nominal_capital_stock
+        description: "2.2.230) 土地改良 名目純資本ストック（100万円）"
+      - name: LA_real_capital_stock
+        description: "2.2.230) 土地改良 実質純資本ストック（100万円、2015年価格）"
+      - name: LA_nominal_capital_cost
+        description: "2.2.230) 土地改良 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: TE_nominal_investment
+        description: "2.2.310) 輸送用機械 名目投資フロー（100万円）"
+      - name: TE_real_investment
+        description: "2.2.310) 輸送用機械 実質投資フロー (100万円、2015年価格)"
+      - name: TE_nominal_capital_stock
+        description: "2.2.310) 輸送用機械 名目純資本ストック（100万円）"
+      - name: TE_real_capital_stock
+        description: "2.2.310) 輸送用機械 実質純資本ストック（100万円、2015年価格）"
+      - name: TE_nominal_capital_cost
+        description: "2.2.310) 輸送用機械 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: CPE_nominal_investment
+        description: "2.2.321) 情報機器 名目投資フロー（100万円）"
+      - name: CPE_real_investment
+        description: "2.2.321) 情報機器 実質投資フロー (100万円、2015年価格)"
+      - name: CPE_nominal_capital_stock
+        description: "2.2.321) 情報機器 名目純資本ストック（100万円）"
+      - name: CPE_real_capital_stock
+        description: "2.2.321) 情報機器 実質純資本ストック（100万円、2015年価格）"
+      - name: CPE_nominal_capital_cost
+        description: "2.2.321) 情報機器 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: CME_nominal_investment
+        description: "2.2.322) 通信機器 名目投資フロー（100万円）"
+      - name: CME_real_investment
+        description: "2.2.322) 通信機器 実質投資フロー (100万円、2015年価格)"
+      - name: CME_nominal_capital_stock
+        description: "2.2.322) 通信機器 名目純資本ストック（100万円）"
+      - name: CME_real_capital_stock
+        description: "2.2.322) 通信機器 実質純資本ストック（100万円、2015年価格）"
+      - name: CME_nominal_capital_cost
+        description: "2.2.322) 通信機器 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: OE_nominal_investment
+        description: "2.2.330) その他の機械・設備 名目投資フロー（100万円）"
+      - name: OE_real_investment
+        description: "2.2.330) その他の機械・設備 実質投資フロー (100万円、2015年価格)"
+      - name: OE_nominal_capital_stock
+        description: "2.2.330) その他の機械・設備 名目純資本ストック（100万円）"
+      - name: OE_real_capital_stock
+        description: "2.2.330) その他の機械・設備 実質純資本ストック（100万円、2015年価格）"
+      - name: OE_nominal_capital_cost
+        description: "2.2.330) その他の機械・設備 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: DE_nominal_investment
+        description: "2.2.400) 防衛装備品 名目投資フロー（100万円）"
+      - name: DE_real_investment
+        description: "2.2.400) 防衛装備品 実質投資フロー (100万円、2015年価格)"
+      - name: DE_nominal_capital_stock
+        description: "2.2.400) 防衛装備品 名目純資本ストック（100万円）"
+      - name: DE_real_capital_stock
+        description: "2.2.400) 防衛装備品 実質純資本ストック（100万円、2015年価格）"
+      - name: DE_nominal_capital_cost
+        description: "2.2.400) 防衛装備品 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: CA_nominal_investment
+        description: "2.2.500) 育成生物資源.名目投資フロー（100万円）"
+      - name: CA_real_investment
+        description: "2.2.500) 育成生物資源.実質投資フロー (100万円、2015年価格)"
+      - name: CA_nominal_capital_stock
+        description: "2.2.500) 育成生物資源.名目純資本ストック（100万円）"
+      - name: CA_real_capital_stock
+        description: "2.2.500) 育成生物資源.実質純資本ストック（100万円、2015年価格）"
+      - name: CA_nominal_capital_cost
+        description: "2.2.500) 育成生物資源.名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: RD_nominal_investment
+        description: "2.2.610) 研究・開発 名目投資フロー（100万円）"
+      - name: RD_real_investment
+        description: "2.2.610) 研究・開発 実質投資フロー (100万円、2015年価格)"
+      - name: RD_nominal_capital_stock
+        description: "2.2.610) 研究・開発 名目純資本ストック（100万円）"
+      - name: RD_real_capital_stock
+        description: "2.2.610) 研究・開発 実質純資本ストック（100万円、2015年価格）"
+      - name: RD_nominal_capital_cost
+        description: "2.2.610) 研究・開発 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: ME_nominal_investment
+        description: "2.2.620) 鉱物探査・評価 名目投資フロー（100万円）"
+      - name: ME_real_investment
+        description: "2.2.620) 鉱物探査・評価 実質投資フロー (100万円、2015年価格)"
+      - name: ME_nominal_capital_stock
+        description: "2.2.620) 鉱物探査・評価 名目純資本ストック（100万円）"
+      - name: ME_real_capital_stock
+        description: "2.2.620) 鉱物探査・評価 実質純資本ストック（100万円、2015年価格）"
+      - name: ME_nominal_capital_cost
+        description: "2.2.620) 鉱物探査・評価 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: CS_nominal_investment
+        description: "2.2.630) コンピュータソフトウェア 名目投資フロー（100万円）"
+      - name: CS_real_investment
+        description: "2.2.630) コンピュータソフトウェア 実質投資フロー (100万円、2015年価格)"
+      - name: CS_nominal_capital_stock
+        description: "2.2.630) コンピュータソフトウェア 名目純資本ストック（100万円）"
+      - name: CS_real_capital_stock
+        description: "2.2.630) コンピュータソフトウェア 実質純資本ストック（100万円、2015年価格）"
+      - name: CS_nominal_capital_cost
+        description: "2.2.630) コンピュータソフトウェア 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: AO_nominal_investment
+        description: "2.2.640) 娯楽作品原本 名目投資フロー（100万円）"
+      - name: AO_real_investment
+        description: "2.2.640) 娯楽作品原本 実質投資フロー (100万円、2015年価格)"
+      - name: AO_nominal_capital_stock
+        description: "2.2.640) 娯楽作品原本 名目純資本ストック（100万円）"
+      - name: AO_real_capital_stock
+        description: "2.2.640) 娯楽作品原本 実質純資本ストック（100万円、2015年価格）"
+      - name: AO_nominal_capital_cost
+        description: "2.2.640) 娯楽作品原本 名目資本コスト（名目資本サービス価格*実質資本ストック）"
+      - name: labor__input_index
+        description: "3.1) 部門別労働投入指数（2015年=1.000）"
+      - name: labor__hours_worked_index
+        description: "3.3) 部門別マンアワー指数（2015年=1.000）"
+      - name: labor__quality_index
+        description: "3.5) 部門別労働の質指数（2015年=1.000）"
+      - name: labor__number_of_workers
+        description: "3.7) 部門別従業者数（人）"
+      - name: labor__hours_worked
+        description: "3.8) 部門別マンアワー（従業者数×従業者一人あたり年間総実労働時間÷1000）"
+      - name: labor__nominal_costs
+        description: "3.9) 部門別名目労働コスト（100万円）"
+      - name: labor__share_of_female
+        description: "3.10) 部門別女性比率（女性従業者/従業者計、%）"
+      - name: labor__share_of_part_time
+        description: "3.11) 部門別パートタイム労働者比率（パートタイム労働者/従業者計、%）"
+      - name: labor__share_of_55_over
+        description: "3.12) 部門別55歳以上従業者比率（55歳以上従業者/従業者計、%）"
+      - name: Y
+        description: "4.3) 実質産出（100万円、'2015'年連鎖価格）"
+      - name: YC
+        description: "4.4) 名目産出（100万円）"
+      - name: YC_share
+        description: "4.4) 名目産出シェア"
+      - name: M
+        description: "4.5) 実質中間投入（100万円、'2015'年連鎖価格）"
+      - name: PM
+        description: "4.6) 名目中間投入（100万円）"
+      - name: PM_share
+        description: "4.6) 名目中間投入シェア"
+      - name: V
+        description: "4.7) 実質付加価値（100万円、'2015'年連鎖価格）"
+      - name: NV
+        description: "4.8) 名目付加価値（100万円）"
+      - name: NV_share
+        description: "4.8) 名目付加価値シェア"
+      - name: L
+        description: "4.9) 労働投入指数（ディビジア指数、'2015'年=1.000）"
+      - name: H_index
+        description: "4.10) マンアワー指数（'2015'年=1.000）"
+      - name: H
+        description: "4.10) マンアワー（1000人×総実労働時間）"
+      - name: LC
+        description: "4.11) 労働の質指数（ディビジア指数、'2015'年=1.000）"
+      - name: WL
+        description: "4.12) 名目労働コスト（100万円）"
+      - name: K
+        description: "4.13) 資本サービス投入指数（ディビジア指数、'2015'年=1.000）"
+      - name: K_T_index
+        description: "4.14) 実質資本ストック指数（'2015'年=1.000）"
+      - name: K_T
+        description: "4.14) 実質資本ストック（100万円、'2015'年連鎖価格）"
+      - name: KC
+        description: "4.15) 資本の質指数（ディビジア指数、'2015'年=1.000）"
+      - name: RK
+        description: "4.16) 名目資本サービス(名目資本サービス価格＊実質資本ストック、100万円）"
+      - name: Cy_PM
+        description: "4.17) 中間投入コストシェア（中間投入含む）"
+      - name: Cy_WL
+        description: "4.17) 労働投入コストシェア（中間投入含む）"
+      - name: Cy_RK
+        description: "4.17) 資本コストシェア（中間投入含む）"
+      - name: Cv_WL
+        description: "4.18) 労働コストシェア（中間投入除く）"
+      - name: Cv_RK
+        description: "4.18) 資本コストシェア（中間投入除く）"
+      - name: Y_G
+        description: "4.19) 実質産出成長率"
+      - name: YConM
+        description: "4.20) 産出ベース中間投入寄与"
+      - name: YConH
+        description: "4.21) 産出ベースマンアワー寄与"
+      - name: YConLC
+        description: "4.22) 産出ベース労働の質寄与"
+      - name: YConK_T
+        description: "4.23) 産出ベース資本ストック寄与"
+      - name: YConKC
+        description: "4.24) 産出ベース資本の質寄与"
+      - name: TFPy
+        description: "4.25) 産出ベース産業別TFP成長率"
+      - name: V_G
+        description: "4.27) 実質付加価値成長率"
+      - name: VConH
+        description: "4.28) 付加価値ベースマンアワー寄与"
+      - name: VConLC
+        description: "4.29) 付加価値ベース労働の質寄与"
+      - name: VConK_T
+        description: "4.30) 付加価値ベース資本ストック寄与"
+      - name: VConKC
+        description: "4.31) 付加価値ベース資本の質寄与"
+      - name: TFPva
+        description: "4.32) 付加価値ベース産業別TFP成長率"
+      - name: LP_G
+        description: "4.34) 労働生産性上昇率（付加価値/総労働時間）"
+      - name: H_G
+        description: "4.35) 総労働時間成長率"
+      - name: LPConK_T
+        description: "4.38) 付加価値ベース総労働時間あたり資本ストック寄与"
+      - name: I_RD
+        description: "6.1.1) 科学的研究開発 (固定資本形成、名目，百万円)"
+      - name: I_ME
+        description: "6.1.2) 鉱物探査・評価 (固定資本形成、名目，百万円)"
+      - name: I_SD
+        description: "6.1.3) ソフトウエア (固定資本形成、名目，百万円)"
+      - name: I_AO
+        description: "6.1.4) 娯楽作品原本 (固定資本形成、名目，百万円)"
+      - name: I_DS
+        description: "6.1.5) デザイン (固定資本形成、名目，百万円)"
+      - name: I_FD
+        description: "6.1.6) 金融業における新商品開発 (固定資本形成、名目，百万円)"
+      - name: I_BR
+        description: "6.1.7) ブランド (固定資本形成、名目，百万円)"
+      - name: I_TR
+        description: "6.1.8) 企業特殊的人的資本 (固定資本形成、名目，百万円)"
+      - name: I_OC
+        description: "6.1.9) 組織改編費用 (固定資本形成、名目，百万円)"
+      - name: Iq_RD
+        description: "6.2.1) 科学的研究開発 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_ME
+        description: "6.2.2) 鉱物探査・評価 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_SD
+        description: "6.2.3) ソフトウエア (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_AO
+        description: "6.2.4) 娯楽作品原本 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_DS
+        description: "6.2.5) デザイン (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_FD
+        description: "6.2.6) 金融業における新商品開発 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_BR
+        description: "6.2.7) ブランド (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_TR
+        description: "6.2.8) 企業特殊的人的資本 (固定資本形成、2015年基準価格，百万円)"
+      - name: Iq_OC
+        description: "6.2.9) 組織改編費用 (固定資本形成、2015年基準価格，百万円)"
+      - name: K_RD
+        description: "6.3.1) 科学的研究開発 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_ME
+        description: "6.3.2) 鉱物探査・評価 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_SD
+        description: "6.3.3) ソフトウエア (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_AO
+        description: "6.3.4) 娯楽作品原本 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_DS
+        description: "6.3.5) デザイン (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_FD
+        description: "6.3.6) 金融業における新商品開発 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_BR
+        description: "6.3.7) ブランド (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_TR
+        description: "6.3.8) 企業特殊的人的資本 (固定資本ストック、2015年基準価格，百万円)"
+      - name: K_OC
+        description: "6.3.9) 組織改編費用 (固定資本ストック、2015年基準価格，百万円)"

@@ -242,5 +242,7 @@ select
     cast(Field229 as double) as to627,
     cast(Field230 as double) as to628,
     cast(Field231 as double) as to701
+from
+    source
 where
     (index between 2 and 64) 

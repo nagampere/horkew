@@ -14,8 +14,8 @@ select
     cast(Field1 as char) as area,
     cast(Field2 as int) as country_id,
     cast(Field3 as char) as country_name,
-    cast(Field8 as double) as country_name_ja,
-    cast(Field9 as double) as annotation
+    cast(Field8 as char) as country_name_ja,
+    cast(Field9 as char) as annotation
 from
     source
 where

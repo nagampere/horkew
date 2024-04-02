@@ -683,6 +683,52 @@ models:
         description: "4.35) 総労働時間成長率"
       - name: LPConK_T
         description: "4.38) 付加価値ベース総労働時間あたり資本ストック寄与"
+      - name: Markup_PM
+        description: "5.1.3) 名目中間投入（100万円）"
+      - name: Markup_NV
+        description: "5.1.4) 名目付加価値（100万円）"
+      - name: Markup_WL
+        description: "5.1.5) 名目労働コスト（100万円）"
+      - name: Markup_RK
+        description: "5.1.6) 名目資本サービス(名目資本サービス価格＊実質資本ストック、100万円）"
+      - name: Markup_netTAX
+        description: "5.1.7) 生産・輸入品に課される税（控除）補助金（100万円）"
+      - name: LaborShare
+        description: "5.1.8) 名目労働コスト/（要素費用表示のGDP）"
+      - name: Markup
+        description: "5.1.9) (要素費用表示のGDP+名目中間投入）/（資本および労働コスト＋中間投入）-1"
+      - name: to_Asia
+        description: "5.4.1) アジア輸出量 (輸出額 1,000 yen)"
+      - name: to_Europe
+        description: "5.4.2) ヨーロッパ輸出量 (輸出額 1,000 yen)"
+      - name: to_North_America
+        description: "5.4.3) 北アメリカ輸出量 (輸出額 1,000 yen)"
+      - name: to_South_America
+        description: "5.4.4) 南アメリカ輸出量 (輸出額 1,000 yen)"
+      - name: to_Africa
+        description: "5.4.5) アフリカ輸出量 (輸出額 1,000 yen)"
+      - name: to_Oceania
+        description: "5.4.6) オセアニア輸出量 (輸出額 1,000 yen)"
+      - name: to_Special_Areas
+        description: "5.4.7) 特別区域輸出量 (輸出額 1,000 yen)"
+      - name: to_all_countries
+        description: "5.4.8) 全輸出量 (輸出額, 1,000 yen)"
+      - name: from_Asia
+        description: "5.5.1) アジア (輸入額, 1,000 yen)"
+      - name: from_Europe
+        description: "5.5.2) ヨーロッパ (輸入額, 1,000 yen)"
+      - name: from_North_America
+        description: "5.5.3) 北アメリカ (輸入額, 1,000 yen)"
+      - name: from_South_America
+        description: "5.5.4) 南アメリカ (輸入額, 1,000 yen)"
+      - name: from_Africa
+        description: "5.5.5) アフリカ (輸入額, 1,000 yen)"
+      - name: from_Oceania
+        description: "5.5.6) オセアニア (輸入額, 1,000 yen)"
+      - name: from_Special_Areas
+        description: "5.5.7) 特別区域 (輸入額, 1,000 yen)"
+      - name: from_all_countries
+        description: "5.5.8) 輸入量 (輸入額, 1,000 yen)"
       - name: I_RD
         description: "6.1.1) 科学的研究開発 (固定資本形成、名目，百万円)"
       - name: I_ME
@@ -737,3 +783,1019 @@ models:
         description: "6.3.8) 企業特殊的人的資本 (固定資本ストック、2015年基準価格，百万円)"
       - name: K_OC
         description: "6.3.9) 組織改編費用 (固定資本ストック、2015年基準価格，百万円)"
+
+  - name: mrt_supplementary__markup
+    description: "部門別生産性統計"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: PM
+        description: "5.1.3) 名目中間投入（100万円）"
+      - name: NV
+        description: "5.1.4) 名目付加価値（100万円）"
+      - name: WL
+        description: "5.1.5) 名目労働コスト（100万円）"
+      - name: RK
+        description: "5.1.6) 名目資本サービス(名目資本サービス価格＊実質資本ストック、100万円）"
+      - name: netTAX
+        description: "5.1.7) 生産・輸入品に課される税（控除）補助金（100万円）"
+      - name: LaborShare
+        description: "5.1.8) 名目労働コスト/（要素費用表示のGDP）"
+      - name: Markup
+        description: "5.1.9) (要素費用表示のGDP+名目中間投入）/（資本および労働コスト＋中間投入）-1"
+
+  - name: mrt_supplementary__trade_by_sector
+    description: "4) 部門別財貿易統計（輸出入額, 1994-2021, 1,000 yen)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: to_103_Republic_of_Korea
+        description: "103	大韓民国	"
+      - name: to_104_North_Korea
+        description: "104	北朝鮮	"
+      - name: to_105_Peoples_Republic_of_China
+        description: "105	中華人民共和国	香港及びマカオを含まない。"
+      - name: to_106_Taiwan
+        description: "106	台湾	"
+      - name: to_107_Mongolia
+        description: "107	モンゴル	"
+      - name: to_108_Hong_Kong
+        description: "108	香港	"
+      - name: to_110_Socialist_Republic_of_Viet_Nam
+        description: "110	ベトナム	"
+      - name: to_111_Thailand
+        description: "111	タイ	"
+      - name: to_112_Singapore
+        description: "112	シンガポール	"
+      - name: to_113_Malaysia
+        description: "113	マレーシア	"
+      - name: to_116_Brunei
+        description: "116	ブルネイ	(旧英領ブルネイ)"
+      - name: to_117_Philippines
+        description: "117	フィリピン	"
+      - name: to_118_Indonesia
+        description: "118	インドネシア	West Irianを含む。"
+      - name: to_120_Cambodia
+        description: "120	カンボジア	"
+      - name: to_121_Laos
+        description: "121	ラオス	"
+      - name: to_122_The_Union_of_Myanmar
+        description: "122	ミャンマー	(旧ビルマ)"
+      - name: to_123_India
+        description: "123	インド	(旧葡領インドを含む。)"
+      - name: to_124_Pakistan
+        description: "124	パキスタン	"
+      - name: to_125_Republic_of_Sri_Lanka
+        description: "125	スリランカ	(旧セイロン)"
+      - name: to_126_Maldives
+        description: "126	モルディブ	"
+      - name: to_127_Bangladesh
+        description: "127	バングラデシュ	"
+      - name: to_128_East_Timor
+        description: "128	東ティモール	"
+      - name: to_129_Macao
+        description: "129	マカオ	"
+      - name: to_130_Afghanistan
+        description: "130	アフガニスタン	"
+      - name: to_131_Nepal
+        description: "131	ネパール	"
+      - name: to_132_Bhutan
+        description: "132	ブータン	"
+      - name: to_133_Iran
+        description: "133	イラン	"
+      - name: to_134_Iraq
+        description: "134	イラク	"
+      - name: to_135_Bahrain
+        description: "135	バーレーン	"
+      - name: to_137_Saudi_Arabia
+        description: "137	サウジアラビア	"
+      - name: to_138_Kuwait
+        description: "138	クウェート	"
+      - name: to_140_Qatar
+        description: "140	カタール	"
+      - name: to_141_Oman
+        description: "141	オマーン	"
+      - name: to_143_Israel
+        description: "143	イスラエル	ヨルダン川西岸を含まない。"
+      - name: to_144_Jordan
+        description: "144	ヨルダン	"
+      - name: to_145_Syria
+        description: "145	シリア	"
+      - name: to_146_Lebanon
+        description: "146	レバノン	"
+      - name: to_147_The_United_Arab_Emirates
+        description: "147	アラブ首長国連邦	(旧トルシアルオーマン）"
+      - name: to_149_The_Republic_of_Yemen
+        description: "149	イエメン	Perim, Kamaran, Socotra及びKuria Muria諸島を含む。"
+      - name: to_150_Azerbaijan_Republic
+        description: "150	アゼルバイジャン	"
+      - name: to_151_Republic_Armenia
+        description: "151	アルメニア	"
+      - name: to_152_Republic_of_Uzbekistan
+        description: "152	ウズベキスタン	"
+      - name: to_153_Republic_of_Kazakhstan
+        description: "153	カザフスタン	"
+      - name: to_154_Kyrgyz_Republic
+        description: "154	キルギス	"
+      - name: to_155_Republic_of_Tadzhikistan
+        description: "155	タジキスタン	"
+      - name: to_156_Turkmenistan
+        description: "156	トルクメニスタン	"
+      - name: to_157_Georgia
+        description: "157	ジョージア	（旧グルジア）"
+      - name: to_158_The_West_Bank_and_Gaza_Strip
+        description: "158	ヨルダン川西岸及びガザ	"
+      - name: to_201_Iceland
+        description: "201	アイスランド	"
+      - name: to_202_Norway
+        description: "202	ノルウェー	"
+      - name: to_203_Sweden
+        description: "203	スウェーデン	"
+      - name: to_204_Denmark
+        description: "204	デンマーク	"
+      - name: to_205_United_Kingdom
+        description: "205	英国	"
+      - name: to_206_Ireland
+        description: "206	アイルランド	Northern Irelandを含まない。"
+      - name: to_207_Netherlands
+        description: "207	オランダ	"
+      - name: to_208_Belgium
+        description: "208	ベルギー	"
+      - name: to_209_Luxembourg
+        description: "209	ルクセンブルク	"
+      - name: to_210_France
+        description: "210	フランス	"
+      - name: to_211_Monaco
+        description: "211	モナコ	"
+      - name: to_212_Andorra
+        description: "212	アンドラ	"
+      - name: to_213_Germany
+        description: "213	ドイツ	"
+      - name: to_215_Switzerland
+        description: "215	スイス	Liechtensteinを含む。"
+      - name: to_216_Azores
+        description: "216	アゾレス(葡)	Fayal, Rico, San Jorge, Graciosa, Terceira, Sao Miguel等の葡領諸島をいう。"
+      - name: to_217_Portugal
+        description: "217	ポルトガル	マディラを含む。"
+      - name: to_218_Spain
+        description: "218	スペイン	Baleares諸島を含む。"
+      - name: to_219_Gibraltar
+        description: "219	ジブラルタル(英)	"
+      - name: to_220_Italy
+        description: "220	イタリア	San Marinoを含む。"
+      - name: to_221_Malta
+        description: "221	マルタ	Gozaを含む。"
+      - name: to_222_Finland
+        description: "222	フィンランド	"
+      - name: to_223_Poland
+        description: "223	ポーランド	"
+      - name: to_224_Russian_Federation
+        description: "224	ロシア	ロシア領アジアを含む。"
+      - name: to_225_Austria
+        description: "225	オーストリア	"
+      - name: to_227_Hungary
+        description: "227	ハンガリー	"
+      - name: to_228_Serbia
+        description: "228	セルビア	 （旧ユーゴスラビア連邦共和国）"
+      - name: to_229_Albania
+        description: "229	アルバニア	"
+      - name: to_230_Greece
+        description: "230	ギリシャ	"
+      - name: to_231_Rumania
+        description: "231	ルーマニア	"
+      - name: to_232_Bulgaria
+        description: "232	ブルガリア	"
+      - name: to_233_Cyprus
+        description: "233	キプロス	"
+      - name: to_234_Turkey
+        description: "234	トルコ	"
+      - name: to_235_Estonia
+        description: "235	エストニア	"
+      - name: to_236_Latvia
+        description: "236	ラトビア	"
+      - name: to_237_Lithuania
+        description: "237	リトアニア	"
+      - name: to_238_Ukraine
+        description: "238	ウクライナ	"
+      - name: to_239_Republic_of_Belarus
+        description: "239	ベラルーシ	"
+      - name: to_240_Republic_of_Moldova
+        description: "240	モルドバ	"
+      - name: to_241_Croatia
+        description: "241	クロアチア	"
+      - name: to_242_Slovenia
+        description: "242	スロベニア	"
+      - name: to_243_Bosnia_and_Herzegovina
+        description: "243	ボスニア・ヘルツェゴビナ	"
+      - name: to_244_Former_Yugoslav_Republic_of_Macedonia
+        description: "244	北マケドニア	"
+      - name: to_245_Czech
+        description: "245	チェコ	"
+      - name: to_246_Slovak
+        description: "246	スロバキア	"
+      - name: to_247_Montenegro
+        description: "247	モンテネグロ	"
+      - name: to_248_Republic_of_Kosovo
+        description: "248	コソボ		"
+      - name: to_301_Greenland
+        description: "301	グリーンランド(デンマーク)	Disko島を含む。"
+      - name: to_302_Canada
+        description: "302	カナダ	"
+      - name: to_303_St_Pierre_and_Miquelon
+        description: "303	サンピエール及びミクロン(仏)	St.Lawrence湾の仏領諸島をいう。"
+      - name: to_304_United_States_of_America
+        description: "304	アメリカ合衆国	アラスカ及びハワイを含む。"
+      - name: to_305_Mexico
+        description: "305	メキシコ	"
+      - name: to_306_Guatemala
+        description: "306	グアテマラ	"
+      - name: to_307_Honduras
+        description: "307	ホンジュラス	Bay諸島を含む。"
+      - name: to_308_Belize
+        description: "308	ベリーズ	(旧英領ベリーズ)"
+      - name: to_309_El_Salvador
+        description: "309	エルサルバドル	"
+      - name: to_310_Nicaragua
+        description: "310	ニカラグア	"
+      - name: to_311_Costa_Rica
+        description: "311	コスタリカ	"
+      - name: to_312_Panama
+        description: "312	パナマ	旧313運河地帯を含む。"
+      - name: to_314_Bermuda
+        description: "314	バーミュダ(英)	"
+      - name: to_315_The_Commonwealth_of_the_Bahamas
+        description: "315	バハマ	Grand Bahama, Great Abaco, New Providence, Andros, Eleuthera, Cat, Great Exuma, Long, Watling, Croohed, Acklin, Mayaguana, Great Inagua及び近接諸島を含む。"
+      - name: to_316_Jamaica
+        description: "316	ジャマイカ	"
+      - name: to_317_Turks_and_Caicos_Islands
+        description: "317	タークス及びカイコス諸島(英)	"
+      - name: to_319_Barbados
+        description: "319	バルバドス	"
+      - name: to_320_Trinidad_and_Tobago
+        description: "320	トリニダード・トバゴ	"
+      - name: to_321_Cuba
+        description: "321	キューバ	"
+      - name: to_322_Haiti
+        description: "322	ハイチ	"
+      - name: to_323_Dominican_Republic
+        description: "323	ドミニカ共和国	Dominican Republic"
+      - name: to_324_Puerto_Rico
+        description: "324	プエルトリコ(米)	"
+      - name: to_325_Virgin_Islands
+        description: "325	米領バージン諸島	St.Thomas, St.John, Croix及び近接諸島を含む。"
+      - name: to_326_Netherlands_Antilles
+        description: "326	蘭領アンティール	Curacao Aruba, Bonaire, Saba, St.Eustatius及びSouthern St.Martinを含む。(旧蘭領西インド諸島)"
+      - name: to_327_French_West_Indies
+        description: "327	仏領西インド諸島	Guadeloupe, Martinique, Desirade, Les Saintes, Marie Galante及びNorthern St.Martin島を含む。"
+      - name: to_328_Cayman_Islands
+        description: "328	ケイマン諸島(英)	Grand Cayman, Cayman Brac, Little Cayman島を含む。（旧317タークス・カイコス及びカイマン(英)の一部）"
+      - name: to_329_Grenada
+        description: "329	グレナダ	(旧318 リーワード及びウインドワード諸島(英)の一部)"
+      - name: to_330_St_Lucia
+        description: "330	セントルシア	"
+      - name: to_331_Antigua_and_Barbuda
+        description: "331	アンティグア・バーブーダ	(旧英領アンテイグア)"
+      - name: to_332_British_Virgin_Islands_Territories
+        description: "332	英領バージン諸島	Tortola, Anegada Jost Van Dykes, Virgin Gorda及び近接英領諸島をいう。（旧318 リーワード及びウインドワード諸島(英)の一部）"
+      - name: to_333_Commonwealth_of_Dominica
+        description: "333	ドミニカ	Commonwealth of Dominica"
+      - name: to_334_Montserrat
+        description: "334	モントセラト(英)	(旧318 リーワード及びウインドワード諸島(英)の一部)"
+      - name: to_335_St_Christopher_and_Nevis
+        description: "335	セントクリストファー・ネービス	(旧335 セント・キッツ、ネヴイス及び英領アンギラの一部)"
+      - name: to_336_Saint_Vincent_and_the_Grenadines
+        description: "336	セントビンセント	St.Vincent, Bequia, Mustique, Canouan, Union島,Grenadines諸島及び近接諸島を含む。"
+      - name: to_337_Anguilla
+        description: "337	英領アンギラ	Sombrero島を含む。（旧335 セント・キッツ、ネヴイス及び英領アンギラの一部）"
+      - name: to_401_Colombia
+        description: "401	コロンビア	"
+      - name: to_402_Venezuela
+        description: "402	ベネズエラ	"
+      - name: to_403_Guyana
+        description: "403	ガイアナ	"
+      - name: to_404_Surinam
+        description: "404	スリナム	"
+      - name: to_405_French_Guiana
+        description: "405	仏領ギアナ	"
+      - name: to_406_Ecuador
+        description: "406	エクアドル	"
+      - name: to_407_Peru
+        description: "407	ペルー	"
+      - name: to_408_Bolivia
+        description: "408	ボリビア	"
+      - name: to_409_Chile
+        description: "409	チリ	"
+      - name: to_410_Brazil
+        description: "410	ブラジル	"
+      - name: to_411_Paraguay
+        description: "411	パラグアイ	"
+      - name: to_412_Uruguay
+        description: "412	ウルグアイ	"
+      - name: to_413_Argentina
+        description: "413	アルゼンチン	"
+      - name: to_414_Falkland_Islands_and_Dependencies
+        description: "414	フォークランド諸島及びその附属諸島（英）	The East and West Falklands South Georgia及びSouth Sandwichを含む。"
+      - name: to_415_British_Antarctic_Territory
+        description: "415	英領南極地域	Graham Land、South Orkneys及びSouth Shetland島を含む。（旧414 フォークランド諸島(英)の一部）"
+      - name: to_501_Morocco
+        description: "501	モロッコ	旧西領Ifniを含む。"
+      - name: to_502_Ceuta_and_Melilla
+        description: "502	セウタ及びメリリア(西)	"
+      - name: to_503_Algeria
+        description: "503	アルジェリア	"
+      - name: to_504_Tunisia
+        description: "504	チュニジア	"
+      - name: to_505_Libya
+        description: "505	リビア	"
+      - name: to_506_Egypt
+        description: "506	エジプト	"
+      - name: to_507_Sudan
+        description: "507	スーダン	"
+      - name: to_508_West_Sahara
+        description: "508	西サハラ	Cabo Juby, Aguera及びAdrarを含む。"
+      - name: to_509_Mauritania
+        description: "509	モーリタニア	"
+      - name: to_510_Senegal
+        description: "510	セネガル	"
+      - name: to_511_The_Gambia
+        description: "511	ガンビア	"
+      - name: to_512_Republic_of_Guinea_Bissau
+        description: "512	ギニア・ビサウ	Bissago諸島を含む。"
+      - name: to_513_Guinea
+        description: "513	ギニア	Iles Tristao及びLos諸島を含む。"
+      - name: to_514_Sierra_Leone
+        description: "514	シエラレオネ	"
+      - name: to_515_Liberia
+        description: "515	リベリア	"
+      - name: to_516_Republic_of_Cote_dIvoire
+        description: "516	コートジボワール	（旧象牙海岸共和国）"
+      - name: to_517_Ghana
+        description: "517	ガーナ	"
+      - name: to_518_Togo
+        description: "518	トーゴ	"
+      - name: to_519_Benin
+        description: "519	ベナン	"
+      - name: to_520_Mali
+        description: "520	マリ	"
+      - name: to_521_Burkina_Faso
+        description: "521	ブルキナファソ	"
+      - name: to_522_Republic_of_Cape_Verde
+        description: "522	カーボベルデ	Santo Antao, St.Vincent, St.Luzia, Santhiago Fogo, Maio及び近接諸島を含む。"
+      - name: to_523_Canary_Islands
+        description: "523	カナリー諸島(西)	Teneriffe, Palma, Gran Canaria Fuerteventura, Lanzarote及び近接諸島を含む。"
+      - name: to_524_Nigeria
+        description: "524	ナイジェリア	"
+      - name: to_525_Niger
+        description: "525	ニジェール	"
+      - name: to_526_Rwanda
+        description: "526	ルワンダ	"
+      - name: to_527_Cameroon
+        description: "527	カメルーン	"
+      - name: to_528_Chad
+        description: "528	チャド	"
+      - name: to_529_Republic_of_Central_Africa
+        description: "529	中央アフリカ	"
+      - name: to_530_Republic_of_Equatorial_Guinea
+        description: "530	赤道ギニア	Rio Muni及びFernando Poo, Annobon, Corisco島を含む。"
+      - name: to_531_Gabon
+        description: "531	ガボン	"
+      - name: to_532_Republic_of_Congo
+        description: "532	コンゴ共和国	"
+      - name: to_533_The_Democratic_Republic_of_the_Congo
+        description: "533	コンゴ民主共和国	(旧ザイール)"
+      - name: to_534_Burundi
+        description: "534	ブルンジ	"
+      - name: to_535_Angola
+        description: "535	アンゴラ	Cabindaを含む。"
+      - name: to_536_D_R_Sao_tome_and_Principe
+        description: "536	サントメ・プリンシペ	"
+      - name: to_537_St_Helena_Island_and_Dependencies
+        description: "537	セントヘレナ及びその附属諸島(英)	Ascension, Tristan da Cunha Gough, Inaccessible及びNightingale島を含む。"
+      - name: to_538_Ethiopia
+        description: "538	エチオピア	"
+      - name: to_539_Republic_of_Djibouti
+        description: "539	ジブチ	"
+      - name: to_540_Somalia
+        description: "540	ソマリア	"
+      - name: to_541_Kenya
+        description: "541	ケニア	"
+      - name: to_542_Uganda
+        description: "542	ウガンダ	"
+      - name: to_543_Tanzania
+        description: "543	タンザニア	"
+      - name: to_544_Republic_of_Seychelles
+        description: "544	セーシェル	"
+      - name: to_545_Mozambique
+        description: "545	モザンビーク	"
+      - name: to_546_Madagascar
+        description: "546	マダガスカル	St.Marie, Clorious及びNossi Beを含む。"
+      - name: to_547_Mauritius
+        description: "547	モーリシャス	Rodrigues, Agalega, Caragados Carajos及び近接諸島を含む。"
+      - name: to_548_Reunion
+        description: "548	レユニオン(仏)	"
+      - name: to_549_Zimbabwe
+        description: "549	ジンバブエ	"
+      - name: to_550_Namibia
+        description: "550	ナミビア	(旧南西アフリカ)"
+      - name: to_551_South_Africa
+        description: "551	南アフリカ共和国	Prince Edward及びMarion島を含む。"
+      - name: to_552_Lesotho
+        description: "552	レソト	"
+      - name: to_553_Malawi
+        description: "553	マラウイ	"
+      - name: to_554_Zambia
+        description: "554	ザンビア	"
+      - name: to_555_Republic_of_Botswana
+        description: "555	ボツワナ	"
+      - name: to_556_Swaziland
+        description: "556	エスワティニ	 (旧スワジランド)"
+      - name: to_557_British_Indian_Ocean_Territories
+        description: "557	英領インド洋地域	Chagos, Archipelago (Diego Garcia, Peros Banhos, Solomon)島を含む。"
+      - name: to_558_Comoros
+        description: "558	コモロ	"
+      - name: to_559_Eritrea
+        description: "559	エリトリア	"
+      - name: to_560_Republic_of_South_Sudan
+        description: "560	南スーダン	"
+      - name: to_601_Australia
+        description: "601	オーストラリア	"
+      - name: to_602_Papua_New_Guinea
+        description: "602	パプアニューギニア	Woodlark Trobriand, D’Entrecasteaux Louisade, New Britain, New Ireland, Manus, Bougainville, Buka及び近接諸島を含む。"
+      - name: to_605_Other_Australian_Territories
+        description: "605	その他のオーストラリア領	Cocos, Ashmore, Cartier, Norfolk, Heard, Christmas, Mc Donald及びCoral Sea諸島を含む。"
+      - name: to_606_New_Zealand
+        description: "606	ニュージーランド	Kermadec, Raoul, Macauley, Curtis, Chatham, Bounty, Antipedes, Auckland, Campbell Three Kings Solonder及びSnares島を含む。"
+      - name: to_607_Cook_Islands
+        description: "607	クック	Rarotonga, Aitutaki, Penrhyn (Tongareva), Manihiki, Pukapuka, Nassau, Suvarov, Palmerston, Manuae, Takutea, Atiu, Mangaia, Mitiars及びMauke島を含む。"
+      - name: to_608_Tokelau_Islands
+        description: "608	トケラウ諸島(ニュージーランド)	Atafu, Nukunonu及びFakaofu島を含む。"
+      - name: to_609_Niue_Islands
+        description: "609	ニウエ	"
+      - name: to_610_Samoa
+        description: "610	サモア	"
+      - name: to_611_The_Republic_of_Vanuatu
+        description: "611	バヌアツ	(旧英仏共同統治地域ニューヘブリデス)"
+      - name: to_612_Fiji
+        description: "612	フィジー	Viti Levu, Vanua Levu及び近接諸島を含む。"
+      - name: to_613_Solomon_Islands
+        description: "613	ソロモン	Guadalcanar, Choiseul, New Georgia, Santo Isabe, Malaita, San Cristobal島及びその近接諸島を含む。"
+      - name: to_614_Tonga
+        description: "614	トンガ	Tongatapu, Vavau, Haapai及びTofoa島を含む。"
+      - name: to_615_Kiribati
+        description: "615	キリバス	Canton及びEnderbury島を含む。"
+      - name: to_616_Pitcairn
+        description: "616	ピットケルン(英)	Henderson, Ducie及びOeno島を含む。"
+      - name: to_617_Republic_of_Nauru
+        description: "617	ナウル	"
+      - name: to_618_New_Caledonia
+        description: "618	ニューカレドニア(仏)	Chesterfield (Avon), Belep, Huon, Loyalty, Pines (Kunie), Wallis (Uvea), Fortuna (Futuna) Alofa及びHorn島を含む。"
+      - name: to_619_French_Polynesia
+        description: "619	仏領ポリネシア	Society, Marquesas, Clipperton, Tubuai, Tuamoto, Gambier, Rapa及びLeeward諸島を含む。"
+      - name: to_620_Guam
+        description: "620	グアム(米)	"
+      - name: to_621_American_Samoa
+        description: "621	米領サモア	Tutuila, Rose, Swains及びManua島を含む。"
+      - name: to_622_American_Oceania
+        description: "622	米領オセアニア	Midway, Wake, Johnston, Kingman, Palmyra, Howland, Baker, Jarvis, Malden, Starbuck, Flint, Vostok及びCaroline島を含む。"
+      - name: to_624_Tuvalu
+        description: "624	ツバル	Funafiti Nanomea島及び近接諸島を含む。"
+      - name: to_625_Marshall_Islands
+        description: "625	マーシャル	"
+      - name: to_626_Federated_States_of_Micronesia
+        description: "626	ミクロネシア	"
+      - name: to_627_Northern_Mariana_Islands
+        description: "627	北マリアナ諸島(米)	"
+      - name: to_628_Palau
+        description: "628	パラオ	"
+      - name: to_701_For_Order
+        description: "701	指図式	"
+      - name: to_702_Unknown
+        description: "702	不明	"
+      - name: to_Asia
+        description: "1 アジア"
+      - name: to_Europe
+        description: "2 ヨーロッパ"
+      - name: to_North_America
+        description: "3 北アメリカ"
+      - name: to_South_America
+        description: "4 南アメリカ"
+      - name: to_Africa
+        description: "5 アフリカ"
+      - name: to_Oceania
+        description: "6 オセアニア"
+      - name: to_Special_Areas
+        description: "7 特別区域"
+      - name: to_all_countries
+        description: "全輸出量 （輸出額, 1994-2021, 1,000 yen)"
+      - name: from_103_Republic_of_Korea
+        description: "103	大韓民国	"
+      - name: from_104_North_Korea
+        description: "104	北朝鮮	"
+      - name: from_105_Peoples_Republic_of_China
+        description: "105	中華人民共和国	香港及びマカオを含まない。"
+      - name: from_106_Taiwan
+        description: "106	台湾	"
+      - name: from_107_Mongolia
+        description: "107	モンゴル	"
+      - name: from_108_Hong_Kong
+        description: "108	香港	"
+      - name: from_110_Socialist_Republic_of_Viet_Nam
+        description: "110	ベトナム	"
+      - name: from_111_Thailand
+        description: "111	タイ	"
+      - name: from_112_Singapore
+        description: "112	シンガポール	"
+      - name: from_113_Malaysia
+        description: "113	マレーシア	"
+      - name: from_116_Brunei
+        description: "116	ブルネイ	(旧英領ブルネイ)"
+      - name: from_117_Philippines
+        description: "117	フィリピン	"
+      - name: from_118_Indonesia
+        description: "118	インドネシア	West Irianを含む。"
+      - name: from_120_Cambodia
+        description: "120	カンボジア	"
+      - name: from_121_Laos
+        description: "121	ラオス	"
+      - name: from_122_The_Union_of_Myanmar
+        description: "122	ミャンマー	(旧ビルマ)"
+      - name: from_123_India
+        description: "123	インド	(旧葡領インドを含む。)"
+      - name: from_124_Pakistan
+        description: "124	パキスタン	"
+      - name: from_125_Republic_of_Sri_Lanka
+        description: "125	スリランカ	(旧セイロン)"
+      - name: from_126_Maldives
+        description: "126	モルディブ	"
+      - name: from_127_Bangladesh
+        description: "127	バングラデシュ	"
+      - name: from_128_East_Timor
+        description: "128	東ティモール	"
+      - name: from_129_Macao
+        description: "129	マカオ	"
+      - name: from_130_Afghanistan
+        description: "130	アフガニスタン	"
+      - name: from_131_Nepal
+        description: "131	ネパール	"
+      - name: from_132_Bhutan
+        description: "132	ブータン	"
+      - name: from_133_Iran
+        description: "133	イラン	"
+      - name: from_134_Iraq
+        description: "134	イラク	"
+      - name: from_135_Bahrain
+        description: "135	バーレーン	"
+      - name: from_137_Saudi_Arabia
+        description: "137	サウジアラビア	"
+      - name: from_138_Kuwait
+        description: "138	クウェート	"
+      - name: from_140_Qatar
+        description: "140	カタール	"
+      - name: from_141_Oman
+        description: "141	オマーン	"
+      - name: from_143_Israel
+        description: "143	イスラエル	ヨルダン川西岸を含まない。"
+      - name: from_144_Jordan
+        description: "144	ヨルダン	"
+      - name: from_145_Syria
+        description: "145	シリア	"
+      - name: from_146_Lebanon
+        description: "146	レバノン	"
+      - name: from_147_The_United_Arab_Emirates
+        description: "147	アラブ首長国連邦	(旧トルシアルオーマン）"
+      - name: from_149_The_Republic_of_Yemen
+        description: "149	イエメン	Perim, Kamaran, Socotra及びKuria Muria諸島を含む。"
+      - name: from_150_Azerbaijan_Republic
+        description: "150	アゼルバイジャン	"
+      - name: from_151_Republic_Armenia
+        description: "151	アルメニア	"
+      - name: from_152_Republic_of_Uzbekistan
+        description: "152	ウズベキスタン	"
+      - name: from_153_Republic_of_Kazakhstan
+        description: "153	カザフスタン	"
+      - name: from_154_Kyrgyz_Republic
+        description: "154	キルギス	"
+      - name: from_155_Republic_of_Tadzhikistan
+        description: "155	タジキスタン	"
+      - name: from_156_Turkmenistan
+        description: "156	トルクメニスタン	"
+      - name: from_157_Georgia
+        description: "157	ジョージア	（旧グルジア）"
+      - name: from_158_The_West_Bank_and_Gaza_Strip
+        description: "158	ヨルダン川西岸及びガザ	"
+      - name: from_201_Iceland
+        description: "201	アイスランド	"
+      - name: from_202_Norway
+        description: "202	ノルウェー	"
+      - name: from_203_Sweden
+        description: "203	スウェーデン	"
+      - name: from_204_Denmark
+        description: "204	デンマーク	"
+      - name: from_205_United_Kingdom
+        description: "205	英国	"
+      - name: from_206_Ireland
+        description: "206	アイルランド	Northern Irelandを含まない。"
+      - name: from_207_Netherlands
+        description: "207	オランダ	"
+      - name: from_208_Belgium
+        description: "208	ベルギー	"
+      - name: from_209_Luxembourg
+        description: "209	ルクセンブルク	"
+      - name: from_210_France
+        description: "210	フランス	"
+      - name: from_211_Monaco
+        description: "211	モナコ	"
+      - name: from_212_Andorra
+        description: "212	アンドラ	"
+      - name: from_213_Germany
+        description: "213	ドイツ	"
+      - name: from_215_Switzerland
+        description: "215	スイス	Liechtensteinを含む。"
+      - name: from_216_Azores
+        description: "216	アゾレス(葡)	Fayal, Rico, San Jorge, Graciosa, Terceira, Sao Miguel等の葡領諸島をいう。"
+      - name: from_217_Portugal
+        description: "217	ポルトガル	マディラを含む。"
+      - name: from_218_Spain
+        description: "218	スペイン	Baleares諸島を含む。"
+      - name: from_219_Gibraltar
+        description: "219	ジブラルタル(英)	"
+      - name: from_220_Italy
+        description: "220	イタリア	San Marinoを含む。"
+      - name: from_221_Malta
+        description: "221	マルタ	Gozaを含む。"
+      - name: from_222_Finland
+        description: "222	フィンランド	"
+      - name: from_223_Poland
+        description: "223	ポーランド	"
+      - name: from_224_Russian_Federation
+        description: "224	ロシア	ロシア領アジアを含む。"
+      - name: from_225_Austria
+        description: "225	オーストリア	"
+      - name: from_227_Hungary
+        description: "227	ハンガリー	"
+      - name: from_228_Serbia
+        description: "228	セルビア	 （旧ユーゴスラビア連邦共和国）"
+      - name: from_229_Albania
+        description: "229	アルバニア	"
+      - name: from_230_Greece
+        description: "230	ギリシャ	"
+      - name: from_231_Rumania
+        description: "231	ルーマニア	"
+      - name: from_232_Bulgaria
+        description: "232	ブルガリア	"
+      - name: from_233_Cyprus
+        description: "233	キプロス	"
+      - name: from_234_Turkey
+        description: "234	トルコ	"
+      - name: from_235_Estonia
+        description: "235	エストニア	"
+      - name: from_236_Latvia
+        description: "236	ラトビア	"
+      - name: from_237_Lithuania
+        description: "237	リトアニア	"
+      - name: from_238_Ukraine
+        description: "238	ウクライナ	"
+      - name: from_239_Republic_of_Belarus
+        description: "239	ベラルーシ	"
+      - name: from_240_Republic_of_Moldova
+        description: "240	モルドバ	"
+      - name: from_241_Croatia
+        description: "241	クロアチア	"
+      - name: from_242_Slovenia
+        description: "242	スロベニア	"
+      - name: from_243_Bosnia_and_Herzegovina
+        description: "243	ボスニア・ヘルツェゴビナ	"
+      - name: from_244_Former_Yugoslav_Republic_of_Macedonia
+        description: "244	北マケドニア	"
+      - name: from_245_Czech
+        description: "245	チェコ	"
+      - name: from_246_Slovak
+        description: "246	スロバキア	"
+      - name: from_247_Montenegro
+        description: "247	モンテネグロ	"
+      - name: from_248_Republic_of_Kosovo
+        description: "248	コソボ		"
+      - name: from_301_Greenland
+        description: "301	グリーンランド(デンマーク)	Disko島を含む。"
+      - name: from_302_Canada
+        description: "302	カナダ	"
+      - name: from_303_St_Pierre_and_Miquelon
+        description: "303	サンピエール及びミクロン(仏)	St.Lawrence湾の仏領諸島をいう。"
+      - name: from_304_United_States_of_America
+        description: "304	アメリカ合衆国	アラスカ及びハワイを含む。"
+      - name: from_305_Mexico
+        description: "305	メキシコ	"
+      - name: from_306_Guatemala
+        description: "306	グアテマラ	"
+      - name: from_307_Honduras
+        description: "307	ホンジュラス	Bay諸島を含む。"
+      - name: from_308_Belize
+        description: "308	ベリーズ	(旧英領ベリーズ)"
+      - name: from_309_El_Salvador
+        description: "309	エルサルバドル	"
+      - name: from_310_Nicaragua
+        description: "310	ニカラグア	"
+      - name: from_311_Costa_Rica
+        description: "311	コスタリカ	"
+      - name: from_312_Panama
+        description: "312	パナマ	旧313運河地帯を含む。"
+      - name: from_314_Bermuda
+        description: "314	バーミュダ(英)	"
+      - name: from_315_The_Commonwealth_of_the_Bahamas
+        description: "315	バハマ	Grand Bahama, Great Abaco, New Providence, Andros, Eleuthera, Cat, Great Exuma, Long, Watling, Croohed, Acklin, Mayaguana, Great Inagua及び近接諸島を含む。"
+      - name: from_316_Jamaica
+        description: "316	ジャマイカ	"
+      - name: from_317_Turks_and_Caicos_Islands
+        description: "317	タークス及びカイコス諸島(英)	"
+      - name: from_319_Barbados
+        description: "319	バルバドス	"
+      - name: from_320_Trinidad_and_Tobago
+        description: "320	トリニダード・トバゴ	"
+      - name: from_321_Cuba
+        description: "321	キューバ	"
+      - name: from_322_Haiti
+        description: "322	ハイチ	"
+      - name: from_323_Dominican_Republic
+        description: "323	ドミニカ共和国	Dominican Republic"
+      - name: from_324_Puerto_Rico
+        description: "324	プエルトリコ(米)	"
+      - name: from_325_Virgin_Islands
+        description: "325	米領バージン諸島	St.Thomas, St.John, Croix及び近接諸島を含む。"
+      - name: from_326_Netherlands_Antilles
+        description: "326	蘭領アンティール	Curacao Aruba, Bonaire, Saba, St.Eustatius及びSouthern St.Martinを含む。(旧蘭領西インド諸島)"
+      - name: from_327_French_West_Indies
+        description: "327	仏領西インド諸島	Guadeloupe, Martinique, Desirade, Les Saintes, Marie Galante及びNorthern St.Martin島を含む。"
+      - name: from_328_Cayman_Islands
+        description: "328	ケイマン諸島(英)	Grand Cayman, Cayman Brac, Little Cayman島を含む。（旧317タークス・カイコス及びカイマン(英)の一部）"
+      - name: from_329_Grenada
+        description: "329	グレナダ	(旧318 リーワード及びウインドワード諸島(英)の一部)"
+      - name: from_330_St_Lucia
+        description: "330	セントルシア	"
+      - name: from_331_Antigua_and_Barbuda
+        description: "331	アンティグア・バーブーダ	(旧英領アンテイグア)"
+      - name: from_332_British_Virgin_Islands_Territories
+        description: "332	英領バージン諸島	Tortola, Anegada Jost Van Dykes, Virgin Gorda及び近接英領諸島をいう。（旧318 リーワード及びウインドワード諸島(英)の一部）"
+      - name: from_333_Commonwealth_of_Dominica
+        description: "333	ドミニカ	Commonwealth of Dominica"
+      - name: from_334_Montserrat
+        description: "334	モントセラト(英)	(旧318 リーワード及びウインドワード諸島(英)の一部)"
+      - name: from_335_St_Christopher_and_Nevis
+        description: "335	セントクリストファー・ネービス	(旧335 セント・キッツ、ネヴイス及び英領アンギラの一部)"
+      - name: from_336_Saint_Vincent_and_the_Grenadines
+        description: "336	セントビンセント	St.Vincent, Bequia, Mustique, Canouan, Union島,Grenadines諸島及び近接諸島を含む。"
+      - name: from_337_Anguilla
+        description: "337	英領アンギラ	Sombrero島を含む。（旧335 セント・キッツ、ネヴイス及び英領アンギラの一部）"
+      - name: from_401_Colombia
+        description: "401	コロンビア	"
+      - name: from_402_Venezuela
+        description: "402	ベネズエラ	"
+      - name: from_403_Guyana
+        description: "403	ガイアナ	"
+      - name: from_404_Surinam
+        description: "404	スリナム	"
+      - name: from_405_French_Guiana
+        description: "405	仏領ギアナ	"
+      - name: from_406_Ecuador
+        description: "406	エクアドル	"
+      - name: from_407_Peru
+        description: "407	ペルー	"
+      - name: from_408_Bolivia
+        description: "408	ボリビア	"
+      - name: from_409_Chile
+        description: "409	チリ	"
+      - name: from_410_Brazil
+        description: "410	ブラジル	"
+      - name: from_411_Paraguay
+        description: "411	パラグアイ	"
+      - name: from_412_Uruguay
+        description: "412	ウルグアイ	"
+      - name: from_413_Argentina
+        description: "413	アルゼンチン	"
+      - name: from_414_Falkland_Islands_and_Dependencies
+        description: "414	フォークランド諸島及びその附属諸島（英）	The East and West Falklands South Georgia及びSouth Sandwichを含む。"
+      - name: from_415_British_Antarctic_Territory
+        description: "415	英領南極地域	Graham Land、South Orkneys及びSouth Shetland島を含む。（旧414 フォークランド諸島(英)の一部）"
+      - name: from_501_Morocco
+        description: "501	モロッコ	旧西領Ifniを含む。"
+      - name: from_502_Ceuta_and_Melilla
+        description: "502	セウタ及びメリリア(西)	"
+      - name: from_503_Algeria
+        description: "503	アルジェリア	"
+      - name: from_504_Tunisia
+        description: "504	チュニジア	"
+      - name: from_505_Libya
+        description: "505	リビア	"
+      - name: from_506_Egypt
+        description: "506	エジプト	"
+      - name: from_507_Sudan
+        description: "507	スーダン	"
+      - name: from_508_West_Sahara
+        description: "508	西サハラ	Cabo Juby, Aguera及びAdrarを含む。"
+      - name: from_509_Mauritania
+        description: "509	モーリタニア	"
+      - name: from_510_Senegal
+        description: "510	セネガル	"
+      - name: from_511_The_Gambia
+        description: "511	ガンビア	"
+      - name: from_512_Republic_of_Guinea_Bissau
+        description: "512	ギニア・ビサウ	Bissago諸島を含む。"
+      - name: from_513_Guinea
+        description: "513	ギニア	Iles Tristao及びLos諸島を含む。"
+      - name: from_514_Sierra_Leone
+        description: "514	シエラレオネ	"
+      - name: from_515_Liberia
+        description: "515	リベリア	"
+      - name: from_516_Republic_of_Cote_dIvoire
+        description: "516	コートジボワール	（旧象牙海岸共和国）"
+      - name: from_517_Ghana
+        description: "517	ガーナ	"
+      - name: from_518_Togo
+        description: "518	トーゴ	"
+      - name: from_519_Benin
+        description: "519	ベナン	"
+      - name: from_520_Mali
+        description: "520	マリ	"
+      - name: from_521_Burkina_Faso
+        description: "521	ブルキナファソ	"
+      - name: from_522_Republic_of_Cape_Verde
+        description: "522	カーボベルデ	Santo Antao, St.Vincent, St.Luzia, Santhiago Fogo, Maio及び近接諸島を含む。"
+      - name: from_523_Canary_Islands
+        description: "523	カナリー諸島(西)	Teneriffe, Palma, Gran Canaria Fuerteventura, Lanzarote及び近接諸島を含む。"
+      - name: from_524_Nigeria
+        description: "524	ナイジェリア	"
+      - name: from_525_Niger
+        description: "525	ニジェール	"
+      - name: from_526_Rwanda
+        description: "526	ルワンダ	"
+      - name: from_527_Cameroon
+        description: "527	カメルーン	"
+      - name: from_528_Chad
+        description: "528	チャド	"
+      - name: from_529_Republic_of_Central_Africa
+        description: "529	中央アフリカ	"
+      - name: from_530_Republic_of_Equatorial_Guinea
+        description: "530	赤道ギニア	Rio Muni及びFernando Poo, Annobon, Corisco島を含む。"
+      - name: from_531_Gabon
+        description: "531	ガボン	"
+      - name: from_532_Republic_of_Congo
+        description: "532	コンゴ共和国	"
+      - name: from_533_The_Democratic_Republic_of_the_Congo
+        description: "533	コンゴ民主共和国	(旧ザイール)"
+      - name: from_534_Burundi
+        description: "534	ブルンジ	"
+      - name: from_535_Angola
+        description: "535	アンゴラ	Cabindaを含む。"
+      - name: from_536_D_R_Sao_tome_and_Principe
+        description: "536	サントメ・プリンシペ	"
+      - name: from_537_St_Helena_Island_and_Dependencies
+        description: "537	セントヘレナ及びその附属諸島(英)	Ascension, Tristan da Cunha Gough, Inaccessible及びNightingale島を含む。"
+      - name: from_538_Ethiopia
+        description: "538	エチオピア	"
+      - name: from_539_Republic_of_Djibouti
+        description: "539	ジブチ	"
+      - name: from_540_Somalia
+        description: "540	ソマリア	"
+      - name: from_541_Kenya
+        description: "541	ケニア	"
+      - name: from_542_Uganda
+        description: "542	ウガンダ	"
+      - name: from_543_Tanzania
+        description: "543	タンザニア	"
+      - name: from_544_Republic_of_Seychelles
+        description: "544	セーシェル	"
+      - name: from_545_Mozambique
+        description: "545	モザンビーク	"
+      - name: from_546_Madagascar
+        description: "546	マダガスカル	St.Marie, Clorious及びNossi Beを含む。"
+      - name: from_547_Mauritius
+        description: "547	モーリシャス	Rodrigues, Agalega, Caragados Carajos及び近接諸島を含む。"
+      - name: from_548_Reunion
+        description: "548	レユニオン(仏)	"
+      - name: from_549_Zimbabwe
+        description: "549	ジンバブエ	"
+      - name: from_550_Namibia
+        description: "550	ナミビア	(旧南西アフリカ)"
+      - name: from_551_South_Africa
+        description: "551	南アフリカ共和国	Prince Edward及びMarion島を含む。"
+      - name: from_552_Lesotho
+        description: "552	レソト	"
+      - name: from_553_Malawi
+        description: "553	マラウイ	"
+      - name: from_554_Zambia
+        description: "554	ザンビア	"
+      - name: from_555_Republic_of_Botswana
+        description: "555	ボツワナ	"
+      - name: from_556_Swaziland
+        description: "556	エスワティニ	 (旧スワジランド)"
+      - name: from_557_British_Indian_Ocean_Territories
+        description: "557	英領インド洋地域	Chagos, Archipelago (Diego Garcia, Peros Banhos, Solomon)島を含む。"
+      - name: from_558_Comoros
+        description: "558	コモロ	"
+      - name: from_559_Eritrea
+        description: "559	エリトリア	"
+      - name: from_560_Republic_of_South_Sudan
+        description: "560	南スーダン	"
+      - name: from_601_Australia
+        description: "601	オーストラリア	"
+      - name: from_602_Papua_New_Guinea
+        description: "602	パプアニューギニア	Woodlark Trobriand, D’Entrecasteaux Louisade, New Britain, New Ireland, Manus, Bougainville, Buka及び近接諸島を含む。"
+      - name: from_605_Other_Australian_Territories
+        description: "605	その他のオーストラリア領	Cocos, Ashmore, Cartier, Norfolk, Heard, Christmas, Mc Donald及びCoral Sea諸島を含む。"
+      - name: from_606_New_Zealand
+        description: "606	ニュージーランド	Kermadec, Raoul, Macauley, Curtis, Chatham, Bounty, Antipedes, Auckland, Campbell Three Kings Solonder及びSnares島を含む。"
+      - name: from_607_Cook_Islands
+        description: "607	クック	Rarotonga, Aitutaki, Penrhyn (Tongareva), Manihiki, Pukapuka, Nassau, Suvarov, Palmerston, Manuae, Takutea, Atiu, Mangaia, Mitiars及びMauke島を含む。"
+      - name: from_608_Tokelau_Islands
+        description: "608	トケラウ諸島(ニュージーランド)	Atafu, Nukunonu及びFakaofu島を含む。"
+      - name: from_609_Niue_Islands
+        description: "609	ニウエ	"
+      - name: from_610_Samoa
+        description: "610	サモア	"
+      - name: from_611_The_Republic_of_Vanuatu
+        description: "611	バヌアツ	(旧英仏共同統治地域ニューヘブリデス)"
+      - name: from_612_Fiji
+        description: "612	フィジー	Viti Levu, Vanua Levu及び近接諸島を含む。"
+      - name: from_613_Solomon_Islands
+        description: "613	ソロモン	Guadalcanar, Choiseul, New Georgia, Santo Isabe, Malaita, San Cristobal島及びその近接諸島を含む。"
+      - name: from_614_Tonga
+        description: "614	トンガ	Tongatapu, Vavau, Haapai及びTofoa島を含む。"
+      - name: from_615_Kiribati
+        description: "615	キリバス	Canton及びEnderbury島を含む。"
+      - name: from_616_Pitcairn
+        description: "616	ピットケルン(英)	Henderson, Ducie及びOeno島を含む。"
+      - name: from_617_Republic_of_Nauru
+        description: "617	ナウル	"
+      - name: from_618_New_Caledonia
+        description: "618	ニューカレドニア(仏)	Chesterfield (Avon), Belep, Huon, Loyalty, Pines (Kunie), Wallis (Uvea), Fortuna (Futuna) Alofa及びHorn島を含む。"
+      - name: from_619_French_Polynesia
+        description: "619	仏領ポリネシア	Society, Marquesas, Clipperton, Tubuai, Tuamoto, Gambier, Rapa及びLeeward諸島を含む。"
+      - name: from_620_Guam
+        description: "620	グアム(米)	"
+      - name: from_621_American_Samoa
+        description: "621	米領サモア	Tutuila, Rose, Swains及びManua島を含む。"
+      - name: from_622_American_Oceania
+        description: "622	米領オセアニア	Midway, Wake, Johnston, Kingman, Palmyra, Howland, Baker, Jarvis, Malden, Starbuck, Flint, Vostok及びCaroline島を含む。"
+      - name: from_624_Tuvalu
+        description: "624	ツバル	Funafiti Nanomea島及び近接諸島を含む。"
+      - name: from_625_Marshall_Islands
+        description: "625	マーシャル	"
+      - name: from_626_Federated_States_of_Micronesia
+        description: "626	ミクロネシア	"
+      - name: from_627_Northern_Mariana_Islands
+        description: "627	北マリアナ諸島(米)	"
+      - name: from_628_Palau
+        description: "628	パラオ	"
+      - name: from_701_For_Order
+        description: "701	指図式	"
+      - name: from_702_Unknown
+        description: "702	不明	"
+      - name: from_Asia
+        description: "1 アジア"
+      - name: from_Europe
+        description: "2 ヨーロッパ"
+      - name: from_North_America
+        description: "3 北アメリカ"
+      - name: from_South_America
+        description: "4 南アメリカ"
+      - name: from_Africa
+        description: "5 アフリカ"
+      - name: from_Oceania
+        description: "6 オセアニア"
+      - name: from_Special_Areas
+        description: "7 特別区域"
+      - name: from_all_countries
+        description: "輸入量 （輸入額, 1994-2021, 1,000 yen)"
+
+  - name: mrt_supplementary__export_by_sector_and_country
+    description: "4) 部門別財貿易統計（輸出額, 1994-2021, 1,000 yen)"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: section_id
+      - name: section_name
+      - name: year
+      - name: area_id
+      - name: area_name
+      - name: country_id
+      - name: country_name
+      - name: country_name_ja
+      - name: country_annotation
+      - name: to_value
+        description: "輸出量 （輸出額, 1994-2021, 1,000 yen)"
+      - name: from_value
+        description: "輸入量 （輸入額, 1994-2021, 1,000 yen)"

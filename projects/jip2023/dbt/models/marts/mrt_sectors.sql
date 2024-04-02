@@ -129,6 +129,29 @@ SELECT
     mrt_growth.LP_G as LP_G,
     mrt_growth.H_G as H_G,
     mrt_growth.LPConK_T as LPConK_T,
+    mrt_supplementary__markup.PM as Markup_PM,
+    mrt_supplementary__markup.NV as Markup_NV,
+    mrt_supplementary__markup.WL as Markup_WL,
+    mrt_supplementary__markup.RK as Markup_RK,
+    mrt_supplementary__markup.netTAX as Markup_netTAX,
+    mrt_supplementary__markup.LaborShare as LaborShare,
+    mrt_supplementary__markup.Markup as Markup,
+    mrt_supplementary__trade_by_sector.to_Asia as to_Asia,
+    mrt_supplementary__trade_by_sector.to_Europe as to_Europe,
+    mrt_supplementary__trade_by_sector.to_North_America as to_North_America,
+    mrt_supplementary__trade_by_sector.to_South_America as to_South_America,
+    mrt_supplementary__trade_by_sector.to_Africa as to_Africa,
+    mrt_supplementary__trade_by_sector.to_Oceania as to_Oceania,
+    mrt_supplementary__trade_by_sector.to_Special_Areas as to_Special_Areas,
+    mrt_supplementary__trade_by_sector.to_all_countries as to_all_countries,
+    mrt_supplementary__trade_by_sector.from_Asia as from_Asia,
+    mrt_supplementary__trade_by_sector.from_Europe as from_Europe,
+    mrt_supplementary__trade_by_sector.from_North_America as from_North_America,
+    mrt_supplementary__trade_by_sector.from_South_America as from_South_America,
+    mrt_supplementary__trade_by_sector.from_Africa as from_Africa,
+    mrt_supplementary__trade_by_sector.from_Oceania as from_Oceania,
+    mrt_supplementary__trade_by_sector.from_Special_Areas as from_Special_Areas,
+    mrt_supplementary__trade_by_sector.from_all_countries as from_all_countries,
     mrt_intangible_assets.I_RD as I_RD,
     mrt_intangible_assets.I_ME as I_ME,
     mrt_intangible_assets.I_SD as I_SD,
@@ -166,6 +189,14 @@ LEFT JOIN
     {{ref('mrt_capital__sector')}} as mrt_capital__sector
     ON (mrt_capital__sector.section_id = mrt_growth.section_id)
     AND (mrt_capital__sector.year = mrt_growth.year)
+LEFT JOIN
+    {{ref('mrt_supplementary__markup')}} as mrt_supplementary__markup
+    ON (mrt_supplementary__markup.section_id = mrt_growth.section_id)
+    AND (mrt_supplementary__markup.year = mrt_growth.year)
+LEFT JOIN
+    {{ref('mrt_supplementary__trade_by_sector')}} as mrt_supplementary__trade_by_sector
+    ON (mrt_supplementary__trade_by_sector.section_id = mrt_growth.section_id)
+    AND (mrt_supplementary__trade_by_sector.year = mrt_growth.year)
 LEFT JOIN
     {{ref('mrt_intangible_assets')}} as mrt_intangible_assets
     ON (mrt_intangible_assets.section_id = mrt_growth.section_id)

@@ -3544,9 +3544,6 @@ models:
       - name: '2016'
       - name: '2017'
       - name: '2018'
-      - name: '2019'
-      - name: '2020'
-      - name: '2021'
   
   - name: stg_supplementary__nominal_value_added
     description: "5.1.4) 名目付加価値（100万円）"
@@ -3781,18 +3778,6 @@ models:
 
   - name: stg_supplementary__export_1994
     description: "5.4) 相手国別財貿易統計（輸出額, 1994)"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
-      - name: year
-      - name: section_id
-      - name: section_name
-
-  - name: stg_supplementary__export_1995
-    description: "5.4) 相手国別財貿易統計（輸出額, 1995)"
     columns:
       - name: id
         description: "The primary key for this table"
@@ -4143,18 +4128,6 @@ models:
 
   - name: stg_supplementary__import_1994
     description: "5.5) 相手国別財貿易統計（輸入額, 1994)"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
-      - name: year
-      - name: section_id
-      - name: section_name
-
-  - name: stg_supplementary__import_1995
-    description: "5.5) 相手国別財貿易統計（輸入額, 1995)"
     columns:
       - name: id
         description: "The primary key for this table"

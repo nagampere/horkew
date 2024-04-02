@@ -14,7 +14,7 @@ select
     cast(Field1 as int) as year,
     cast(Field2 as int) as section_id,
     cast(Field3 as char) as section_name,
-    cast(Field4 as double) as value103,
+    cast(Field4 as double) as to103,
     cast(Field5 as double) as to104,
     cast(Field6 as double) as to105,
     cast(Field7 as double) as to106,

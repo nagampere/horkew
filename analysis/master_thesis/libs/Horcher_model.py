@@ -254,6 +254,10 @@ class Horcher_model():
         utility = (self.ref['v_ij']/(self.exog['p_i']**self.param['beta']*self.ref['q_i']**(1-self.param['beta'])))**self.param['gam*eps']
         print('utility')
         print(utility)
+        print('X_i')
+        print(self.exog['X_i'])
+        print('E_j')
+        print(self.exog['E_j'])
         print('XE')
         XE = self.exog['X_i'].reshape(1, -1).T * self.exog['E_j']
         print(XE)
@@ -276,14 +280,14 @@ class Horcher_model():
         # 土地賦存量に対する床面積の割合φ_i
         omega_i = (((1-self.param['psi'])*self.ref['q_ave_i'])**((1-self.param['psi'])/self.param['psi'])) * self.exog['L_i']
         self.ref['phi_i'] = self.ref['H_i'] / omega_i
-        # 床面積の最大量H_ave_i (式(30)を参照)
+        # 仮想的な床面積の最大量H_ave_i (式(30)を参照)
         self.exog['H_ave_i'] = omega_i / (omega_i/self.ref['H_i']-1)
         
         # 導出した変数の確認
         print('### Check the estimated variables ###')
-        print('A_j: 就業地の生産レベル')
+        print('A_j: 就業地の生産レベル(外生変数)')
         print(self.exog['A_j'])
-        print('xi_i: 地域iにおける商業地の相対地価')
+        print('xi_i: 地域iにおける商業地の相対地価(外生変数)')
         print(self.exog['xi_i'])
         print('H_W_j: 商業地面積')
         print(self.ref['H_W_j'])
@@ -293,43 +297,29 @@ class Horcher_model():
         print(self.ref['q_ave_i'])
         print('φ_i: 土地賦存量に対する床面積の割合')
         print(self.ref['phi_i'])
-        print('H_ave_i: 床面積の最大量')
+        print('H_ave_i: 仮想的な床面積の最大量(外生変数)')
         print(self.exog['H_ave_i'])
         print('#####################################')
-    
-    '''
-    6. 外生変数の再入力
-    '''
-    def change_exog(self, new_exog:dict[str,np.ndarray]):
-        # new_exogに不必要な数値が入っているかどうかを確認する
-        if not(set(new_exog.keys()) <= set(self.exog_keys)): 
-            raise ValueError('Unnecessary exogenous variables exist.') 
-
-        # 更新先のself.new_exogの初期化
-        self.new_exog = self.exog
-        # 追加したnew_exogの反映
-        for k,v in new_exog.items():
-            self.exog[k] = v
     
     '''
     未知数 w_jを解く方程式の定義
     '''
     def simultaneous_equations(self, l):
         # 未知数はw_j (j個)
-        w_j = np.array(l[0 : self.count_j])
+        w_j = np.array(l)
 
         #　業務用地の地価Q_kの定義 (式(20)を参照)
-        Q_j = ((1-self.param['alpha'])*self.new_exog['A_j']**(1/(1-self.param['alpha'])))*(self.param['alpha']/w_j)**(self.param['alpha']/(1-self.param['alpha']))
+        Q_j = ((1-self.param['alpha'])*self.given_exog['A_j']**(1/(1-self.param['alpha'])))*(self.param['alpha']/w_j)**(self.param['alpha']/(1-self.param['alpha']))
         # 居住用地の価格Q_jの定義
-        q_i = Q_j / self.new_exog['xi_i']
+        q_i = Q_j / self.given_exog['xi_i']
         
         # 時間価値v_ij, 通勤確率lambda_ijの定義 (式(6), 式(12)を参照)
-        v_ij = (w_j-self.new_exog['tau_ij'])/(self.param['T']+self.new_exog['t_ij'])
-        utility = (v_ij/(self.new_exog['p_i']**self.param['beta']*q_i**(1-self.param['beta'])))**self.param['gam*eps']
-        XE = self.new_exog['X_i'].reshape(1, -1).T * self.new_exog['E_j']
+        v_ij = (w_j-self.given_exog['tau_ij'])/(self.param['T']+self.given_exog['t_ij'])
+        utility = (v_ij/(self.given_exog['p_i']**self.param['beta']*q_i**(1-self.param['beta'])))**self.param['gam*eps']
+        XE = self.given_exog['X_i'].reshape(1, -1).T * self.given_exog['E_j']
         lambda_ij = XE * utility / np.sum(XE * utility)
         # 労働量x_ijの定義 (式(8)を参照)
-        x_ij = self.param['gamma']*self.param['L']/(self.param['T']+self.new_exog['t_ij'])
+        x_ij = self.param['gamma']*self.param['L']/(self.param['T']+self.given_exog['t_ij'])
         # 労働需要M_W_jの定義 (式(15)を参照)
         M_W_j = self.param['N']*np.sum(lambda_ij*x_ij, axis=0)
         # 一人当たり居住地面積H_R_ij, 居住地面積H_R_iの定義(式(9)を参照)
@@ -337,15 +327,15 @@ class Horcher_model():
         H_R_i = np.sum(H_R_ij*self.param['N']*lambda_ij, axis=1)
         
         # 業務用地H_W_jの定義 (式(18)を参照)
-        H_W_j = ((1-self.param['alpha'])*self.new_exog['A_j']/Q_j)**(1/self.param['alpha']) * M_W_j
+        H_W_j = ((1-self.param['alpha'])*self.given_exog['A_j']/Q_j)**(1/self.param['alpha']) * M_W_j
         # 床面積の需要量
         demand_H_i = H_R_i + H_W_j
         
         # 平均価格q_ave_i
         q_ave_i = (q_i*H_R_i + Q_j*H_W_j) / (H_R_i + H_W_j)
         # 床面積の供給量 (式(23)を参照)
-        omega_i = (((1-self.param['psi'])*q_ave_i)**((1-self.param['psi'])/self.param['psi'])) * self.new_exog['L_i']
-        supply_H_i = omega_i/(1+omega_i/self.new_exog['H_ave_i'])
+        omega_i = (((1-self.param['psi'])*q_ave_i)**((1-self.param['psi'])/self.param['psi'])) * self.given_exog['L_i']
+        supply_H_i = omega_i/(1+omega_i/self.given_exog['H_ave_i'])
         
         # 床面積H_iに関する需給均衡式 (i本)
         eq = demand_H_i - supply_H_i
@@ -361,15 +351,15 @@ class Horcher_model():
         return sum(np.sum(eq**2) for eq in eqs)
 
     '''
-    7. 新しい外生変数による一般均衡分析と, 外生変数の再導出
+    外生変数から一般均衡を解く関数の定義
     '''
-    def solve_equilibrium(self, modeltype:str, method:str):
-        # self.new_exogに定義済みかどうかを判定
-        if 'new_exog' not in vars(self).keys():
-            raise ValueError('Necessary new exogenous variables are missing.')
-        # self.paramに数値が入っているかどうかを判定
-        if any([None is self.param[x] for x in self.param_keys]):
-            raise ValueError('Necessary parameters are missing.') 
+    def solve_equilibrium(self, given_exog:dict, modeltype:str, method:str):
+        # exogに不必要な数値が入っているかどうかを確認する
+        if not(set(given_exog.keys()) <= set(self.exog.keys())): 
+            raise ValueError('Unnecessary exogenous variables exist.') 
+        
+        # ベンチマークの外生変数の格納
+        self.given_exog = given_exog
         
         # w_jの初期化
         w_j_init = [1.0 for x in range(self.count_j)]
@@ -384,60 +374,128 @@ class Horcher_model():
             raise ValueError('Enter the correct modeltype')
 
         # 方程式の解の格納
-        self.eq = {}
-        self.eq['w_j'] = np.array(result.x[0 : self.count_j])
+        eq = {}
+        eq['w_j'] = np.array(result.x[0:self.count_j])
 
         #　業務用地の地価Q_kの算出 (式(20)を参照)
-        self.eq['Q_j'] = ((1-self.param['alpha'])*self.new_exog['A_j']**(1/(1-self.param['alpha'])))*(self.param['alpha']/self.eq['w_j'])**(self.param['alpha']/(1-self.param['alpha']))
+        eq['Q_j'] = ((1-self.param['alpha'])*self.given_exog['A_j']**(1/(1-self.param['alpha'])))*(self.param['alpha']/eq['w_j'])**(self.param['alpha']/(1-self.param['alpha']))
         # 居住用地の価格Q_jの算出
-        self.eq['q_i'] = self.eq['Q_j'] / self.new_exog['xi_i']
+        eq['q_i'] = eq['Q_j'] / self.given_exog['xi_i']
         # 時間価値v_ij, 通勤確率lambda_ijの算出 (式(6), 式(12)を参照)
-        self.eq['v_ij'] = (self.eq['w_j']-self.new_exog['tau_ij'])/(self.param['T']+self.new_exog['t_ij'])
-        utility = (self.eq['v_ij']/(self.new_exog['p_i']**self.param['beta']*self.eq['q_i']**(1-self.param['beta'])))**self.param['gam*eps']
-        self.eq['lambda_ij'] = self.new_exog['X_i'].reshape(1, -1).T * self.new_exog['E_j'] * utility / np.sum(self.new_exog['X_i'].reshape(1, -1).T * self.new_exog['E_j'] * utility)
+        eq['v_ij'] = (eq['w_j']-self.given_exog['tau_ij'])/(self.param['T']+self.given_exog['t_ij'])
+        utility = (eq['v_ij']/(self.given_exog['p_i']**self.param['beta']*eq['q_i']**(1-self.param['beta'])))**self.param['gam*eps']
+        eq['lambda_ij'] = self.given_exog['X_i'].reshape(1, -1).T * self.given_exog['E_j'] * utility / np.sum(self.given_exog['X_i'].reshape(1, -1).T * self.given_exog['E_j'] * utility)
         # 居住人口N_R_iと就業人口N_W_jの算出 (式(14)を参照)
-        self.eq['N_R_i'] = self.param['N']*np.sum(self.eq['lambda_ij'], axis=1)
-        self.eq['N_W_j'] = self.param['N']*np.sum(self.eq['lambda_ij'], axis=0)
+        eq['N_R_i'] = self.param['N']*np.sum(eq['lambda_ij'], axis=1)
+        eq['N_W_j'] = self.param['N']*np.sum(eq['lambda_ij'], axis=0)
         # 労働供給M_R_iと労働需要M_W_jの算出 (式(15)を参照)
-        x_ij = self.param['gamma']*self.param['L']/(self.param['T']+self.new_exog['t_ij'])
-        self.eq['M_R_i'] = self.param['N']*np.sum(self.eq['lambda_ij']*x_ij, axis=1)
-        self.eq['M_W_j'] = self.param['N']*np.sum(self.eq['lambda_ij']*x_ij, axis=0)
+        x_ij = self.param['gamma']*self.param['L']/(self.param['T']+self.given_exog['t_ij'])
+        eq['M_R_i'] = self.param['N']*np.sum(eq['lambda_ij']*x_ij, axis=1)
+        eq['M_W_j'] = self.param['N']*np.sum(eq['lambda_ij']*x_ij, axis=0)
         # 一人当たり居住地面積H_R_ij, 居住地面積H_R_iの算出 (式(9)を参照)
-        self.eq['H_R_ij'] = (1-self.param['beta'])*self.param['gamma']*self.param['L']*self.eq['v_ij']/self.eq['q_i'].reshape(1,-1).T
-        self.eq['H_R_i'] = np.sum(self.eq['H_R_ij']*self.param['N']*self.eq['lambda_ij'], axis=1)
+        eq['H_R_ij'] = (1-self.param['beta'])*self.param['gamma']*self.param['L']*eq['v_ij']/eq['q_i'].reshape(1,-1).T
+        eq['H_R_i'] = np.sum(eq['H_R_ij']*self.param['N']*eq['lambda_ij'], axis=1)
         # 業務用地H_W_jの算出 (式(18)を参照)
-        self.eq['H_W_j'] = ((1-self.param['alpha'])*self.new_exog['A_j']/self.eq['Q_j'])**(1/self.param['alpha']) * self.eq['M_W_j']
+        eq['H_W_j'] = ((1-self.param['alpha'])*self.given_exog['A_j']/eq['Q_j'])**(1/self.param['alpha']) * eq['M_W_j']
         # 土地供給H_iの算出
-        self.eq['H_i'] = self.eq['H_R_i'] + self.eq['H_W_j']
+        eq['H_i'] = eq['H_R_i'] + eq['H_W_j']
+        # 企業の生産量Y_jの算出 (式(17)を参照)
+        eq['Y_j'] = self.given_exog['A_j']*eq['M_W_j']**self.param['alpha']*eq['H_W_j']**(1-self.param['alpha'])
+        # 居住地の平均価格q_ave_i, 居住地面積(H_i-H_W_j)と商業地面積のH_W_jの加重平均
+        eq['q_ave_i'] = (eq['q_i']*eq['H_R_i']+eq['Q_j']*eq['H_W_j'])/eq['H_i']
+        # 土地賦存量に対する床面積の割合φ_i
+        omega_i = (((1-self.param['psi'])*eq['q_ave_i'])**((1-self.param['psi'])/self.param['psi'])) * self.exog['L_i']
+        eq['phi_i'] = eq['H_i'] / omega_i
 
         # 推定結果の可視化
         print('### Check the result of equilibrium ###')
         print(result)
         print('w_j: 賃金率')
-        print(self.eq['w_j'])
+        print(eq['w_j'])
         print('#######################################')
-        print('### Check the endogenous variables ###')
+        print('### Calculate the endogenous variables ###')
         print('λ_ij: 通勤割合')
-        print(self.eq['lambda_ij'])
+        print(eq['lambda_ij'])
+        print('v_ij')
+        print(eq['v_ij'])
         print('q_i: 居住用地価')
-        print(self.eq['q_i'])
+        print(eq['q_i'])
         print('Q_j: 業務用地価')
-        print(self.eq['Q_j'])
+        print(eq['Q_j'])
+        print('q_ave_i: 土地の平均価格')
+        print(eq['q_ave_i'])
         print('N_R_i: 居住人口')
-        print(self.eq['N_R_i'])
+        print(eq['N_R_i'])
         print('N_W_j: 勤務人口')
-        print(self.eq['N_W_j'])
+        print(eq['N_W_j'])
         print('M_R_i: 労働供給量')
-        print(self.eq['M_R_i'])
+        print(eq['M_R_i'])
         print('M_W_j: 労働需要量')
-        print(self.eq['M_W_j'])
+        print(eq['M_W_j'])
         print('H_R_i: 居住地面積')
-        print(self.eq['H_R_i'])
+        print(eq['H_R_i'])
         print('H_W_j: 商業地面積')
-        print(self.eq['H_W_j'])
+        print(eq['H_W_j'])
         print('H_i: 床面積')
-        print(self.eq['H_i'])
+        print(eq['H_i'])
+        print('Y_j: 企業の生産量')
+        print(eq['Y_j'])
         print('#####################################')
+
+        return eq
+
+    '''
+    6. 現況再現性の確認
+    '''
+    def check_replication(self, modeltype:str, method:str):
+        # 現況再現性の確認
+        self.rep = self.solve_equilibrium(self.exog, modeltype, method)
+
+    '''
+    7. 外生変数の再入力
+    '''
+    def change_exog(self, new_exog:dict[str,np.ndarray]):
+        # new_exogに不必要な数値が入っているかどうかを確認する
+        if not(set(new_exog.keys()) <= set(self.exog.keys())): 
+            raise ValueError('Unnecessary exogenous variables exist.') 
+
+        # new_exogの初期化
+        self.new_exog = self.exog
+
+        # new_exogの更新
+        for k,v in new_exog.items():
+            self.new_exog[k] = v
+    
+    '''
+    8. 新しい外生変数による一般均衡分析と, 外生変数の再導出
+    '''
+    def simulate_project(self, modeltype:str, method:str):
+        # self.new_exogに定義済みかどうかを判定
+        if 'new_exog' not in vars(self).keys():
+            raise ValueError('Necessary new exogenous variables are missing.')
+        # self.paramに数値が入っているかどうかを判定
+        if any([None is self.param[x] for x in self.param_keys]):
+            raise ValueError('Necessary parameters are missing.') 
+        
+        self.res = self.solve_equilibrium(self.new_exog, modeltype, method)
+    
+    '''
+    9. 一般均衡分析の結果の評価
+    '''
+    def evaluate_res(self):
+        # 増加率の初期化
+        change = {}
+
+        # 増加率の算出
+        for k in self.res.keys():
+            rate = (self.res[k] - self.rep[k])/self.rep[k]*100
+            #  i*jの配列に対して, i行ごとに加重平均を計算する
+            if rate.ndim == 2:
+                rate = np.sum(rate*self.rep['lambda_ij'], axis=1)/np.sum(self.rep['lambda_ij'], axis=1)
+            
+            change[k] = rate
+
+        self.change = change
 
 
 
@@ -489,19 +547,24 @@ if __name__ == '__main__':
     model.estimate_epsilon('OLS')
     # 5.基準均衡時の内生変数をもとに、外生変数の推定
     model.recover_fundamentals()
-    # 6.外生変数の再入力
-    new_exog = {
-        't_ij': np.array([
-            [45, 60],
-            [60, 15]
-        ])/(60*24),
-        'tau_ij': np.array([
-            [0.006, 0.009],
-            [0.009, 0.004]
-        ])
-    }
-    model.change_exog(new_exog)
-    # 7.新しい外生変数による一般均衡分析と, 内生変数の導出
-    model.solve_equilibrium('root', 'hybr')
+    # 6.現況再現性の確認
+    model.check_replication('root', 'hybr')
+    # 7.外生変数の再入力
+    model.change_exog(
+        {
+            't_ij': np.array([
+                [45, 60],
+                [60, 15]
+            ])/(60*24),
+            'tau_ij': np.array([
+                [0.006, 0.009],
+                [0.009, 0.004]
+            ])
+        }
+    )
+    # 8.新しい外生変数による一般均衡分析と, 内生変数の導出
+    model.simulate_project('root', 'hybr')
+    # 9.一般均衡分析の結果の評価
+    model.evaluate_res()
 #%%
 

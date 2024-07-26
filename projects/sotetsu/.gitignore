@@ -8,4 +8,4 @@ logs
 /sources/**
 !/sources/**/
 !/sources/**/.gitkeep
-!/sources/**/READNE.md
+!/sources/README.md

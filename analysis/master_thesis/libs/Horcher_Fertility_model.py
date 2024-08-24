@@ -157,6 +157,7 @@ class Horcher_Fertility_model():
         print('v_ij: 時間価値')
         print(self.ref['v_ij'])
         print('mu_ij: 子供の実質費用')
+        print(self.ref['mu_ij'])
         print('n_i: 地域の子供の数')
         print(self.ref['n_i'])
         print('delta_ij: 子供の消費性向')
@@ -333,7 +334,7 @@ class Horcher_Fertility_model():
         # 時間価値v_ij, 通勤確率lambda_ijの定義 (式(6), 式(12)を参照)
         v_ij = (w_j-self.given_exog['tau_ij'])/(self.param['T']+self.given_exog['t_ij'])
         mu_ij = self.param['mu_cost']+v_ij*self.param['mu_time']+q_i.reshape(1,-1).T*self.param['mu_room']
-        utility = (v_ij/(self.exog['p_i'].reshape(1, -1).T**self.exog['beta_ij']*q_i.reshape(1, -1).T**self.exog['theta_ij']*mu_ij*self.exog['delta_ij']))**self.param['gam*eps']
+        utility = (v_ij/(self.exog['p_i'].reshape(1, -1).T**self.exog['beta_ij']*q_i.reshape(1, -1).T**self.exog['theta_ij']*mu_ij**self.exog['delta_ij']))**self.param['gam*eps']
         XE = self.given_exog['X_i'].reshape(1, -1).T * self.given_exog['E_j']
         lambda_ij = XE * utility / np.sum(XE * utility)
         # 労働量x_ijの定義 (式(8)を参照)
@@ -341,7 +342,7 @@ class Horcher_Fertility_model():
         # 労働需要M_W_jの定義 (式(15)を参照)
         M_W_j = self.param['N']*np.sum(lambda_ij*x_ij, axis=0)
         # 一世帯当たり居住地面積H_R_ij, 居住地面積H_R_iの定義(式(9)を参照)
-        n_ij = self.param['gamma']*self.param['L']*v_ij/mu_ij
+        n_ij = self.exog['delta_ij']*self.param['gamma']*self.param['L']*v_ij/mu_ij
         H_R_ij = self.exog['theta_ij']*self.param['gamma']*self.param['L']*v_ij/q_i.reshape(1,-1).T + self.param['mu_room']*n_ij
         H_R_i = np.sum(H_R_ij*self.param['N']*lambda_ij, axis=1)
         
@@ -385,9 +386,9 @@ class Horcher_Fertility_model():
         # 制約条件の設定 (非負制約)
         constraints = [{'type': 'ineq', 'fun': lambda vars: vars}]
         # 一般均衡の方程式を解く, functionが'minimize’の時は局所最適化, 'root'の時はベクトル
-        if modeltype == 'minimize':
+        if modeltype == 'minimize': # method: 
             result = optimize.minimize(fun=self.objective_equations, x0=w_j_init, method=method, constraints=constraints)
-        elif modeltype == 'root':
+        elif modeltype == 'root': # method: hybr
             result = optimize.root(fun=self.simultaneous_equations, x0=w_j_init, method=method)
         else:
             raise ValueError('Enter the correct modeltype')

@@ -23,6 +23,8 @@ $ poetry run dbt run  --select ${MODEL_NAME}
 # check tables in Duckdb
 $ poetry run duckdb catalog.duckdb
 D select * from information_schema.tables;
+D describe ${tabel_schema}.${table_name};
+D select * from ${tabel_schema}.${table_name} limit 5;
 ```
 
 # Create documents of model

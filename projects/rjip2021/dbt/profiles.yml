@@ -4,6 +4,10 @@ horkew:
       type: duckdb
       path: catalog.duckdb
       threads: 1
+      extensions: 
+        - spatial
+      plugins:
+        - module: excel
 
     prod:
       type: duckdb

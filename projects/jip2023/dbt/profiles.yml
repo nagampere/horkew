@@ -3,7 +3,7 @@ horkew:
     dev:
       type: duckdb
       path: catalog.duckdb
-      threads: 1
+      threads: 4
       extensions: 
         - spatial
       plugins:

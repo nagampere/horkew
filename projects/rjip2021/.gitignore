@@ -5,6 +5,8 @@
 
 logs
 
+/analyses/**
+
 /sources/**
 !/sources/**/
 !/sources/**/.gitkeep

@@ -1,0 +1,11 @@
+/dbt/catalog.duckdb
+/dbt/catalog.duckdb.wal
+
+.DS_Store
+
+logs
+
+/sources/**
+!/sources/**/
+!/sources/**/.gitkeep
+!/sources/**/pea2021.ipynb

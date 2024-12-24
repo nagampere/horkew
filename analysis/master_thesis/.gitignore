@@ -1,3 +1,14 @@
-output
-images
+/data/**
+/images/**
+/output/**
+/sandbox/**
+/sources/**
+/libs_scraping/**
 libs/__pycache__
+libs_QSM/__pycache__
+
+!/output/.gitkeep
+!/images/.gitkeep
+!/sources/.gitkeep
+!/data/.gitkeep
+!/sandbox/.gitkeep

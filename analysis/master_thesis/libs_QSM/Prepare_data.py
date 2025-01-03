@@ -1,8 +1,11 @@
 #%%
 import numpy as np
 import pandas as pd
+from linearmodels.iv import IV2SLS
+import matplotlib.pyplot as plt
 from scipy import optimize as opt
 from IPython.display import display
+
 
 #%%
 class Prepare_data():
@@ -14,7 +17,7 @@ class Prepare_data():
         self.count = len(index)
 
         # Parameter
-        self.param_keys_input = ['alpha','gamma','psi','mu_cost','mu_time','mu_room']
+        self.param_keys_input = ['alpha','gamma','psi','beta_cns','beta_flr','beta_chd']
         self.param_keys_dep = []
         self.param_keys = self.param_keys_input + self.param_keys_dep
 
@@ -23,15 +26,15 @@ class Prepare_data():
         self.exog_keys_i = ['p_i','K_i','theta_i']
         self.exog_keys_j = []
         self.exog_keys_ij = ['tau_ij','t_ij']
-        self.exog_keys_dep = ['beta_cns_ij','beta_flr_ij','beta_chd_ij','xi_i','phi_i']
+        self.exog_keys_dep = ['mu_cost','mu_time','mu_room','mu_resids_ij','xi_i','G_ij']
         self.exog_keys_input = self.exog_keys_sca + self.exog_keys_i + self.exog_keys_j + self.exog_keys_ij
         self.exog_keys = self.exog_keys_input + self.exog_keys_dep
 
         # Reference endogenous variables
         self.ref_keys_i = ['q_i']
-        self.ref_keys_j = ['Q_j']
+        self.ref_keys_j = ['w_j','Q_j']
         self.ref_keys_ij = ['Pi_ij', 'n_ij']
-        self.ref_keys_dep = ['N_R_i','N_W_j','w_j','M_R_i','M_W_j','v_ij','mu_ij','n_i','C_ij','H_R_ij','H_R_i','H_W_j','W_ij']
+        self.ref_keys_dep = ['N_R_i','N_W_j','M_R_i','M_W_j','v_ij','mu_ij','n_i','C_ij','H_R_ij','H_R_i','W_ij']
         self.ref_keys_input = self.ref_keys_i+self.ref_keys_j+self.ref_keys_ij
         self.ref_keys = self.ref_keys_input + self.ref_keys_dep
 
@@ -169,110 +172,15 @@ class Prepare_data():
     '''
     4. Calculation for Dependent Variables
     '''
-    def equation_wage(self, l):
+    def calc_dep(self, exog, ref, dir_name):
         n = self.count
-        param = self.given_param
-        exog = self.given_exog
-        ref = self.given_ref
-        H_R_ave_i = np.array(l)
-        alp = param['alpha']
-        gam = param['gamma']
-        psi = param['psi']
-        mu_cost = param['mu_cost']
-        mu_time = param['mu_time']
-        mu_room = param['mu_room']
-        L = exog['L']
-        T = exog['T']
-        N = exog['N']
-        # L = 24*60
-        # T = 60*8
-        # N = 16
-        K_i = exog['K_i']
-        t_ij = exog['t_ij']
-        tau_ij = exog['tau_ij']
-        Pi_ij = ref['Pi_ij']
-        n_ij = ref['n_ij']
-        Q_j = ref['Q_j']
-        q_i = ref['q_i']
-        the_i = exog['theta_i']
-
-        H_R_i = np.sum(H_R_ave_i.reshape(1,-1).T*N*Pi_ij, axis=1)
-        # 労働供給M_R_iと労働需要M_W_jの算出 (式(15)を参照)
-        x_ij = gam*L/(T+t_ij)
-        N_W_j = N*np.sum(Pi_ij, axis=0)
-        M_W_j = N*np.sum(Pi_ij*x_ij, axis=0)
-        H_W_j = H_R_i * the_i/(1-the_i)
-        w_j = alp/(1-alp) * H_W_j/M_W_j * Q_j
-
-        v_ij = (w_j*(1-tau_ij))/(T+t_ij) # 2.4ぐらい
-        # 子供の実質費用μの算出
-        mu_ij = mu_cost + v_ij*mu_time + q_i.reshape(1,-1).T*mu_room # 0.1 + 2.4*(2/24) + 0.5*0.4 = 0.1+0.2+0.2 = 0.5
-        # 外生的なパラメータδ_ijの算出
-        beta_chd_ij = (n_ij/gam*L*v_ij)*mu_ij
-        beta_chd_ij = np.where(beta_chd_ij<0.5, beta_chd_ij, 0)
-        beta_cns_ij = 3/4*(1-beta_chd_ij)
-        beta_flr_ij = 1/4*(1-beta_chd_ij)
-        # 一世帯当たり居住地面積H_R_ijの算出 (式(9)を参照)
-        H_R_ij = beta_flr_ij*gam*L*v_ij/q_i.reshape(1,-1).T + mu_room*n_ij
-        # H_R_i = np.sum(H_R_ij*N*Pi_ij, axis=1)
-
-        # H_W_j = H_R_i / (1-the_i) * the_i
-        # 生産関数から労働需要量M_W_jの算出
-        # A_j = (w_j/alp)**alp * (Q_j/(1-alp))**(1-alp)
-        # M_W_j_r = alp/(1-alp) * Q_j/w_j * H_W_j
-        # M_W_j_r = 1/A_j * (Q_j/w_j * alp/(1-alp))**(1-alp)
-        # H_W_j = (1-alp)/alp * w_j/Q_j * M_W_j_r
-        eq = H_R_i - np.sum(H_R_ij*N*Pi_ij, axis=1)
-        eq = np.sum(eq**2)
-        if self.given_param['i']%10000==0: print('iteration: ',self.given_param['i'],'func=', eq)
-        self.given_param['i'] += 1
-        return eq
-
-    def calibrate_wage(self, exog, ref):
-        H_R_init = [0.15 for x in range(self.count)]
-        x0_init = H_R_init
-        self.given_param = self.param
-        self.given_param['i'] = 0
-        self.given_exog = exog
-        self.given_ref = ref
-        constraints = [{'type': 'ineq', 'fun': lambda vars: vars}]
-        # b_w_j = [(0.5,5) for x in range(self.count)]
-        b_H_i = [(0.1,1) for x in range(self.count)]
-        bounds = tuple(b_H_i)
-        options = {'maxiter':10**6, 'maxfun':10**4, 'maxls': 2000, 'ftol': 1e-14, 'gtol': 1e-14}
-        result = opt.minimize(fun=self.equation_wage, x0=x0_init, method='Nelder-Mead', tol=1e-7, options=options, bounds=bounds)
-        # result = opt.root(fun=self.equation_wage, x0=wage_init, method='lm')
-        H_R_ave_i = np.array(result.x[0:self.count])
-        alp = self.param['alpha']
-        gam = self.param['gamma']
-        L = exog['L']
-        T = exog['T']
-        N = exog['N']
-        t_ij = exog['t_ij']
-        Pi_ij = ref['Pi_ij']
-        Q_j = ref['Q_j']
-        the_i = exog['theta_i']
-        H_R_i = np.sum(H_R_ave_i.reshape(1,-1).T*N*Pi_ij, axis=1)
-        x_ij = gam*L/(T+t_ij)
-        M_W_j = N*np.sum(Pi_ij*x_ij, axis=0)
-        H_W_j = H_R_i * the_i/(1-the_i)
-        w_j = alp/(1-alp) * H_W_j/M_W_j * Q_j
-        print(result)
-        return w_j
-
-
-
-    def calc_dep(self, exog, ref):
         param = self.param
         # Initalize
         exog_dep = {}
         ref_dep = {}
-        # 生産関数から賃金率w_jの算出
-        if ref['w_j'] is not None:
-            ref_dep['w_j'] = ref['w_j']
-        else: 
-            ref_dep['w_j'] = self.calibrate_wage(exog, ref)
-            print(ref_dep['w_j'])
+        
+        # G_ijの算出
+        exog_dep['G_ij'] = np.ones([111,111]) * (ref['Pi_ij'] != 0)
         # 居住人口N_R_iと就業人口N_W_jの算出 (式(14)を参照)
         ref_dep['N_R_i'] = exog['N']*np.sum(ref['Pi_ij'], axis=1)
         ref_dep['N_W_j'] = exog['N']*np.sum(ref['Pi_ij'], axis=0)
@@ -281,75 +189,83 @@ class Prepare_data():
         ref_dep['M_R_i'] = exog['N']*np.sum(ref['Pi_ij']*x_ij, axis=1)
         ref_dep['M_W_j'] = exog['N']*np.sum(ref['Pi_ij']*x_ij, axis=0)
         # 時間価値v_ijの算出 (式(12)を参照)
-        ref_dep['v_ij'] = (ref_dep['w_j']*(1-exog['tau_ij']))/(exog['T']+exog['t_ij'])
+        ref_dep['v_ij'] = (ref['w_j']*(1-exog['tau_ij']))/(exog['T']+exog['t_ij'])
+
+        # 育児費用係数と支出パラメータの算出
+        df = pd.DataFrame()
+        df['n_ij'] = np.ravel(ref['n_ij'])
+        df['y'] = np.ravel(param['beta_chd']*param['gamma']*exog['L']*np.divide(ref_dep['v_ij'], ref['n_ij'], out=np.zeros_like(exog_dep['G_ij']), where=(exog_dep['G_ij']!=0))-ref['q_i'].reshape(1,-1).T*np.ones(n)*0.02-0.05)
+        df['weight'] = np.ravel(ref['Pi_ij'])
+        df['const'] = np.ones(n**2)
+        df['x_1'] = np.ravel(ref_dep['v_ij'])
+        df['x_2'] = np.ravel(ref['q_i'].reshape(1,-1).T*np.ones(n))
+        df_model = df.query('n_ij != 0')
+        model_sm = IV2SLS(df_model['y'], df_model[['x_1']], None, None).fit()
+        print(model_sm)
+
+        self.model = model_sm
+        df['mu_resids_ij'] = np.zeros(len(df))
+        df.loc[df_model.index, 'mu_resids_ij'] = model_sm.resids
+        exog_dep['mu_cost'] = 0.05
+        exog_dep['mu_time'] = model_sm.params['x_1']
+        exog_dep['mu_room'] = 0.02
+        exog_dep['mu_resids_ij'] = df['mu_resids_ij'].to_numpy().reshape(n,n)
+
         # 子供の実質費用μの算出
-        ref_dep['mu_ij'] = param['mu_cost']+ref_dep['v_ij']*param['mu_time']+ref['q_i'].reshape(1,-1).T*param['mu_room']
+        ref_dep['mu_ij'] = param['beta_chd']*param['gamma']*exog['L']*np.divide(ref_dep['v_ij'], ref['n_ij'], out=np.zeros_like(exog_dep['G_ij']), where=(exog_dep['G_ij']!=0))
         # 地域の子供の数n_iの算出
         ref_dep['n_i'] = exog['N']*np.sum(ref['Pi_ij']*ref['n_ij'], axis=1)
-        # 外生的なパラメータδ_ijの算出
-        exog_dep['beta_chd_ij'] = ref['n_ij']/(param['gamma']*exog['L']*ref_dep['v_ij']/ref_dep['mu_ij'])
-        exog_dep['beta_chd_ij'] = np.nan_to_num(exog_dep['beta_chd_ij'])
-        exog_dep['beta_chd_ij'] = np.where(exog_dep['beta_chd_ij']<0.5, exog_dep['beta_chd_ij'], 0)
-        exog_dep['beta_cns_ij'] = 3/4*(1-exog_dep['beta_chd_ij'])
-        exog_dep['beta_flr_ij'] = 1/4*(1-exog_dep['beta_chd_ij'])
         # 一世帯当たり基本財消費量C_ijの算出 (式(9)を参照)
-        ref_dep['C_ij'] = exog_dep['beta_cns_ij']*param['gamma']*exog['L']*ref_dep['v_ij']/exog['p_i'].reshape(1,-1).T
+        ref_dep['C_ij'] = param['beta_cns']*param['gamma']*exog['L']*ref_dep['v_ij']/exog['p_i'].reshape(1,-1).T
         # 一世帯当たり居住地面積H_R_ijの算出 (式(9)を参照)
-        ref_dep['H_R_ij'] = exog_dep['beta_flr_ij']*param['gamma']*exog['L']*ref_dep['v_ij']/ref['q_i'].reshape(1,-1).T + self.param['mu_room']*ref['n_ij']
+        ref_dep['H_R_ij'] = param['beta_flr']*param['gamma']*exog['L']*ref_dep['v_ij']/ref['q_i'].reshape(1,-1).T + exog_dep['mu_room']*ref['n_ij']
         # 居住地面積H_R_iの算出
         ref_dep['H_R_i'] = np.sum(ref_dep['H_R_ij']*exog['N']*ref['Pi_ij'], axis=1)
-        ref_dep['H_W_j'] = ref_dep['H_R_i'] / (1-exog['theta_i']) * exog['theta_i']
-        exog_dep['phi_i'] = (ref_dep['H_R_i']/(1 - exog['theta_i'])) / exog['K_i']**(1-param['psi'])
+        # ref_dep['H_W_j'] = ref_dep['H_R_i'] / (1-exog['theta_i']) * exog['theta_i']
+        # ref_dep['H_W_j'] = ((1-param['alp'])*A_j/Q_j)**(1/param['alp'])*M_W_j
+        # exog_dep['phi_i'] = (ref_dep['H_R_i']/(1 - exog['theta_i'])) / exog['K_i']**(1-param['psi'])
         # 居住地の商業地利用の相対地価xi_i
         exog_dep['xi_i'] = ref['Q_j']/ref['q_i']
-        # 実質賃金
-        ref_dep['W_ij'] = ref_dep['v_ij'] / (exog['p_i'].reshape(1, -1).T**exog_dep['beta_cns_ij'] * ref['q_i'].reshape(1, -1).T**exog_dep['beta_flr_ij'] * ref_dep['mu_ij']**exog_dep['beta_chd_ij'])
+        # 実質賃金W_ijの算出
+        cost = (exog['p_i']**param['beta_cns']).reshape(1, -1).T * (ref['q_i']**param['beta_flr']).reshape(1, -1).T * ref_dep['mu_ij']**param['beta_chd']
+        ref_dep['W_ij'] = np.divide(ref_dep['v_ij'], cost, out=np.zeros_like(exog_dep['G_ij']), where=(exog_dep['G_ij']!=0))
 
         # 基準均衡時の内生変数の確認
+        n_ij = ref['n_ij']
+        def save_hist(arr, name, dim):
+            if dim==1: pd.DataFrame({name:arr[name]}).hist()
+            if dim==2: pd.DataFrame({name:np.ravel(arr[name][n_ij!=0])}).hist()
+            plt.savefig(f'images/{dir_name}/hist_{name}.png')
+            plt.close('all')
         print('### Check the setting of reference variables ###')
-        print('N_R_i:  residential population')
-        # display(pd.DataFrame(ref_dep['N_R_i']).T)
-        print('N_W_j:  workplace population')
-        # display(pd.DataFrame(ref_dep['N_W_j']).T)
-        print('M_R_i:  labor supply')
-        # display(pd.DataFrame(ref_dep['M_R_i']).T)
-        print('M_W_j:  labor demand')
-        display(pd.DataFrame(ref_dep['M_W_j']).T)
-        display(pd.DataFrame(param['alpha']/(1-param['alpha']) * ref['Q_j']/ref_dep['w_j'] * ref_dep['H_W_j']).T)
-        print('v_ij:   value of time')
-        display(pd.DataFrame(ref_dep['v_ij']))
-        print('mu_ij:  net price per child')
-        # display(pd.DataFrame(ref_dep['mu_ij']))
-        print('n_i:    the number of children')
-        # display(pd.DataFrame(ref_dep['n_i']))
-        print('C_ij:   goods consumption in a household ij')
-        # display(pd.DataFrame(ref_dep['C_ij']))
-        print('H_R_ij: floor space in a household ij')
-        # display(pd.DataFrame(ref_dep['H_R_ij']))
-        print('H_R_i:  floor space in a residential area i')
-        # display(pd.DataFrame(ref_dep['H_R_i']))
-        print('K_i:    land endowment in a residential area i')
-        # display(pd.DataFrame(exog_dep['K_i']))
-        print('beta_cns_ij: share parameters for goods consumption')
-        display(pd.DataFrame(exog_dep['beta_cns_ij']))
-        print('beta_flr_ij: share parameters for floor space')
-        display(pd.DataFrame(exog_dep['beta_flr_ij']))
-        print('beta_chd_ij: share parameters for children')
-        display(pd.DataFrame(exog_dep['beta_chd_ij']))
+        save_hist(ref_dep, 'N_R_i', 1)
+        save_hist(ref_dep, 'N_W_j', 1)
+        save_hist(ref_dep, 'M_R_i', 1)
+        save_hist(ref_dep, 'M_W_j', 1)
+        save_hist(ref_dep, 'v_ij', 2)
+        save_hist(ref_dep, 'mu_ij', 2)
+        save_hist(ref_dep, 'n_i', 1)
+        save_hist(ref_dep, 'C_ij', 2)
+        save_hist(ref_dep, 'H_R_ij', 2)
+        # save_hist(ref_dep, 'H_R_i', 1)
+        # save_hist(exog_dep, 'beta_cns_ij', 2)
+        # save_hist(exog_dep, 'beta_flr_ij', 2)
+        # save_hist(exog_dep, 'beta_chd_ij', 2)
+
         print('################################################')
 
         return exog_dep, ref_dep
 
     # Calculate dependent variables in the previous priod
     def calc_dep_prev(self) -> None:
-        (exog_dep, ref_dep) = self.calc_dep(self.exog_prev, self.ref_prev)
+        (exog_dep, ref_dep) = self.calc_dep(self.exog_prev, self.ref_prev, 'prev')
         for k in self.exog_keys_dep : self.exog_prev[k] = exog_dep[k]
         for k in self.ref_keys_dep  : self.ref_prev[k] = ref_dep[k]
         pass
 
     # Calculate dependent variables in the next priod
     def calc_dep_next(self) -> None:
-        (exog_dep, ref_dep) = self.calc_dep(self.exog_next, self.ref_next)
+        (exog_dep, ref_dep) = self.calc_dep(self.exog_next, self.ref_next, 'next')
         for k in self.exog_keys_dep : self.exog_next[k] = exog_dep[k]
         for k in self.ref_keys_dep  : self.ref_next[k] = ref_dep[k]
         pass
@@ -364,9 +280,9 @@ if __name__ == '__main__':
     param['alpha'] = df_param['alpha'].to_list()[0]
     param['gamma'] = df_param['gamma'].to_list()[0]
     param['psi'] = df_param['psi'].to_list()[0]
-    param['mu_cost'] = df_param['mu_cost'].to_list()[0]
-    param['mu_time'] = df_param['mu_time'].to_list()[0]
-    param['mu_room'] = df_param['mu_room'].to_list()[0]
+    param['beta_cns'] = df_param['beta_cns'].to_list()[0]
+    param['beta_flr'] = df_param['beta_flr'].to_list()[0]
+    param['beta_chd'] = df_param['beta_chd'].to_list()[0]
     # previous exogenous variables
     df_scaler = pd.read_csv('../test_prev/scaler.csv')
     df_p_i = pd.read_csv('../test_prev/p_i.csv')
@@ -392,7 +308,7 @@ if __name__ == '__main__':
     prev_ref = {}
     prev_ref['q_i'] = df_q_i['q_i'].to_numpy()
     prev_ref['Q_j'] = df_Q_j['Q_j'].to_numpy()
-    # prev_ref['w_j'] = df_w_j['w_j'].to_numpy()
+    prev_ref['w_j'] = df_w_j['w_j'].to_numpy()
     prev_ref['Pi_ij'] = df_Pi_ij.to_numpy()
     prev_ref['n_ij'] = df_n_ij.to_numpy()
     # prev_ref['phi_i'] = df_phi_i['phi_i'].to_numpy()
@@ -422,7 +338,7 @@ if __name__ == '__main__':
     next_ref = {}
     next_ref['q_i'] = df_q_i['q_i'].to_numpy()
     next_ref['Q_j'] = df_Q_j['Q_j'].to_numpy()
-    # next_ref['w_j'] = df_w_j['w_j'].to_numpy()
+    next_ref['w_j'] = df_w_j['w_j'].to_numpy()
     next_ref['Pi_ij'] = df_Pi_ij.to_numpy()
     next_ref['n_ij'] = df_n_ij.to_numpy()
     # next_ref['phi_i'] = df_phi_i['phi_i'].to_numpy()

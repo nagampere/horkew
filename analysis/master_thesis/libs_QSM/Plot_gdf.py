@@ -21,5 +21,5 @@ def plot_gdf(given_gdf, dir, col, unit, format):
     clb.set_title(col)
     plt.text(140.35, 35.2, unit, horizontalalignment='right',verticalalignment='bottom')
     fig.set_xlim(139.2, 140.2)
-    fig.set_ylim(35.2, 36.05)
+    fig.set_ylim(35.25, 36.25)
     plt.savefig(f"images/{dir}/{col}.png", format='png',bbox_inches="tight",pad_inches=0.1)

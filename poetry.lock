@@ -1172,17 +1172,18 @@ files = [
 
 [[package]]
 name = "geopandas"
-version = "0.14.2"
+version = "0.14.4"
 description = "Geographic pandas extensions"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "geopandas-0.14.2-py3-none-any.whl", hash = "sha256:0efa61235a68862c1c6be89fc3707cdeba67667d5676bb19e24f3c57a8c2f723"},
-    {file = "geopandas-0.14.2.tar.gz", hash = "sha256:6e71d57b8376f9fdc9f1c3aa3170e7e420e91778de854f51013ae66fd371ccdb"},
+    {file = "geopandas-0.14.4-py3-none-any.whl", hash = "sha256:3bb6473cb59d51e1a7fe2dbc24a1a063fb0ebdeddf3ce08ddbf8c7ddc99689aa"},
+    {file = "geopandas-0.14.4.tar.gz", hash = "sha256:56765be9d58e2c743078085db3bd07dc6be7719f0dbe1dfdc1d705cb80be7c25"},
 ]
 
 [package.dependencies]
 fiona = ">=1.8.21"
+numpy = ">=1.22"
 packaging = "*"
 pandas = ">=1.4.0"
 pyproj = ">=3.3.0"
@@ -1333,6 +1334,28 @@ docs = ["myst-parser", "pydata-sphinx-theme", "sphinx", "sphinx-autodoc-typehint
 pyqt5 = ["pyqt5"]
 pyside6 = ["pyside6"]
 test = ["flaky", "ipyparallel", "pre-commit", "pytest (>=7.0)", "pytest-asyncio (>=0.23.5)", "pytest-cov", "pytest-timeout"]
+
+[[package]]
+name = "ipympl"
+version = "0.9.5"
+description = "Matplotlib Jupyter Extension"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "ipympl-0.9.5-py3-none-any.whl", hash = "sha256:ff14a357f43552ec92582eb8b2f76b844b469aa2fa76833f15ead7fa584c19fc"},
+    {file = "ipympl-0.9.5.tar.gz", hash = "sha256:b702db4bd1138cee21ab3c731e1c1bc5c3efbfa81b9b42a1820f79122d946dc8"},
+]
+
+[package.dependencies]
+ipython = "<9"
+ipywidgets = ">=7.6.0,<9"
+matplotlib = ">=3.4.0,<4"
+numpy = "*"
+pillow = "*"
+traitlets = "<6"
+
+[package.extras]
+docs = ["myst-nb", "sphinx (>=1.5)", "sphinx-book-theme", "sphinx-copybutton", "sphinx-thebe", "sphinx-togglebutton"]
 
 [[package]]
 name = "ipython"
@@ -4304,4 +4327,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "3.11.3"
-content-hash = "f91392839f77cfc165149f923c3ccec26b2eb82d31d726da248503faa3a3b428"
+content-hash = "08ac60e2f3607879cb023b2d602f79f15e74fedb4583bbb4a1dde68e64dfc836"

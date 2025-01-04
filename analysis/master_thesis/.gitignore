@@ -1,5 +1,6 @@
 /data/**
 /images/**
+/results/**
 /output/**
 /sandbox/**
 /sources/**
@@ -12,3 +13,4 @@ libs_QSM/__pycache__
 !/sources/.gitkeep
 !/data/.gitkeep
 !/sandbox/.gitkeep
+!/results/.gitkeep

@@ -157,9 +157,6 @@ class Solve_equilibrium(Estimate_params):
         return eq
 
     def solve_equilibrium(self, given_ref:dict, given_exog:dict, given_param:dict, modeltype:str, method:str, maxiter:int): # 外生変数から一般均衡を解く関数の定義
-        # exogに不必要な数値が入っているかどうかを確認する
-        if not(set(given_exog.keys()) <= set(self.exog_keys)): 
-            raise ValueError('Unnecessary exogenous variables exist.') 
         
         # set exogenous variables
         n = self.count
@@ -323,24 +320,34 @@ class Solve_equilibrium(Estimate_params):
         return eq
 
     def check_replication_next(self, modeltype:str, method:str, maxiter):  # 現況再現性の確認
-        self.rep = self.solve_equilibrium(self.ref_next, self.exog_next, self.param, modeltype, method, maxiter)
+        self.rep_next = self.solve_equilibrium(self.ref_next, self.exog_next, self.param, modeltype, method, maxiter)
     
     def check_replication_prev(self, modeltype:str, method:str, maxiter):  # 現況再現性の確認
-        self.rep = self.solve_equilibrium(self.ref_prev, self.exog_prev, self.param, modeltype, method, maxiter)
+        self.rep_prev = self.solve_equilibrium(self.ref_prev, self.exog_prev, self.param, modeltype, method, maxiter)
     
 
     '''
     7. 外生変数のシミュレーション
     '''
-    def simulate_new_exog(self, new_exog:dict[str,float:np.ndarray], modeltype:str, method:str, maxiter):
+    def simulate_new_exog_next(self, new_exog:dict[str,float:np.ndarray], modeltype:str, method:str, maxiter):
         # new_exogに不必要な数値が入っているかどうかを確認する
-        if not(set(new_exog.keys()) <= set(self.exog_keys)): 
+        if not(set(new_exog.keys()) <= set(self.exog_next.keys())): 
             raise ValueError('Unnecessary exogenous variables exist.') 
 
         self.new_exog = self.exog_next # new_exogの初期化
         for k,v in new_exog.items(): self.new_exog[k] = v # new_exogの更新
 
-        self.res = self.solve_equilibrium(self.ref_next, self.new_exog, self.param, modeltype, method, maxiter)
+        self.res_next = self.solve_equilibrium(self.ref_next, self.new_exog, self.param, modeltype, method, maxiter)
+    
+    def simulate_new_exog_prev(self, new_exog:dict[str,float:np.ndarray], modeltype:str, method:str, maxiter):
+        # new_exogに不必要な数値が入っているかどうかを確認する
+        if not(set(new_exog.keys()) <= set(self.exog_prev.keys())): 
+            raise ValueError('Unnecessary exogenous variables exist.') 
+
+        self.new_exog = self.exog_prev # new_exogの初期化
+        for k,v in new_exog.items(): self.new_exog[k] = v # new_exogの更新
+
+        self.res_prev = self.solve_equilibrium(self.ref_prev, self.new_exog, self.param, modeltype, method, maxiter)
 
 
     '''
@@ -354,7 +361,7 @@ class Solve_equilibrium(Estimate_params):
         self.new_param = self.param # new_paramの初期化
         for k,v in new_param.items(): self.new_param[k] = v # new_paramの更新
 
-        self.res = self.solve_equilibrium(self.ref_next, self.exog_next, self.new_param, modeltype, method, maxiter)
+        self.res_next = self.solve_equilibrium(self.ref_next, self.exog_next, self.new_param, modeltype, method, maxiter)
     
     def simulate_new_param_prev(self, new_param:dict[str,float], modeltype:str, method:str, maxiter):
         # new_paramに不必要な数値が入っているかどうかを確認する
@@ -364,7 +371,7 @@ class Solve_equilibrium(Estimate_params):
         self.new_param = self.param # new_paramの初期化
         for k,v in new_param.items(): self.new_param[k] = v # new_paramの更新
 
-        self.res = self.solve_equilibrium(self.ref_prev, self.exog_prev, self.new_param, modeltype, method, maxiter)
+        self.res_prev = self.solve_equilibrium(self.ref_prev, self.exog_prev, self.new_param, modeltype, method, maxiter)
 
 #%%
 if __name__ == '__main__':

@@ -61,24 +61,36 @@ class Solve_equilibrium(Estimate_params):
         p_i = exog['p_i']
         t_ij = exog['t_ij']
         tau_ij = exog['tau_ij']
+        const_ij = exog['const_ij']
         N = exog['N']
         T = exog['T']
         L = exog['L']
         xi_i = exog['xi_i']
         # H_ave_i = exog['H_ave_i']
         phi_i = exog['phi_i']
-        w_j_init = exog['w_j_init']
-        N_W_j_init = exog['N_W_j_init']
-        N_R_i_init = exog['N_R_i_init']
+        w_j_init = np.array(exog['w_j_init'])
+        N_W_j_init = np.array(exog['N_W_j_init'])
+        N_R_i_init = np.array(exog['N_R_i_init'])
         Pi_ref_ij = ref['Pi_ij']
         q_ref_i = ref['q_i']
 
+        # N_W_j_0とN_R_i_0の初期値の設定
+        if np.sum(N_W_j_init) > np.sum(l[n:(n*2-1)]):
+            N_W_j_0 = np.sum(N_W_j_init) - np.sum(l[n:(n*2-1)])
+            scale_j = 1
+        else:
+            N_W_j_0 = N_W_j_init[0]
+            scale_j = np.sum(N_W_j_init[1:n]) / np.sum(l[n:(n*2-1)])
+        if np.sum(N_R_i_init) > np.sum(l[(n*2-1):(n*3-2)]):
+            N_R_i_0 = np.sum(N_R_i_init) - np.sum(l[(n*2-1):(n*3-2)])
+            scale_i = 1
+        else:
+            N_R_i_0 = N_R_i_init[0]
+            scale_i = np.sum(N_R_i_init[1:n]) / np.sum(l[(n*2-1):(n*3-2)])
         # 未知数はw_j, N_R_i, N_W_j (n*3-2個)
         w_j = np.array(l[0:n])
-        N_W_j_0 = np.sum(exog['N_W_j_init']) - np.sum(l[n:(n*2-1)])
-        N_R_i_0 = np.sum(exog['N_R_i_init']) - np.sum(l[(n*2-1):(n*3-2)])
-        N_W_j = np.append(N_W_j_0, l[n:(n*2-1)])
-        N_R_i = np.append(N_R_i_0, l[(n*2-1):(n*3-2)])
+        N_W_j = np.append(N_W_j_0, scale_j*l[n:(n*2-1)])
+        N_R_i = np.append(N_R_i_0, scale_i*l[(n*2-1):(n*3-2)])
 
         # nanの例外処理
         if np.nan in w_j : w_j = w_j_init
@@ -109,11 +121,14 @@ class Solve_equilibrium(Estimate_params):
         # 時間価値v_ij, 労働量x_ij, 子供一人当たりのコストmu_ijの定義 (式(6), 式(12)を参照)
         v_ij = w_j*(1-tau_ij) / (T+t_ij)
         mu_ij = mu_cost + v_ij*mu_time + q_i.reshape(1,-1).T*mu_room
+        mu_ij = mu_ij*G_ij
+        mu_ij[mu_ij <= 0] = 0
+
         # 実質所得W_ij, 世帯当たり子供の数n_ij
-        W_ij = np.divide(v_ij, (p_i.reshape(1, -1).T**beta_cns * q_i.reshape(1, -1).T**beta_flr * mu_ij**beta_chd), out=np.zeros_like(G_ij), where=(G_ij!=0))
-        n_ij = np.divide(beta_chd * gam*L*v_ij, mu_ij, out=np.zeros_like(G_ij), where=(G_ij!=0))
+        W_ij = np.divide(v_ij, (p_i.reshape(1, -1).T**beta_cns * q_i.reshape(1, -1).T**beta_flr * mu_ij**beta_chd), out=np.zeros_like(mu_ij), where=(mu_ij!=0))
+        n_ij = np.divide(beta_chd * gam*L*v_ij, mu_ij, out=np.zeros_like(mu_ij), where=(mu_ij!=0))
         H_R_ij = beta_flr * gam*L*v_ij / q_i.reshape(1,-1).T + mu_room*n_ij
-        Pi_ij = np.divide(W_ij**gameps * B_i.reshape(1, -1).T**eps * E_j, np.sum(W_ij**gameps * B_i.reshape(1, -1).T**eps * E_j), out=np.zeros_like(G_ij), where=(G_ij!=0))
+        Pi_ij = np.divide(W_ij**gameps * (B_i.reshape(1, -1).T**eps * E_j + const_ij), np.sum(W_ij**gameps * (B_i.reshape(1, -1).T**eps * E_j + const_ij)), out=np.zeros_like(mu_ij), where=(mu_ij!=0))
         # 一世帯当たり居住地面積H_R_ij, 居住地面積H_R_iの定義(式(9)を参照)
         H_R_i = np.sum(H_R_ij*N*Pi_ij, axis=1)
         # 労働量x_ijの定義 (式(8)を参照)
@@ -156,7 +171,7 @@ class Solve_equilibrium(Estimate_params):
         self.given_param['i'] += 1
         return eq
 
-    def solve_equilibrium(self, given_ref:dict, given_exog:dict, given_param:dict, modeltype:str, method:str, maxiter:int): # 外生変数から一般均衡を解く関数の定義
+    def solve_equilibrium(self, given_ref:dict, given_exog:dict, given_param:dict, modeltype:str, method:str, maxiter:int, ratio:int): # 外生変数から一般均衡を解く関数の定義
         
         # set exogenous variables
         n = self.count
@@ -185,6 +200,7 @@ class Solve_equilibrium(Estimate_params):
         p_i = given_exog['p_i']
         t_ij = given_exog['t_ij']
         tau_ij = given_exog['tau_ij']
+        const_ij = given_exog['const_ij']
         N = given_exog['N']
         T = given_exog['T']
         L = given_exog['L']
@@ -197,17 +213,17 @@ class Solve_equilibrium(Estimate_params):
         self.given_param = given_param
         # w_jの初期化
         self.given_exog['w_j_init'] = given_ref['w_j'].tolist()
-        self.given_exog['N_W_j_init'] = given_ref['N_W_j'].tolist()
-        self.given_exog['N_R_i_init'] = given_ref['N_R_i'].tolist()
-        w_j_init = given_ref['w_j'].tolist()
-        N_W_j_init = given_ref['N_W_j'].tolist()[1:n]
-        N_R_i_init = given_ref['N_R_i'].tolist()[1:n]
+        self.given_exog['N_W_j_init'] = np.sum(N*given_ref['Pi_ij'], axis=0).tolist()
+        self.given_exog['N_R_i_init'] = np.sum(N*given_ref['Pi_ij'], axis=1).tolist()
+        w_j_init = self.given_exog['w_j_init']
+        N_W_j_init = self.given_exog['N_W_j_init'][1:n]
+        N_R_i_init = self.given_exog['N_R_i_init'][1:n]
         x0_init = w_j_init + N_W_j_init + N_R_i_init
         # 制約条件の設定 (非負制約)
         constraints = [{'type': 'ineq', 'fun': lambda vars: vars}]
         b_w_j = [(0.1, 3) for x in range(self.count)]
-        b_N_w = [(10000, N/10) for x in range(self.count-1)]
-        b_N_r = [(10000, N/10) for x in range(self.count-1)]
+        b_N_w = [(1000, N/ratio) for x in range(self.count-1)]
+        b_N_r = [(1000, N/ratio) for x in range(self.count-1)]
         bounds = tuple(b_w_j+b_N_w+b_N_r)
         self.given_param['i'] = 0
         # 一般均衡の方程式を解く, functionが'minimize’の時は局所最適化, 'root'の時は非線形連立方程式
@@ -251,15 +267,18 @@ class Solve_equilibrium(Estimate_params):
         # 時間価値v_ij, 通勤確率lambda_ijの定義 (式(6), 式(12)を参照)
         v_ij = w_j*(1-tau_ij) / (T+t_ij)
         mu_ij = mu_cost + v_ij*mu_time + q_i.reshape(1,-1).T*mu_room
-        W_ij = v_ij/ (p_i.reshape(1, -1).T**beta_cns * q_i.reshape(1, -1).T**beta_flr * mu_ij**beta_chd)
-        Pi_ij = W_ij**gameps * B_i.reshape(1, -1).T**eps * E_j * np.divide(1, np.sum(W_ij**gameps * B_i.reshape(1, -1).T**eps * E_j), out=np.zeros_like(G_ij), where=(G_ij!=0))
+        mu_ij = mu_ij*G_ij
+        mu_ij[mu_ij <= 0] = 0
+
+        W_ij = np.divide(v_ij, (p_i.reshape(1, -1).T**beta_cns * q_i.reshape(1, -1).T**beta_flr * mu_ij**beta_chd), out=np.zeros_like(mu_ij), where=(mu_ij!=0))
+        Pi_ij = W_ij**gameps * (B_i.reshape(1, -1).T**eps * E_j + const_ij) * np.divide(1, np.sum(W_ij**gameps * (B_i.reshape(1, -1).T**eps * E_j + const_ij)), out=np.zeros_like(mu_ij), where=(mu_ij!=0))
         # 労働量x_ijの定義 (式(8)を参照)
         x_ij = gam*L/(T+t_ij)
         # 労働需要M_W_jの定義 (式(15)を参照)
         M_R_i = N_R_i*x_ij
         M_W_j = N*np.sum(Pi_ij*x_ij, axis=0)
         # 一世帯当たり居住地面積H_R_ij, 居住地面積H_R_iの定義(式(9)を参照)
-        n_ij = beta_chd * gam*L*v_ij / mu_ij
+        n_ij = np.divide(beta_chd * gam*L*v_ij, mu_ij, out=np.zeros_like(mu_ij), where=(mu_ij!=0))
         H_R_ij = beta_flr * gam*L*v_ij / q_i.reshape(1,-1).T + mu_room*n_ij
         H_R_i = np.sum(H_R_ij*N*Pi_ij, axis=1)
         # 業務用地H_W_jの定義 (式(18)を参照)
@@ -319,27 +338,27 @@ class Solve_equilibrium(Estimate_params):
 
         return eq
 
-    def check_replication_next(self, modeltype:str, method:str, maxiter):  # 現況再現性の確認
-        self.rep_next = self.solve_equilibrium(self.ref_next, self.exog_next, self.param, modeltype, method, maxiter)
+    def check_replication_next(self, modeltype:str, method:str, maxiter, ratio:int=15):  # 現況再現性の確認
+        self.rep_next = self.solve_equilibrium(self.ref_next, self.exog_next, self.param, modeltype, method, maxiter, ratio)
     
-    def check_replication_prev(self, modeltype:str, method:str, maxiter):  # 現況再現性の確認
-        self.rep_prev = self.solve_equilibrium(self.ref_prev, self.exog_prev, self.param, modeltype, method, maxiter)
+    def check_replication_prev(self, modeltype:str, method:str, maxiter, ratio:int=15):  # 現況再現性の確認
+        self.rep_prev = self.solve_equilibrium(self.ref_prev, self.exog_prev, self.param, modeltype, method, maxiter, ratio)
     
 
     '''
     7. 外生変数のシミュレーション
     '''
-    def simulate_new_exog_next(self, new_exog:dict[str,float:np.ndarray], modeltype:str, method:str, maxiter):
+    def simulate_new_exog_next(self, new_exog:dict[str,float:np.ndarray], modeltype:str, method:str, maxiter, ratio:int=15):
         # new_exogに不必要な数値が入っているかどうかを確認する
         if not(set(new_exog.keys()) <= set(self.exog_next.keys())): 
             raise ValueError('Unnecessary exogenous variables exist.') 
 
-        self.new_exog = self.exog_next # new_exogの初期化
+        self.new_exog = self.exog_next.copy() # new_exogの初期化
         for k,v in new_exog.items(): self.new_exog[k] = v # new_exogの更新
 
-        self.res_next = self.solve_equilibrium(self.ref_next, self.new_exog, self.param, modeltype, method, maxiter)
+        self.res_next = self.solve_equilibrium(self.ref_next, self.new_exog, self.param, modeltype, method, maxiter, ratio)
     
-    def simulate_new_exog_prev(self, new_exog:dict[str,float:np.ndarray], modeltype:str, method:str, maxiter):
+    def simulate_new_exog_prev(self, new_exog:dict[str,float:np.ndarray], modeltype:str, method:str, maxiter, ratio:int=15):
         # new_exogに不必要な数値が入っているかどうかを確認する
         if not(set(new_exog.keys()) <= set(self.exog_prev.keys())): 
             raise ValueError('Unnecessary exogenous variables exist.') 
@@ -347,13 +366,13 @@ class Solve_equilibrium(Estimate_params):
         self.new_exog = self.exog_prev # new_exogの初期化
         for k,v in new_exog.items(): self.new_exog[k] = v # new_exogの更新
 
-        self.res_prev = self.solve_equilibrium(self.ref_prev, self.new_exog, self.param, modeltype, method, maxiter)
+        self.res_prev = self.solve_equilibrium(self.ref_prev, self.new_exog, self.param, modeltype, method, maxiter, ratio)
 
 
     '''
     8. パラメータのシミュレーション
     '''
-    def simulate_new_param_next(self, new_param:dict[str,float], modeltype:str, method:str, maxiter):
+    def simulate_new_param_next(self, new_param:dict[str,float], modeltype:str, method:str, maxiter, ratio:int=15):
         # new_paramに不必要な数値が入っているかどうかを確認する
         if not(set(new_param.keys()) <= set(self.param_keys)): 
             raise ValueError('Unnecessary parameters exist.') 
@@ -361,9 +380,9 @@ class Solve_equilibrium(Estimate_params):
         self.new_param = self.param # new_paramの初期化
         for k,v in new_param.items(): self.new_param[k] = v # new_paramの更新
 
-        self.res_next = self.solve_equilibrium(self.ref_next, self.exog_next, self.new_param, modeltype, method, maxiter)
+        self.res_next = self.solve_equilibrium(self.ref_next, self.exog_next, self.new_param, modeltype, method, maxiter, ratio)
     
-    def simulate_new_param_prev(self, new_param:dict[str,float], modeltype:str, method:str, maxiter):
+    def simulate_new_param_prev(self, new_param:dict[str,float], modeltype:str, method:str, maxiter, ratio:int=15):
         # new_paramに不必要な数値が入っているかどうかを確認する
         if not(set(new_param.keys()) <= set(self.param_keys)): 
             raise ValueError('Unnecessary parameters exist.') 
@@ -371,7 +390,7 @@ class Solve_equilibrium(Estimate_params):
         self.new_param = self.param # new_paramの初期化
         for k,v in new_param.items(): self.new_param[k] = v # new_paramの更新
 
-        self.res_prev = self.solve_equilibrium(self.ref_prev, self.exog_prev, self.new_param, modeltype, method, maxiter)
+        self.res_prev = self.solve_equilibrium(self.ref_prev, self.exog_prev, self.new_param, modeltype, method, maxiter, ratio)
 
 #%%
 if __name__ == '__main__':

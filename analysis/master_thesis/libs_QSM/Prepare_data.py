@@ -22,11 +22,11 @@ class Prepare_data():
         self.param_keys = self.param_keys_input + self.param_keys_dep
 
         # Exogenous variables
-        self.exog_keys_sca = ['T','N','L']
+        self.exog_keys_sca = ['T','N','L','mu_cost','mu_room']
         self.exog_keys_i = ['p_i','K_i','theta_i']
         self.exog_keys_j = []
         self.exog_keys_ij = ['tau_ij','t_ij']
-        self.exog_keys_dep = ['mu_cost','mu_time','mu_room','mu_resids_ij','xi_i','G_ij']
+        self.exog_keys_dep = ['mu_time','mu_resids_ij','xi_i','G_ij']
         self.exog_keys_input = self.exog_keys_sca + self.exog_keys_i + self.exog_keys_j + self.exog_keys_ij
         self.exog_keys = self.exog_keys_input + self.exog_keys_dep
 
@@ -194,11 +194,11 @@ class Prepare_data():
         # 育児費用係数と支出パラメータの算出
         df = pd.DataFrame()
         df['n_ij'] = np.ravel(ref['n_ij'])
-        df['y'] = np.ravel(param['beta_chd']*param['gamma']*exog['L']*np.divide(ref_dep['v_ij'], ref['n_ij'], out=np.zeros_like(exog_dep['G_ij']), where=(exog_dep['G_ij']!=0))-ref['q_i'].reshape(1,-1).T*np.ones(n)*0.02-0.05)
+        df['y'] = np.ravel(param['beta_chd']*param['gamma']*exog['L']*np.divide(ref_dep['v_ij'], ref['n_ij'], out=np.zeros_like(exog_dep['G_ij']), where=(exog_dep['G_ij']!=0))-ref['q_i'].reshape(1,-1).T*np.ones(n)*exog['mu_room']-exog['mu_cost'])
         df['weight'] = np.ravel(ref['Pi_ij'])
         df['const'] = np.ones(n**2)
         df['x_1'] = np.ravel(ref_dep['v_ij'])
-        df['x_2'] = np.ravel(ref['q_i'].reshape(1,-1).T*np.ones(n))
+        # df['x_2'] = np.ravel(ref['q_i'].reshape(1,-1).T*np.ones(n))
         df_model = df.query('n_ij != 0')
         model_sm = IV2SLS(df_model['y'], df_model[['x_1']], None, None).fit()
         print(model_sm)
@@ -206,9 +206,9 @@ class Prepare_data():
         self.model = model_sm
         df['mu_resids_ij'] = np.zeros(len(df))
         df.loc[df_model.index, 'mu_resids_ij'] = model_sm.resids
-        exog_dep['mu_cost'] = 0.05
+        # exog_dep['mu_cost'] = 0.05
         exog_dep['mu_time'] = model_sm.params['x_1']
-        exog_dep['mu_room'] = 0.02
+        # exog_dep['mu_room'] = 0.02
         exog_dep['mu_resids_ij'] = df['mu_resids_ij'].to_numpy().reshape(n,n)
 
         # 子供の実質費用μの算出
@@ -218,7 +218,7 @@ class Prepare_data():
         # 一世帯当たり基本財消費量C_ijの算出 (式(9)を参照)
         ref_dep['C_ij'] = param['beta_cns']*param['gamma']*exog['L']*ref_dep['v_ij']/exog['p_i'].reshape(1,-1).T
         # 一世帯当たり居住地面積H_R_ijの算出 (式(9)を参照)
-        ref_dep['H_R_ij'] = param['beta_flr']*param['gamma']*exog['L']*ref_dep['v_ij']/ref['q_i'].reshape(1,-1).T + exog_dep['mu_room']*ref['n_ij']
+        ref_dep['H_R_ij'] = param['beta_flr']*param['gamma']*exog['L']*ref_dep['v_ij']/ref['q_i'].reshape(1,-1).T + exog['mu_room']*ref['n_ij']
         # 居住地面積H_R_iの算出
         ref_dep['H_R_i'] = np.sum(ref_dep['H_R_ij']*exog['N']*ref['Pi_ij'], axis=1)
         # ref_dep['H_W_j'] = ref_dep['H_R_i'] / (1-exog['theta_i']) * exog['theta_i']
@@ -247,10 +247,6 @@ class Prepare_data():
         save_hist(ref_dep, 'n_i', 1)
         save_hist(ref_dep, 'C_ij', 2)
         save_hist(ref_dep, 'H_R_ij', 2)
-        # save_hist(ref_dep, 'H_R_i', 1)
-        # save_hist(exog_dep, 'beta_cns_ij', 2)
-        # save_hist(exog_dep, 'beta_flr_ij', 2)
-        # save_hist(exog_dep, 'beta_chd_ij', 2)
 
         print('################################################')
 

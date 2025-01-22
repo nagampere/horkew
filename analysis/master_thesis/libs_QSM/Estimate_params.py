@@ -153,21 +153,21 @@ class Estimate_params(Prepare_data):
         return crit_val *10**5
 
     def run_lmd_dlt(self): # estimate lambda and delta
-        lmd_init = 5.0
-        dlt_init = 5.0
+        lmd_init = 0.10
+        dlt_init = 0.10
         params_init = np.array([lmd_init, dlt_init])
         min_lmd = 0.00
-        max_lmd = 10.0
+        max_lmd = 1.00
         min_dlt = 0.00
-        max_dlt = 10.0
+        max_dlt = 1.00
         results = opt.minimize(
             self.criterion_lmd_dlt, 
             params_init, 
             tol=1e-14, 
-            method='L-BFGS-B',
-            # method='Nelder-Mead',
-            # bounds=((min_lmd, max_lmd),
-            #         (min_dlt, max_dlt)),
+            # method='L-BFGS-B',
+            method='Nelder-Mead',
+            bounds=((min_lmd, max_lmd),
+                    (min_dlt, max_dlt)),
             options = {'maxiter':10**5, 'maxfun':10**5, 'maxls': 2000}
             )
         lmd_opt, dlt_opt = results.x
@@ -246,22 +246,22 @@ class Estimate_params(Prepare_data):
         return crit_val *10**5
 
     def run_eta_rho(self): # estimate lambda and delta
-        eta_init = 5.0
-        rho_init = 5.0
+        eta_init = 0.1
+        rho_init = 0.1
         params_init = np.array([eta_init, rho_init])
         min_eta = 0.00
-        max_eta = 10.0
+        max_eta = 1.00
         min_rho = 0.00
-        max_rho = 10.0
+        max_rho = 1.00
         results = opt.minimize(
             self.criterion_eta_rho, 
             params_init, 
             tol=1e-14, 
-            # method='Nelder-Mead',
             method='L-BFGS-B',
-            # bounds=((min_eta, max_eta),
-            #         (min_rho, max_rho)),
-            options = {'maxiter':10**5, 'maxfun':10**5, 'maxls': 2000}
+            # method='Nelder-Mead',
+            bounds=((min_eta, max_eta),
+                    (min_rho, max_rho)),
+            options = {'maxiter':10**5, 'maxfun':10**5}
         )
         eta_opt, rho_opt = results.x
         # input the estimated parameters
@@ -314,9 +314,11 @@ class Estimate_params(Prepare_data):
         K_i = exog['K_i']
 
         XE_ij = np.divide(Pi_ij , W_ij**gameps, out=np.zeros_like(G_ij), where=(G_ij!=0))
-        XE_ij = XE_ij / XE_ij[0,0]
-        X_i = np.sum(XE_ij, axis=1)
-        E_j = XE_ij/X_i.reshape(1, -1).T
+        U, S, Vt = np.linalg.svd(XE_ij)# 特異値分解
+        sigma1 = np.abs(S[0])  # 最大の特異値
+        X_i = np.abs(U[:, 0]) # 左特異ベクトル (n×1)
+        E_j = np.abs(Vt[0, :]) # 右特異ベクトル (1×n)
+        const_ij = XE_ij / sigma1 -  X_i.reshape(1, -1).T * E_j
 
         Ups_j = np.sum(np.exp(-dlt*t_ij*60*24) * N_W_j / K_i.reshape(1, -1).T, axis=0)
         Omega_i = np.sum(np.exp(-rho*t_ij*60*24) * N_R_i.reshape(1, -1).T / K_i.reshape(1, -1).T, axis=1)
@@ -325,7 +327,7 @@ class Estimate_params(Prepare_data):
         al_j = A_j / Ups_j**lmd
         bl_i = B_i / Omega_i**eta
 
-        Pi_est_ij = W_ij**gameps * B_i.reshape(1, -1).T**eps * E_j * np.divide(1, np.sum(W_ij**gameps * B_i.reshape(1, -1).T**eps * E_j), out=np.zeros_like(G_ij), where=(G_ij!=0))
+        Pi_est_ij = W_ij**gameps * (B_i.reshape(1, -1).T**eps * E_j + const_ij) * np.divide(1, np.sum(W_ij**gameps * (B_i.reshape(1, -1).T**eps * E_j + const_ij)), out=np.zeros_like(G_ij), where=(G_ij!=0))
 
         #　就業地の商業地利用の面積H_W_j (式(18)を参照)
         H_W_j = ((1-alp)*A_j/Q_j)**(1/alp)*M_W_j
@@ -346,6 +348,7 @@ class Estimate_params(Prepare_data):
         result_exog['al_j'] = al_j
         result_exog['bl_i'] = bl_i
         result_exog['E_j'] = E_j
+        result_exog['const_ij'] = const_ij
         result_exog['phi_i'] = phi_i
         result_ref['Ups_j'] = Ups_j
         result_ref['Omega_i'] = Omega_i

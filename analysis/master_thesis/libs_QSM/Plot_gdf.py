@@ -12,7 +12,7 @@ def plot_gdf(given_gdf, dir, col, unit, format):
     top = max(abs(given_gdf[col]))*1.1
     if min(given_gdf[col]) < 0 :
         norm = Normalize(vmin=-top, vmax=top)
-        cmap = 'seismic_r'
+        cmap = 'seismic'
     else: 
         norm = Normalize(vmin=0, vmax=top)
         cmap = 'Blues'

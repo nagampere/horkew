@@ -184,10 +184,6 @@ class Prepare_data():
         # 居住人口N_R_iと就業人口N_W_jの算出 (式(14)を参照)
         ref_dep['N_R_i'] = exog['N']*np.sum(ref['Pi_ij'], axis=1)
         ref_dep['N_W_j'] = exog['N']*np.sum(ref['Pi_ij'], axis=0)
-        # 労働供給M_R_iと労働需要M_W_jの算出 (式(15)を参照)
-        x_ij = param['gamma']*exog['L']/(exog['T']+exog['t_ij'])
-        ref_dep['M_R_i'] = exog['N']*np.sum(ref['Pi_ij']*x_ij, axis=1)
-        ref_dep['M_W_j'] = exog['N']*np.sum(ref['Pi_ij']*x_ij, axis=0)
         # 時間価値v_ijの算出 (式(12)を参照)
         ref_dep['v_ij'] = (ref['w_j']*(1-exog['tau_ij']))/(exog['T']+exog['t_ij'])
 
@@ -213,6 +209,10 @@ class Prepare_data():
 
         # 子供の実質費用μの算出
         ref_dep['mu_ij'] = param['beta_chd']*param['gamma']*exog['L']*np.divide(ref_dep['v_ij'], ref['n_ij'], out=np.zeros_like(exog_dep['G_ij']), where=(exog_dep['G_ij']!=0))
+        # 労働供給M_R_iと労働需要M_W_jの算出 (式(15)を参照)
+        x_ij = (param['gamma']*exog['L'] - ref['n_ij'] * exog_dep['mu_time'])/(exog['T']+exog['t_ij'])
+        ref_dep['M_R_i'] = exog['N']*np.sum(ref['Pi_ij']*x_ij, axis=1)
+        ref_dep['M_W_j'] = exog['N']*np.sum(ref['Pi_ij']*x_ij, axis=0)
         # 地域の子供の数n_iの算出
         ref_dep['n_i'] = exog['N']*np.sum(ref['Pi_ij']*ref['n_ij'], axis=1)
         # 一世帯当たり基本財消費量C_ijの算出 (式(9)を参照)

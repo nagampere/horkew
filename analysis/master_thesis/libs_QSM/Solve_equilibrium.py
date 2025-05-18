@@ -75,34 +75,24 @@ class Solve_equilibrium(Estimate_params):
         q_ref_i = ref['q_i']
 
         # N_W_j_0とN_R_i_0の初期値の設定
-        if np.sum(N_W_j_init) > np.sum(l[n:(n*2-1)]):
-            N_W_j_0 = np.sum(N_W_j_init) - np.sum(l[n:(n*2-1)])
-            scale_j = 1
-        else:
-            N_W_j_0 = N_W_j_init[0]
-            scale_j = np.sum(N_W_j_init[1:n]) / np.sum(l[n:(n*2-1)])
-        if np.sum(N_R_i_init) > np.sum(l[(n*2-1):(n*3-2)]):
-            N_R_i_0 = np.sum(N_R_i_init) - np.sum(l[(n*2-1):(n*3-2)])
-            scale_i = 1
-        else:
-            N_R_i_0 = N_R_i_init[0]
-            scale_i = np.sum(N_R_i_init[1:n]) / np.sum(l[(n*2-1):(n*3-2)])
         # 未知数はw_j, N_R_i, N_W_j (n*3-2個)
         w_j = np.array(l[0:n])
-        N_W_j = np.append(N_W_j_0, scale_j*l[n:(n*2-1)])
-        N_R_i = np.append(N_R_i_0, scale_i*l[(n*2-1):(n*3-2)])
+        N_W_j_0 = N - np.sum(l[n:(n*2-1)])
+        N_R_i_0 = N - np.sum(l[(n*2-1):(n*3-2)])
+        N_W_j = np.append(N_W_j_0, l[n:(n*2-1)])
+        N_R_i = np.append(N_R_i_0, l[(n*2-1):(n*3-2)])
 
         # nanの例外処理
         if np.nan in w_j : w_j = w_j_init
         if np.nan in N_W_j : N_W_j = N_W_j_init
         if np.nan in N_R_i : N_R_i = N_R_i_init
         # 負の値の例外処理
-        for idx, x in enumerate(w_j): 
-            if x < 0: w_j[idx] = abs(x)
-        for idx, x in enumerate(N_W_j): 
-            if x < 0: N_W_j[idx] = abs(x)
-        for idx, x in enumerate(N_R_i): 
-            if x < 0: N_R_i[idx] = abs(x)
+        # for idx, x in enumerate(w_j): 
+        #     if x < 0: w_j[idx] = abs(x)
+        # for idx, x in enumerate(N_W_j): 
+        #     if x < 0: N_W_j[idx] = abs(x)
+        # for idx, x in enumerate(N_R_i): 
+        #     if x < 0: N_R_i[idx] = abs(x)
         
         # print('w_j:',w_j - ref['w_j'])
         # print('N_W_j:',N_W_j - ref['N_W_j'])
@@ -132,7 +122,7 @@ class Solve_equilibrium(Estimate_params):
         # 一世帯当たり居住地面積H_R_ij, 居住地面積H_R_iの定義(式(9)を参照)
         H_R_i = np.sum(H_R_ij*N*Pi_ij, axis=1)
         # 労働量x_ijの定義 (式(8)を参照)
-        x_ij = gam*L/(T+t_ij)
+        x_ij = (gam*L - n_ij * mu_time) /(T+t_ij)
         # 労働需要M_W_jの定義 (式(15)を参照)
         M_W_j = np.sum(exog['N_W_j_init'])*np.sum(Pi_ij*x_ij, axis=0)
         # 業務用地H_W_jの定義 (式(18)を参照)
@@ -150,10 +140,10 @@ class Solve_equilibrium(Estimate_params):
         eq1 = w_j - alp/(1-alp) * H_W_j/M_W_j * Q_j
         # 生産関数の定義
         # eq2 = N_W_j - np.sum(N_R_i * Pi_ij/np.sum(Pi_ij, axis=1), axis=0)
-        eq2 = (N_W_j/np.sum(exog['N_W_j_init']))[1:n] - np.sum(Pi_ij, axis=0)[1:n]
+        eq2 = (N_W_j/N) - np.sum(Pi_ij, axis=0)
         # 人口の均衡式(n本)
         # eq3 = N_R_i - np.sum(N_W_j * Pi_ij/np.sum(Pi_ij, axis=0), axis=1)
-        eq3 = (N_R_i/np.sum(exog['N_R_i_init']))[1:n] - np.sum(Pi_ij, axis=1)[1:n]
+        eq3 = (N_R_i/N) - np.sum(Pi_ij, axis=1)
 
         # print('q_i:',q_ref_i- q_i)
         # print('P_ij:',Pi_ref_ij - Pi_ij)
@@ -223,7 +213,7 @@ class Solve_equilibrium(Estimate_params):
         constraints = [{'type': 'ineq', 'fun': lambda vars: vars}]
         b_w_j = [(0.1, 3) for x in range(self.count)]
         b_N_w = [(1000, N/ratio) for x in range(self.count-1)]
-        b_N_r = [(1000, N/ratio) for x in range(self.count-1)]
+        b_N_r = [(1000, N/20) for x in range(self.count-1)]
         bounds = tuple(b_w_j+b_N_w+b_N_r)
         self.given_param['i'] = 0
         # 一般均衡の方程式を解く, functionが'minimize’の時は局所最適化, 'root'の時は非線形連立方程式
@@ -272,15 +262,15 @@ class Solve_equilibrium(Estimate_params):
 
         W_ij = np.divide(v_ij, (p_i.reshape(1, -1).T**beta_cns * q_i.reshape(1, -1).T**beta_flr * mu_ij**beta_chd), out=np.zeros_like(mu_ij), where=(mu_ij!=0))
         Pi_ij = W_ij**gameps * (B_i.reshape(1, -1).T**eps * E_j + const_ij) * np.divide(1, np.sum(W_ij**gameps * (B_i.reshape(1, -1).T**eps * E_j + const_ij)), out=np.zeros_like(mu_ij), where=(mu_ij!=0))
-        # 労働量x_ijの定義 (式(8)を参照)
-        x_ij = gam*L/(T+t_ij)
-        # 労働需要M_W_jの定義 (式(15)を参照)
-        M_R_i = N_R_i*x_ij
-        M_W_j = N*np.sum(Pi_ij*x_ij, axis=0)
         # 一世帯当たり居住地面積H_R_ij, 居住地面積H_R_iの定義(式(9)を参照)
         n_ij = np.divide(beta_chd * gam*L*v_ij, mu_ij, out=np.zeros_like(mu_ij), where=(mu_ij!=0))
         H_R_ij = beta_flr * gam*L*v_ij / q_i.reshape(1,-1).T + mu_room*n_ij
         H_R_i = np.sum(H_R_ij*N*Pi_ij, axis=1)
+        # 労働量x_ijの定義 (式(8)を参照)
+        x_ij = (gam*L - n_ij * mu_time) /(T+t_ij)
+        # 労働需要M_W_jの定義 (式(15)を参照)
+        M_R_i = N_R_i*x_ij
+        M_W_j = N*np.sum(Pi_ij*x_ij, axis=0)
         # 業務用地H_W_jの定義 (式(18)を参照)
         H_W_j = (1-alp)/alp * w_j/Q_j * M_W_j
         H_i = H_R_i + H_W_j
@@ -328,6 +318,8 @@ class Solve_equilibrium(Estimate_params):
         display(pd.DataFrame(q_i).T)
         print('N_R_i: 居住人口')
         display(pd.DataFrame(N_R_i).T)
+        print('ΔN_R_i: 居住人口の差')
+        display(pd.DataFrame(N_R_i-np.sum(N*Pi_ij, axis=1)).T)
         print('#######################################')
         print('### Calculate the endogenous variables ###')
         print('π_ij: 通勤割合')
@@ -363,7 +355,7 @@ class Solve_equilibrium(Estimate_params):
         if not(set(new_exog.keys()) <= set(self.exog_prev.keys())): 
             raise ValueError('Unnecessary exogenous variables exist.') 
 
-        self.new_exog = self.exog_prev # new_exogの初期化
+        self.new_exog = self.exog_prev.copy() # new_exogの初期化
         for k,v in new_exog.items(): self.new_exog[k] = v # new_exogの更新
 
         self.res_prev = self.solve_equilibrium(self.ref_prev, self.new_exog, self.param, modeltype, method, maxiter, ratio)

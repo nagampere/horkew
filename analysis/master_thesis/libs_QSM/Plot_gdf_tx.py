@@ -10,13 +10,12 @@ gdf_KEN = gdf_KEN.dissolve('KEN').query('KEN in ["茨城県","埼玉県", "千�
 gdf_ln = gpd.read_file(os.path.join(os.getcwd(), 'sources', 'tx_line.geojson'))
 gdf_st = gpd.read_file(os.path.join(os.getcwd(), 'sources', 'tx_station.geojson'))
 
-def plot_gdf_tx(given_gdf, dir, col, unit, format):
-    top = max(abs(given_gdf[col]))*1.1
-    if min(given_gdf[col]) < 0 :
-        norm = Normalize(vmin=-top, vmax=top)
-        cmap = 'seismic_r'
+def plot_gdf_tx(given_gdf, dir, col, unit, min, max, format):
+    if min < 0 :
+        norm = Normalize(vmin=min, vmax=max)
+        cmap = 'seismic'
     else: 
-        norm = Normalize(vmin=0, vmax=top)
+        norm = Normalize(vmin=min, vmax=max)
         cmap = 'Blues'
     fig = given_gdf.plot(
         column=col,
